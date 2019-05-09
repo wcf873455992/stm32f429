@@ -1,7 +1,0 @@
-*.bin
-*.elf
-*.hex
-*.o
-*.lst
-/build/*.map
-*.d

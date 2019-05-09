@@ -71,8 +71,7 @@ void uart_init(u32 bound)
 	UART1_Handler.Init.Mode=UART_MODE_TX_RX;		    //收发模式
 	HAL_UART_Init(&UART1_Handler);					    //HAL_UART_Init()会使能UART1
 	
-	HAL_UART_Receive_IT(&UART1_Handler, (u8 *)aRxBuffer, RXBUFFERSIZE);//该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
-  
+	//HAL_UART_Receive_IT(&UART1_Handler, (u8 *)aRxBuffer, RXBUFFERSIZE);//该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量 
 }
 
 //UART底层初始化，时钟使能，引脚配置，中断配置
@@ -100,6 +99,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
 		HAL_GPIO_Init(GPIOA,&GPIO_Initure);	   	//初始化PA10
 		
 #if EN_USART1_RX
+        __HAL_UART_ENABLE_IT(huart,UART_IT_RXNE);		//开启接收中断
 		HAL_NVIC_EnableIRQ(USART1_IRQn);				//使能USART1中断通道
 		HAL_NVIC_SetPriority(USART1_IRQn,3,3);			//抢占优先级3，子优先级3
 #endif	

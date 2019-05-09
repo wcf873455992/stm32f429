@@ -45,7 +45,7 @@
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Stack_Size      EQU     0x400;
+Stack_Size      EQU     0xA00;
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -197,7 +197,7 @@ Reset_Handler    PROC
 
                  LDR     R0, =SystemInit
                  BLX     R0
-				 
+				 				 
 				 IF {FPU} != "SoftVFP"
                                                 ; Enable Floating Point Support at reset for FPU
                  LDR.W   R0, =0xE000ED88         ; Load address of CPACR register
@@ -215,7 +215,7 @@ Reset_Handler    PROC
                  STR     R1, [R0]
                  ISB                             ; Reset pipeline now the FPU is enabled
                  ENDIF 
-				 
+					 
                  LDR     R0, =__main
                  BX      R0
                  ENDP
