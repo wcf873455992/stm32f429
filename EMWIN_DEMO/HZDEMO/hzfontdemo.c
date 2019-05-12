@@ -1,20 +1,7 @@
 #include "hzfontdemo.h"
 #include "EmWinHZFont.h"
 #include "DIALOG.h"
-//#include "help.h"
 #include "rtc.h"
-//////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK STM32开发板
-//STemwin 外置字库汉字显示    
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//创建日期:2016/3/30
-//版本：V1.0
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2014-2024
-//All rights reserved									  
-////////////////////////////////////////////////////////////////////////////////// 	
 
 
 #define ID_FRAMEWIN_0 	(GUI_ID_USER + 0)
@@ -59,17 +46,10 @@ static const char *_ListViewTable[][5]={
 	{"7#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "  "},
 };
 
-char *MultiEdit_String	=  
-"STM32F4/F7阿波罗开发板\r\n\
-CPU:STM32F429/F746\r\n\
-FLASH:1M\r\n\
-RAM	 :240/256K\r\n\
-板载:10M/100M以太网PHY芯片\r\n\
-     WM8978音频DAC	";
 	
 //对话框资源列表
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
-  { FRAMEWIN_CreateIndirect, 	"Framewin", 	ID_FRAMEWIN_0, 	0, 		0, 		800, 	480, 	FRAMEWIN_CF_MOVEABLE, 0x64, 0 },
+  { FRAMEWIN_CreateIndirect, 	"Framewin", 	ID_FRAMEWIN_0, 	0, 		0, 		800, 	480, 	0, 0x64, 0 },
   //{ MULTIEDIT_CreateIndirect, 	"Multiedit", 	ID_MULTIEDIT_0, 20, 	250, 	300, 	160, 	0, 0x0, 0 },
   { BUTTON_CreateIndirect, 		"系统设置", 		ID_BUTTON_0, 	1,	0, 	133, 	50, 	0, 0x0, 0 },
   { BUTTON_CreateIndirect, 		"设备配置", 		ID_BUTTON_1, 	134,	0, 	133, 	50, 	0, 0x0, 0 },
@@ -78,30 +58,13 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { BUTTON_CreateIndirect, 		"风机记录", 		ID_BUTTON_4, 	533,	0, 	133, 	50, 	0, 0x0, 0 },
   { BUTTON_CreateIndirect, 		"使用帮助", 		ID_BUTTON_5, 	666, 	0, 	133, 	50, 	0, 0x0, 0 },
   { BUTTON_CreateIndirect, 		"状态切换", 		ID_BUTTON_6, 	25, 	390, 	100, 	30, 	0, 0x0, 0 },
-  //{ CHECKBOX_CreateIndirect, 	"Checkbox", 	ID_CHECKBOX_0, 	530, 	90, 	120, 	30, 	0, 0x0, 0 },
-  //{ CHECKBOX_CreateIndirect, 	"Checkbox",		ID_CHECKBOX_1, 	530, 	130, 	120, 	30, 	0, 0x0, 0 },
-  //{ CHECKBOX_CreateIndirect, 	"Checkbox", 	ID_CHECKBOX_2, 	530, 	170, 	120, 	30, 	0, 0x0, 0 },
-  //{ CHECKBOX_CreateIndirect, 	"Checkbox", 	ID_CHECKBOX_3, 	530, 	210, 	120, 	30, 	0, 0x0, 0 },
-  //{ RADIO_CreateIndirect, 		"Radio", 		ID_RADIO_0, 	650, 	119, 	90, 	90, 	0, 0x1404,0 },
   { LISTVIEW_CreateIndirect, 	"Listview", 	ID_LISTVIEW_0, 	5, 	55, 	780, 	300, 	0, 0x0, 0 },
-  //{ LISTVIEW_CreateIndirect, 	"Listview", 	ID_LISTVIEW_1, 	5, 	0, 	780, 	50, 	0, 0x0, 0 },
-  //{ DROPDOWN_CreateIndirect, 	"Dropdown", 	ID_DROPDOWN_0, 	324, 	22, 	150, 	100, 	0, 0x0, 0 },
   { TEXT_CreateIndirect, 		"状态", 		ID_TEXT_0, 		160, 	398, 	700, 	30, 	0, 0x64, 0 },
-  //{ TEXT_CreateIndirect, 		"上次运行", 		ID_TEXT_1, 		240, 	398, 	110, 	30, 	0, 0x64, 0 },
-  //{ TEXT_CreateIndirect, 		"上次运行时间", 		ID_TEXT_2, 		550, 	398, 	90, 	30, 	0, 0x64, 0 },
-  //{ TEXT_CreateIndirect, 		"分钟", 		ID_TEXT_3, 		730, 	398, 	30, 	30, 	0, 0x64, 0 },
   { TEXT_CreateIndirect, 		"系统时间", 		ID_TEXT_4, 		280, 	440, 	500, 	35, 	0, 0x64, 0 },
   { TEXT_CreateIndirect, 		"时间测试", 		ID_TEXT_5, 		0, 	440, 	200, 	35, 	0, 0x64, 0 },
   { TEXT_CreateIndirect, 		"风机", 		ID_TEXT_6, 		20, 	360, 	30, 	30, 	0, 0x64, 0 },
-  //{ SCROLLBAR_CreateIndirect, 	"Scrollbar", 	ID_SCROLLBAR_0, 482, 	310, 	260, 	40, 	0, 0x0, 0 },
-  //{ SLIDER_CreateIndirect, 		"Slider", 		ID_SLIDER_0, 	513, 	18, 	259, 	38, 	0, 0x0, 0 },
 };
 
-static const GUI_WIDGET_CREATE_INFO _aDialogCreate_help_t[] = {
-  { FRAMEWIN_CreateIndirect, 	"Framewin", 	ID_FRAMEWIN_0, 	0, 		0, 		800, 	480, 	FRAMEWIN_CF_MOVEABLE, 0x64, 0 },
-  //{ MULTIEDIT_CreateIndirect, 	"Multiedit", 	ID_MULTIEDIT_0, 20, 	250, 	300, 	160, 	0, 0x0, 0 },
-  { BUTTON_CreateIndirect, 		"help", 		ID_BUTTON_0, 	1,	0, 	133, 	50, 	0, 0x0, 0 },
-};
 
 
 u8 timebuf[40];
@@ -115,44 +78,6 @@ void GetSysTime(){
 				RTC_DateStruct.Year,RTC_DateStruct.Month,RTC_DateStruct.Date,
 				RTC_TimeStruct.Hours,RTC_TimeStruct.Minutes,RTC_TimeStruct.Seconds); 
 		
-}
-
-//对话框窗口回调函数
-static void _cbDialog_help_t(WM_MESSAGE * pMsg) 
-{
-	WM_HWIN hItem;
-	WM_HWIN hHeader;
-	int     NCode;
-	int     Id;
-	
-	hItem = pMsg->hWin;
-	switch (pMsg->MsgId) 
-	{
-		case WM_INIT_DIALOG:
-			//初始化BUTTON
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_0);
-			BUTTON_SetFont(hItem,&GUI_FontHZ16);
-			BUTTON_SetText(hItem,"关闭");
-			break;		
-		case WM_NOTIFY_PARENT:
-			Id = WM_GetId(pMsg->hWinSrc);
-			NCode = pMsg->Data.v;
-			switch(Id) 
-			{case ID_BUTTON_0: //系统设置
-					switch(NCode) 
-					{
-						case WM_NOTIFICATION_RELEASED:
-							GUI_EndDialog(hItem,0);
-							break;
-					}
-					break;
-			
-			
-			}
-		default:
-			WM_DefaultProc(pMsg);
-			break;
-	}
 }
 	
 //对话框窗口回调函数
@@ -170,18 +95,10 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 			//初始化FRAMEWIN
 			hItem = pMsg->hWin;
 			FRAMEWIN_SetTextAlign(hItem, GUI_TA_HCENTER | GUI_TA_VCENTER);
-			FRAMEWIN_SetTitleHeight(hItem, 10);
+			FRAMEWIN_SetTitleHeight(hItem, 1);
 			FRAMEWIN_SetFont(hItem,&GUI_FontHZ16);
-			FRAMEWIN_SetTextColor(hItem, GUI_RED);
-			FRAMEWIN_SetText(hItem, "显示");
-		
-			//初始化MULTIEDIT
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_MULTIEDIT_0);
-			MULTIEDIT_SetTextColor(hItem,MULTIEDIT_CI_EDIT,GUI_BLACK);
-			MULTIEDIT_SetBkColor(hItem,MULTIEDIT_CI_EDIT,GUI_LIGHTCYAN);
-			MULTIEDIT_SetFont(hItem,&GUI_FontHZ16);
-			MULTIEDIT_SetText(hItem,MultiEdit_String);
-            MULTIEDIT_EnableBlink(hItem,500,1);
+			//FRAMEWIN_SetTextColor(hItem, GUI_RED);
+			//FRAMEWIN_SetText(hItem, "显示");
 		
 			//初始化BUTTON
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_0);
@@ -206,27 +123,6 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 			BUTTON_SetFont(hItem,&GUI_FontHZ24);
 			BUTTON_SetText(hItem,"状态切换");
 		
-			//初始化CHECKBOX
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_0);
-			CHECKBOX_SetFont(hItem,&GUI_FontHZ16);
-			CHECKBOX_SetText(hItem, "复选框 1");
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_1);
-			CHECKBOX_SetFont(hItem,&GUI_FontHZ16);
-			CHECKBOX_SetText(hItem, "复选框 2");
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_2);
-			CHECKBOX_SetFont(hItem,&GUI_FontHZ16);
-			CHECKBOX_SetText(hItem, "复选框 3");
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_3);
-			CHECKBOX_SetFont(hItem,&GUI_FontHZ16);
-			CHECKBOX_SetText(hItem, "复选框 4");
-		
-			//初始化RADIO
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_RADIO_0);
-			RADIO_SetFont(hItem,&GUI_Font13HB_ASCII);
-            RADIO_SetText(hItem, "Option 1", 0);
-			RADIO_SetText(hItem, "Option 2", 1);
-			RADIO_SetText(hItem, "Option 3", 2);
-			RADIO_SetText(hItem, "Option 4", 3);
   
 			//初始化LISTVIEW
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
@@ -248,45 +144,14 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 			{
 				LISTVIEW_AddRow(hItem,_ListViewTable[i]);
 			}
-			//初始化DROPDOWN
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_0);
-			DROPDOWN_SetAutoScroll(hItem,1);//开启自动滚动条
-			DROPDOWN_SetFont(hItem,&GUI_FontHZ16);
-			DROPDOWN_AddString(hItem, "汉语");
-			DROPDOWN_AddString(hItem, "英语");
-			DROPDOWN_AddString(hItem, "韩语");
-			DROPDOWN_AddString(hItem, "马来西亚语");
-			DROPDOWN_AddString(hItem, "西班牙语");
-			DROPDOWN_AddString(hItem, "其他语言......");
  
 			//初始化TEXT
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_0);
 			TEXT_SetFont(hItem,&GUI_FontHZ16);
 			//TEXT_SetTextColor(hItem,GUI_YELLOW);
 			TEXT_SetText(hItem, "状态:关闭   上次运行时间：2019-5-11 18:23:45   上次运行：18分钟");	
-			/*hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_1);
-			TEXT_SetFont(hItem,&GUI_FontHZ16);
-			//TEXT_SetTextColor(hItem,GUI_YELLOW);
-			TEXT_SetText(hItem, "上次运行时间");			
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_2);
-			TEXT_SetFont(hItem,&GUI_FontHZ16);
-			//TEXT_SetTextColor(hItem,GUI_YELLOW);
-			TEXT_SetText(hItem, "上次运行");			
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_3);
-			TEXT_SetFont(hItem,&GUI_FontHZ16);
-			//TEXT_SetTextColor(hItem,GUI_YELLOW);
-			TEXT_SetText(hItem, "分钟");	*/		
-			//hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_4);
-			//TEXT_SetFont(hItem,&GUI_FontHZ24);
-			//TEXT_SetTextColor(hItem,GUI_YELLOW);
-			//TEXT_SetText(hItem, "系统时间:2019-5-11 18:23:45   版本：V1.0");			
-			//hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_5);
-			//TEXT_SetFont(hItem,&GUI_FontHZ24);
-			//TEXT_SetTextColor(hItem,GUI_YELLOW);
-			//TEXT_SetText(hItem, "版本V1.0");			
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_6);
 			TEXT_SetFont(hItem,&GUI_FontHZ16);
-			//TEXT_SetTextColor(hItem,GUI_YELLOW);
 			TEXT_SetText(hItem, "风机");					
 			break;
 		case WM_NOTIFY_PARENT:
@@ -360,7 +225,6 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 					switch(NCode) 
 					{
 						case WM_NOTIFICATION_RELEASED:	
-							hDialog_help_t=GUI_CreateDialogBox(_aDialogCreate_help_t, GUI_COUNTOF(_aDialogCreate_help_t), _cbDialog_help_t, hDialog, 0, 0);
 							break;
 					}
 					break;
