@@ -85,6 +85,7 @@
 ..\obj\historical_datadlg.o: ..\FATFS\src\ffconf.h
 ..\obj\historical_datadlg.o: ..\FATFS\exfuns\exfuns.h
 ..\obj\historical_datadlg.o: ..\MALLOC\malloc.h
+..\obj\historical_datadlg.o: ..\HARDWARE\RTC\rtc.h
 ..\obj\historical_datadlg.o: ..\EMWIN\STemWin\inc\DIALOG.h
 ..\obj\historical_datadlg.o: ..\EMWIN\STemWin\inc\WM.h
 ..\obj\historical_datadlg.o: ..\EMWIN\STemWin\inc\WM_GUI.h
