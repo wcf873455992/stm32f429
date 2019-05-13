@@ -19,6 +19,11 @@
 */
 
 // USER START (Optionally insert additional includes)
+#include "hzfontdemo.h"
+#include "EmWinHZFont.h"
+#include "ff.h"
+#include "exfuns.h"
+#include "malloc.h"
 // USER END
 
 #include "DIALOG.h"
@@ -51,6 +56,7 @@
 
 // USER START (Optionally insert additional defines)
 extern WM_HWIN hDialog;
+void read_data(void);
 // USER END
 
 /*********************************************************************
@@ -61,6 +67,15 @@ extern WM_HWIN hDialog;
 */
 
 // USER START (Optionally insert additional static data)
+static const char *_ListViewTable1[][5]={
+	{"1#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "CO2超标"},
+	{"2#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
+	{"3#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "O2超标"},
+	{"4#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
+	{"5#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
+	{"6#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
+	{"7#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "  "},
+};
 // USER END
 
 /*********************************************************************
@@ -69,17 +84,17 @@ extern WM_HWIN hDialog;
 */
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { FRAMEWIN_CreateIndirect, "Historical_Data", ID_FRAMEWIN_0, 0, 0, 800, 480, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "name", ID_TEXT_0, 5, 3, 72, 38, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_0, 83, 5, 105, 18, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "name", ID_TEXT_0, 5, 5, 500, 38, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_0, 83, 200, 105, 18, 0, 0x0, 0 },
   { CHECKBOX_CreateIndirect, "O2", ID_CHECKBOX_0, 227, 11, 103, 20, 0, 0x0, 0 },
   { CHECKBOX_CreateIndirect, "SF6", ID_CHECKBOX_1, 300, 10, 115, 20, 0, 0x0, 0 },
   { CHECKBOX_CreateIndirect, "temperature", ID_CHECKBOX_2, 389, 8, 153, 20, 0, 0x0, 0 },
   { CHECKBOX_CreateIndirect, "Checkbox", ID_CHECKBOX_3, 547, 10, 104, 21, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "time", ID_TEXT_1, 5, 46, 82, 27, 0, 0x0, 0 },
-  { EDIT_CreateIndirect, "time_start", ID_EDIT_0, 86, 48, 180, 25, 0, 0x64, 0 },
+  { TEXT_CreateIndirect, "time", ID_TEXT_1, 5, 200, 82, 27, 0, 0x0, 0 },
+  { EDIT_CreateIndirect, "time_start", ID_EDIT_0, 86, 200, 180, 25, 0, 0x64, 0 },
   { EDIT_CreateIndirect, "Edit", ID_EDIT_1, 337, 49, 193, 26, 0, 0x64, 0 },
   { BUTTON_CreateIndirect, "OK", ID_BUTTON_0, 591, 46, 104, 34, 0, 0x0, 0 },
-  { LISTVIEW_CreateIndirect, "Listview", ID_LISTVIEW_0, -29, 84, 762, 286, 0, 0x0, 0 },
+  { LISTVIEW_CreateIndirect, "Listview", ID_LISTVIEW_0, 0, 84, 762, 286, 0, 0x0, 0 },
   { SCROLLBAR_CreateIndirect, "Scrollbar", ID_SCROLLBAR_0, 759, 83, 28, 286, 8, 0x0, 0 },
   { BUTTON_CreateIndirect, "previous", ID_BUTTON_1, 305, 384, 95, 29, 0, 0x0, 0 },
   { BUTTON_CreateIndirect, "next", ID_BUTTON_2, 422, 384, 90, 27, 0, 0x0, 0 },
@@ -108,6 +123,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
   WM_HWIN hItem;
   int     NCode;
   int     Id;
+	UINT	i;
   // USER START (Optionally insert additional variables)
 	hItem = pMsg->hWin;
   // USER END
@@ -184,7 +200,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     LISTVIEW_AddColumn(hItem, 350, "Col 2", GUI_TA_HCENTER | GUI_TA_VCENTER);
     LISTVIEW_AddRow(hItem, NULL);
     LISTVIEW_SetGridVis(hItem, 1);
-    LISTVIEW_SetFont(hItem, GUI_FONT_20_ASCII);
+    LISTVIEW_SetFont(hItem, &GUI_FontHZ16);
+		for(i=0;i<GUI_COUNTOF(_ListViewTable1);i++)
+		{
+				LISTVIEW_AddRow(hItem,_ListViewTable1[i]);
+		}
     //
     // Initialization of 'previous'
     //
@@ -352,6 +372,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+			read_data();
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -477,15 +498,70 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 *
 *       CreateHistorical_Data
 */
+WM_HWIN hWin_historical;
 WM_HWIN CreateHistorical_Data(void);
 WM_HWIN CreateHistorical_Data(void) {
-  WM_HWIN hWin;
+  //WM_HWIN hWin;
 
-  hWin = GUI_CreateDialogBox(_aDialogCreate, GUI_COUNTOF(_aDialogCreate), _cbDialog, WM_HBKWIN, 0, 0);
-  return hWin;
+  hWin_historical = GUI_CreateDialogBox(_aDialogCreate, GUI_COUNTOF(_aDialogCreate), _cbDialog, WM_HBKWIN, 0, 0);
+  return hWin_historical;
 }
 
 // USER START (Optionally insert additional public code)
+u32 emwin_print(char * buffer)
+{
+    WM_HWIN hItem;
+    //char buffer[10];
+    hItem=WM_GetDialogItem(hWin_historical,ID_TEXT_0);
+    //sprintf(buffer,"%d%%",t);
+    TEXT_SetText(hItem,buffer);
+    GUI_Exec();
+	return 0;					    
+} 
+void recoder_new_pathname(u8 *pname)
+{	 
+	u8 res;					 
+	u16 index=0;
+	while(index<0XFFFF)
+	{
+		sprintf((char*)pname,"0:historical/REC%05d.txt",index);
+		res=f_open(ftemp,(const TCHAR*)pname,FA_READ);//尝试打开这个文件
+		if(res==FR_NO_FILE)break;		//该文件名不存在=正是我们需要的.
+		index++;
+	}
+	emwin_print(pname);
+	GUI_Delay(3000);
+} 
+
+REAL_TIME_DATA real_data;
+
+void read_data(void){
+	FIL* f_rec=0;			//文件
+	DIR recdir;	 			//目录
+	u8 *pname=0;
+	u8 res;
+	
+	while(f_opendir(&recdir,"0:/historical"))//打开录音文件夹
+ 	{
+		emwin_print("RECORDER文件夹错误!"); 		
+		f_mkdir("0:/RECORDER");				//创建该目录   
+	}   
+  f_rec=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域  	
+	pname=mymalloc(SRAMIN,30);						//申请30个字节内存,类似"0:RECORDER/REC00001.wav"	
+	pname[0]=0;					//pname没有任何文件名 
+	sprintf((char*)pname,"0:historical/historical.txt");
+	res=f_open(f_rec,(const TCHAR*)pname, FA_CREATE_ALWAYS | FA_WRITE); 
+	if(res)			//文件创建失败
+	{
+		emwin_print("creat file fail"); 
+	}else	{
+		emwin_print("creat file ok");
+		res=f_write(f_rec,(const void*)_ListViewTable1,sizeof(_ListViewTable1),&bw);//写入头数据
+		f_close(f_rec);
+	}
+	myfree(SRAMIN,f_rec);		//释放内存
+	myfree(SRAMIN,pname);		//释放内存  
+}
 // USER END
 
 /*************************** End of file ****************************/

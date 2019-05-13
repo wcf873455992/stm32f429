@@ -265,8 +265,6 @@ void emwindemo_task(void *p_arg)
 	jpegdisplay_demo();
 	GUI_CURSOR_Show();
 	//GUI_DispString("dsakfja;lfkdjas");	
-	//GUI_CURSOR_Show();
-	//while(1){GUI_Delay(100);}
   HZFontDemo();
 	while(1)
 	{
