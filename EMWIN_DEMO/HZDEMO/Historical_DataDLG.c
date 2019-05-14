@@ -82,6 +82,8 @@ static const char tempdata2[] = "1#变送器";
 
 REAL_TIME_DATA real_data;
 #define	ROW_MAX	7
+
+FIL* f_rec=0;			//文件
 // USER END
 
 /*********************************************************************
@@ -520,7 +522,6 @@ WM_HWIN CreateHistorical_Data(void) {
 
 // USER START (Optionally insert additional public code)
 
-FIL* f_rec=0;			//文件
 
 u32 emwin_print(char * buffer)
 {
