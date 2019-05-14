@@ -115,6 +115,30 @@
 */
 
 // USER START (Optionally insert additional static data)
+typedef struct{
+	U8	start_hour;
+	U8	start_min;
+	U8	end_hour;
+	U8	end_min;
+}TIMING_TIME;
+typedef	struct{
+	float	alarm_O2;
+	float	alarm_CO2;
+	float alarm_temperature;
+	float	alarm_humidity;
+	_Bool	Fan_gang1;
+	_Bool	fan_gang2;
+	_Bool	Fan_gang3;
+	_Bool	fan_gang4;
+	float	fan_gang_value1;
+	float	fan_gang_value2;
+	float	fan_gang_value3;
+	float	fan_gang_value4;
+	TIMING_TIME	time1;
+	TIMING_TIME	time2;
+	TIMING_TIME	time3;
+	TIMING_TIME	time4;
+}SYS_SET;
 // USER END
 
 /*********************************************************************
