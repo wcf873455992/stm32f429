@@ -56,7 +56,7 @@
 
 
 // USER START (Optionally insert additional defines)
-extern WM_HWIN hDialog;
+//extern WM_HWIN hDialog;
 void read_data(void);
 // USER END
 
@@ -79,6 +79,9 @@ static const char *_ListViewTable1[][5]={
 };
 static const char *tempdata[2] = {"1#变送器","2#变送器"};
 static const char tempdata2[] = "1#变送器";
+
+REAL_TIME_DATA real_data;
+#define	ROW_MAX	7
 // USER END
 
 /*********************************************************************
@@ -204,10 +207,15 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     LISTVIEW_AddRow(hItem, NULL);
     LISTVIEW_SetGridVis(hItem, 1);
     LISTVIEW_SetFont(hItem, &GUI_FontHZ16);
-		for(i=0;i<GUI_COUNTOF(_ListViewTable1);i++)
+		/*for(i=0;i<(_ListViewTable1);i++)
 		{
 				LISTVIEW_AddRow(hItem,_ListViewTable1[i]);
+		}*/
+		for(i=0;i<ROW_MAX;i++)
+		{
+				//LISTVIEW_AddRow(hItem,(GUI_ConstString *)real_data.Date);
 		}
+		
     //
     // Initialization of 'previous'
     //
@@ -511,6 +519,9 @@ WM_HWIN CreateHistorical_Data(void) {
 }
 
 // USER START (Optionally insert additional public code)
+
+FIL* f_rec=0;			//文件
+
 u32 emwin_print(char * buffer)
 {
     WM_HWIN hItem;
@@ -536,111 +547,79 @@ void recoder_new_pathname(char * pname)
 	GUI_Delay(3000);
 } 
 
-#if 0
-REAL_TIME_DATA * real_data;
-u32	long_data;
-void SysTimeToData(void){
+void read_once_record(void){
 	RTC_TimeTypeDef	RTC_TimeStruct;
 	RTC_DateTypeDef RTC_DateStruct;
 	static u32 index=0;
 	
-	real_data=(REAL_TIME_DATA *)mymalloc(SRAMIN,sizeof(REAL_TIME_DATA));
-	
 	HAL_RTC_GetTime(&RTC_Handler,&RTC_TimeStruct,RTC_FORMAT_BIN); 
 	HAL_RTC_GetDate(&RTC_Handler,&RTC_DateStruct,RTC_FORMAT_BIN);
-	sprintf((char *)real_data->Date,"20%02d-%02d-%02d ",
+	sprintf((char *)real_data.Date,"20%02d-%02d-%02d\t",
 				RTC_DateStruct.Year,RTC_DateStruct.Month,RTC_DateStruct.Date);
-	sprintf((char *)real_data->Time,"%02d:%02d:%02d ",
+	sprintf((char *)real_data.Time,"%02d:%02d:%02d\t",
 				RTC_TimeStruct.Hours,RTC_TimeStruct.Minutes,RTC_TimeStruct.Seconds);	
-	sprintf((char *)real_data->name,"%3d#变送器 ",index) ;
-	sprintf((char *)real_data->alarm,"CO2报警\r\n") ;
-	sprintf((char *)real_data->O2,"%.1f ",356.3) ;
-	sprintf((char *)real_data->CO2,"%.1f ",24.5) ;
+	sprintf((char *)real_data.name,"%3d#变送器\t",index) ;
+	sprintf((char *)real_data.alarm,"CO2报警\r\n") ;
+	sprintf((char *)real_data.O2,"%.1f\t",356.3) ;
+	sprintf((char *)real_data.CO2,"%.1f\t",24.5) ;
 	index++;
-	long_data = strlen(real_data->Date)+strlen(real_data->Time)+strlen(real_data->name)+
-							strlen(real_data->alarm)+strlen(real_data->O2)+strlen(real_data->CO2);
-	
+	/* //
+	float i = strtol((char *)real_data.O2,NULL ,10);
+	emwin_print("a=%.1f",i);	
+	emwin_print(real_data.O2);*/
 }
-#else
-REAL_TIME_DATA real_data;
-u32	long_data;
-void SysTimeToData(void){
-	RTC_TimeTypeDef	RTC_TimeStruct;
-	RTC_DateTypeDef RTC_DateStruct;
-	static u32 index=0;
-	
-	real_data.Date=(char *)mymalloc(SRAMIN,sizeof(real_data.Date));
-	real_data.Time=(char *)mymalloc(SRAMIN,sizeof(real_data.Time));
-	real_data.name=(char *)mymalloc(SRAMIN,sizeof(real_data.name));
-	real_data.alarm=(char *)mymalloc(SRAMIN,sizeof(real_data.alarm));
-	real_data.O2=(char *)mymalloc(SRAMIN,sizeof(real_data.O2));
-	real_data.CO2=(char *)mymalloc(SRAMIN,sizeof(real_data.CO2));
-	
-	HAL_RTC_GetTime(&RTC_Handler,&RTC_TimeStruct,RTC_FORMAT_BIN); 
-	HAL_RTC_GetDate(&RTC_Handler,&RTC_DateStruct,RTC_FORMAT_BIN);
-	sprintf((char *)real_data.Date,"20%02d-%02d-%02d\0",
-				RTC_DateStruct.Year,RTC_DateStruct.Month,RTC_DateStruct.Date);
-	sprintf((char *)real_data.Time,"%02d:%02d:%02d\0",
-				RTC_TimeStruct.Hours,RTC_TimeStruct.Minutes,RTC_TimeStruct.Seconds);	
-	sprintf((char *)real_data.name,"%3d#变送器\0",index) ;
-	sprintf((char *)real_data.alarm,"CO2报警\0\r\n") ;
-	sprintf((char *)real_data.O2,"%.1f\0",356.3) ;
-	sprintf((char *)real_data.CO2,"%.1f\0",24.5) ;
-	index++;
-	long_data = strlen(real_data.Date)+strlen(real_data.Time)+strlen(real_data.name)+
-							strlen(real_data.alarm)+strlen(real_data.O2)+strlen(real_data.CO2);
-	
+void write_once_record(){
+	u8 res;
+	res=f_write(f_rec,(const void*)real_data.Date,strlen(real_data.Date),&bw);
+	res=f_write(f_rec,(const void*)real_data.Time,strlen(real_data.Time),&bw);
+	res=f_write(f_rec,(const void*)real_data.name,strlen(real_data.name),&bw);
+	res=f_write(f_rec,(const void*)real_data.O2,strlen(real_data.O2),&bw);
+	res=f_write(f_rec,(const void*)real_data.CO2,strlen(real_data.CO2),&bw);
+	res=f_write(f_rec,(const void*)real_data.alarm,strlen(real_data.alarm),&bw);
+
 }
-#endif
 void read_data(void){
-	FIL* f_rec=0;			//文件
 	DIR recdir;	 			//目录
 	u8 *pname=0;
 	u8 res;
 	char pos[20]="";
-	//real_data=(REAL_TIME_DATA )mymalloc(SRAMIN,sizeof(REAL_TIME_DATA));
-	SysTimeToData();
 	while(f_opendir(&recdir,"0:/historical"))//打开录音文件夹
  	{
 		emwin_print("dir wrong!"); 		
 		f_mkdir("0:/historical");				//创建该目录   
 	}
-  f_rec=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域  	
+  f_rec=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域 
+	real_data.Date=(char *)mymalloc(SRAMIN,sizeof(real_data.Date));
+	real_data.Time=(char *)mymalloc(SRAMIN,sizeof(real_data.Time));
+	real_data.name=(char *)mymalloc(SRAMIN,sizeof(real_data.name));
+	real_data.alarm=(char *)mymalloc(SRAMIN,sizeof(real_data.alarm));
+	real_data.O2=(char *)mymalloc(SRAMIN,sizeof(real_data.O2));
+	real_data.CO2=(char *)mymalloc(SRAMIN,sizeof(real_data.CO2)); 	
 	pname=mymalloc(SRAMIN,30);						//申请30个字节内存,类似"0:RECORDER/REC00001.wav"	
 	pname[0]=0;					//pname没有任何文件名
-	sprintf((char*)pname,"0:historical/historical.txt");
+	sprintf((char*)pname,"0:historical/historical.xls");
 	res=f_open(f_rec,(const TCHAR*)pname, FA_READ | FA_WRITE); 
-	res=f_lseek(f_rec,f_size(f_rec));
-		sprintf((char*)pos,"fsize=%05d",f_rec->obj.objsize);
-		emwin_print(pos);
-	GUI_Delay(300);
 	if(res)			//文件创建失败
 	{
 		emwin_print("creat file fail"); 		
 		res=f_open(f_rec,(const TCHAR*)pname, FA_CREATE_ALWAYS | FA_WRITE); 
 		f_close(f_rec);
 	}else	{
-		emwin_print("creat file ok"); 
-		//res=f_write(f_rec,(const void*)_ListViewTable1,strlen(_ListViewTable1),&bw);//写入头数据
-		
-		//res=f_write(f_rec,(const void*)&real_data,long_data,&bw);//写入数据
-		res=f_write(f_rec,(const void*)&real_data,strlen(real_data.Date),&bw);//写入数据
-		//res=f_write(f_rec,(const void*)tempdata2,strlen(tempdata2),&bw);//写入数据
+		res=f_lseek(f_rec,f_size(f_rec));
+		sprintf((char*)pos,"OK,f_lseek=%05d",f_rec->obj.objsize);
+		emwin_print(pos);
+		read_once_record();
+		write_once_record();
 		f_close(f_rec);
 	}
 	myfree(SRAMIN,f_rec);		//释放内存
 	myfree(SRAMIN,pname);		//释放内存
-	#if 0
-	myfree(SRAMIN,real_data);		//释放内存	
-#else
 	myfree(SRAMIN,real_data.Date);		//释放内存
-	myfree(SRAMIN,real_data.Date);		//释放内存 	
 	myfree(SRAMIN,real_data.Time);		//释放内存 	
 	myfree(SRAMIN,real_data.name);		//释放内存 	
 	myfree(SRAMIN,real_data.alarm);		//释放内存 
 	myfree(SRAMIN,real_data.O2);		//释放内存
 	myfree(SRAMIN,real_data.CO2);		//释放内存
-#endif	
 }
 // USER END
 
