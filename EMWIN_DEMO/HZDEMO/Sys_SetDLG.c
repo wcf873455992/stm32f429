@@ -29,6 +29,83 @@
 *       Defines
 *
 **********************************************************************
+*
+#define ID_FRAMEWIN_0 (GUI_ID_USER + 0x00)
+#define ID_TEXT_0 (GUI_ID_USER + 0x01)
+#define ID_TEXT_1 (GUI_ID_USER + 0x02)
+#define ID_TEXT_2 (GUI_ID_USER + 0x03)
+#define ID_TEXT_3 (GUI_ID_USER + 0x04)
+#define ID_CHECKBOX_0 (GUI_ID_USER + 0x05)
+#define ID_CHECKBOX_1 (GUI_ID_USER + 0x06)
+#define ID_CHECKBOX_2 (GUI_ID_USER + 0x07)
+#define ID_CHECKBOX_3 (GUI_ID_USER + 0x08)
+#define ID_TEXT_4 (GUI_ID_USER + 0x09)
+#define ID_TEXT_5 (GUI_ID_USER + 0x0A)
+#define ID_TEXT_6 (GUI_ID_USER + 0x0B)
+#define ID_TEXT_7 (GUI_ID_USER + 0x0C)
+#define ID_DROPDOWN_0 (GUI_ID_USER + 0x0D)
+#define ID_DROPDOWN_1 (GUI_ID_USER + 0x0E)
+#define ID_DROPDOWN_2 (GUI_ID_USER + 0x0F)
+#define ID_DROPDOWN_3 (GUI_ID_USER + 0x10)
+#define ID_DROPDOWN_4 (GUI_ID_USER + 0x11)
+#define ID_DROPDOWN_5 (GUI_ID_USER + 0x12)
+#define ID_DROPDOWN_6 (GUI_ID_USER + 0x13)
+#define ID_DROPDOWN_7 (GUI_ID_USER + 0x14)
+#define ID_DROPDOWN_8 (GUI_ID_USER + 0x15)
+#define ID_DROPDOWN_9 (GUI_ID_USER + 0x16)
+#define ID_DROPDOWN_10 (GUI_ID_USER + 0x17)
+#define ID_DROPDOWN_11 (GUI_ID_USER + 0x18)
+#define ID_DROPDOWN_12 (GUI_ID_USER + 0x19)
+#define ID_DROPDOWN_13 (GUI_ID_USER + 0x1A)
+#define ID_DROPDOWN_14 (GUI_ID_USER + 0x1B)
+#define ID_DROPDOWN_15 (GUI_ID_USER + 0x1C)
+#define ID_DROPDOWN_16 (GUI_ID_USER + 0x1D)
+#define ID_DROPDOWN_17 (GUI_ID_USER + 0x1E)
+#define ID_DROPDOWN_18 (GUI_ID_USER + 0x1F)
+#define ID_DROPDOWN_19 (GUI_ID_USER + 0x20)
+#define ID_DROPDOWN_20 (GUI_ID_USER + 0x21)
+#define ID_DROPDOWN_21 (GUI_ID_USER + 0x22)
+#define ID_DROPDOWN_22 (GUI_ID_USER + 0x23)
+#define ID_DROPDOWN_23 (GUI_ID_USER + 0x24)
+#define ID_DROPDOWN_24 (GUI_ID_USER + 0x31)
+#define ID_DROPDOWN_25 (GUI_ID_USER + 0x32)
+#define ID_DROPDOWN_26 (GUI_ID_USER + 0x34)
+#define ID_DROPDOWN_27 (GUI_ID_USER + 0x38)
+#define ID_DROPDOWN_28 (GUI_ID_USER + 0x39)
+#define ID_DROPDOWN_29 (GUI_ID_USER + 0x3A)
+#define ID_DROPDOWN_30 (GUI_ID_USER + 0x3B)
+#define ID_DROPDOWN_31 (GUI_ID_USER + 0x3C)
+#define ID_DROPDOWN_32 (GUI_ID_USER + 0x3D)
+#define ID_DROPDOWN_33 (GUI_ID_USER + 0x3E)
+#define ID_DROPDOWN_34 (GUI_ID_USER + 0x3F)
+#define ID_DROPDOWN_35 (GUI_ID_USER + 0x40)
+#define ID_DROPDOWN_36 (GUI_ID_USER + 0x41)
+#define ID_DROPDOWN_37 (GUI_ID_USER + 0x42)
+#define ID_DROPDOWN_38 (GUI_ID_USER + 0x43)
+#define ID_DROPDOWN_39 (GUI_ID_USER + 0x44)
+#define ID_DROPDOWN_40 (GUI_ID_USER + 0x45)
+#define ID_DROPDOWN_41 (GUI_ID_USER + 0x46)
+#define ID_DROPDOWN_42 (GUI_ID_USER + 0x47)
+#define ID_TEXT_8 (GUI_ID_USER + 0x25)
+#define ID_TEXT_9 (GUI_ID_USER + 0x26)
+#define ID_TEXT_10 (GUI_ID_USER + 0x27)
+#define ID_TEXT_11 (GUI_ID_USER + 0x28)
+#define ID_TEXT_12 (GUI_ID_USER + 0x29)
+#define ID_TEXT_13 (GUI_ID_USER + 0x2A)
+#define ID_TEXT_14 (GUI_ID_USER + 0x2B)
+#define ID_TEXT_15 (GUI_ID_USER + 0x2C)
+#define ID_TEXT_16 (GUI_ID_USER + 0x2D)
+#define ID_TEXT_17 (GUI_ID_USER + 0x2E)
+#define ID_CHECKBOX_4 (GUI_ID_USER + 0x2F)
+#define ID_TEXT_18 (GUI_ID_USER + 0x30)
+#define ID_TEXT_19 (GUI_ID_USER + 0x33)
+#define ID_CHECKBOX_5 (GUI_ID_USER + 0x35)
+#define ID_BUTTON_0 (GUI_ID_USER + 0x36)
+#define ID_BUTTON_1 (GUI_ID_USER + 0x37)
+#define ID_TEXT_20 (GUI_ID_USER + 0x48)
+
+
+// USER START (Optionally insert additional defines)
 */
 #define	ID_FRAMEWIN_0	(GUI_ID_USER	+	0x00)
 #define	ID_DROPDOWN_0	(GUI_ID_USER	+	0x01)
@@ -104,8 +181,6 @@
 #define	ID_TEXT_19	(GUI_ID_USER	+	0x47)
 #define	ID_TEXT_20	(GUI_ID_USER	+	0x48)
 
-
-// USER START (Optionally insert additional defines)
 // USER END
 
 /*********************************************************************
@@ -136,71 +211,62 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { TEXT_CreateIndirect, "fan_gang_value3", ID_TEXT_5, 495, 82, 100, 25, 0, 0x0, 0 },
   { TEXT_CreateIndirect, "fan_gang_value2", ID_TEXT_6, 495, 52, 100, 25, 0, 0x0, 0 },
   { TEXT_CreateIndirect, "fan_gang_value1", ID_TEXT_7, 494, 22, 100, 25, 0, 0x0, 0 },
-	
-  { DROPDOWN_CreateIndirect, "fan_gang_value1", ID_DROPDOWN_0, 600, 20, 80, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "fan_gang_value2", ID_DROPDOWN_1, 600, 50, 80, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "fan_gang_value3", ID_DROPDOWN_2, 600, 80, 80, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "fan_gang_value4", ID_DROPDOWN_3, 600, 110, 80, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "o2_alarm_value", ID_DROPDOWN_4, 230, 20, 80, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "co2_alarm_value", ID_DROPDOWN_5, 230, 50, 80, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "temperature_alarm_value", ID_DROPDOWN_6, 230, 80, 80, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "humidity_alarm_value", ID_DROPDOWN_7, 230, 110, 80, 25, 0, 0x0, 0 },
-	
-  { DROPDOWN_CreateIndirect, "timing1_hour_s", ID_DROPDOWN_8, 20, 170, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing2_hour_s", ID_DROPDOWN_9, 20, 200, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing3_hour_s", ID_DROPDOWN_10, 20, 230, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing4_hour_s", ID_DROPDOWN_11, 20, 260, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing5_hour_s", ID_DROPDOWN_12, 415, 170, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing6_hour_s", ID_DROPDOWN_13, 415, 200, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing7_hour_s", ID_DROPDOWN_14, 415, 230, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing8_hour_s", ID_DROPDOWN_15, 415, 260, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing1_hour_end", ID_DROPDOWN_16, 200, 170, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing2_hour_end", ID_DROPDOWN_17, 200, 200, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing3_hour_end", ID_DROPDOWN_18, 200, 230, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing4_hour_end", ID_DROPDOWN_19, 200, 260, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing5_hour_end", ID_DROPDOWN_20, 595, 170, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing6_hour_end", ID_DROPDOWN_21, 595, 200, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing7_hour_end", ID_DROPDOWN_22, 595, 230, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing8_hour_end", ID_DROPDOWN_23, 595, 260, 55, 25, 0, 0x0, 0 },
-	
-  { DROPDOWN_CreateIndirect, "timing1_min_s", ID_DROPDOWN_24, 105, 170, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing2_min_s", ID_DROPDOWN_25, 105, 200, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing3_min_s", ID_DROPDOWN_26, 105, 230, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing4_min_s", ID_DROPDOWN_27, 105, 260, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing5_min_s", ID_DROPDOWN_28, 500, 170, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing6_min_s", ID_DROPDOWN_29, 500, 200, 55, 25, 0, 0x0, 0 },	
-  { DROPDOWN_CreateIndirect, "timing7_min_s", ID_DROPDOWN_30, 500, 230, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing8_min_s", ID_DROPDOWN_31, 500, 260, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing1_min_end", ID_DROPDOWN_32, 285, 170, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing2_min_end", ID_DROPDOWN_33, 285, 200, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing3_min_end", ID_DROPDOWN_34, 285, 230, 55, 25, 0, 0x0, 0 },	
-  { DROPDOWN_CreateIndirect, "timing4_min_end", ID_DROPDOWN_35, 285, 260, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing5_min_end", ID_DROPDOWN_36, 680, 170, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing6_min_end", ID_DROPDOWN_37, 680, 200, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing7_min_end", ID_DROPDOWN_38, 680, 230, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing8_min_end", ID_DROPDOWN_39, 680, 260, 55, 25, 0, 0x0, 0 },
-	
-  { DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_40, 125, 314, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, " sample_interval", ID_DROPDOWN_41, 618, 314, 55, 25, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_42, 88, 361, 55, 25, 0, 0x0, 0 },
-	
+  { DROPDOWN_CreateIndirect, "fan_gang_value1", ID_DROPDOWN_0, 600, 20, 80, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "fan_gang_value2", ID_DROPDOWN_1, 600, 50, 80, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "fan_gang_value3", ID_DROPDOWN_2, 600, 80, 80, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "fan_gang_value4", ID_DROPDOWN_3, 600, 110, 80, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "o2_alarm_value", ID_DROPDOWN_4, 230, 20, 80, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "co2_alarm_value", ID_DROPDOWN_5, 230, 50, 80, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "temperature_alarm_value", ID_DROPDOWN_6, 230, 80, 80, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "humidity_alarm_value", ID_DROPDOWN_7, 230, 110, 80, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing1_hour_s", ID_DROPDOWN_8, 20, 170, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing2_hour_s", ID_DROPDOWN_9, 20, 200, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing3_hour_s", ID_DROPDOWN_10, 20, 230, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing4_hour_s", ID_DROPDOWN_11, 20, 260, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing5_hour_s", ID_DROPDOWN_12, 415, 170, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing6_hour_s", ID_DROPDOWN_13, 415, 200, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing7_hour_s", ID_DROPDOWN_14, 415, 230, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing8_hour_s", ID_DROPDOWN_15, 415, 260, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing1_hour_end", ID_DROPDOWN_16, 200, 170, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing2_hour_end", ID_DROPDOWN_17, 200, 200, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing3_hour_end", ID_DROPDOWN_18, 200, 230, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing4_hour_end", ID_DROPDOWN_19, 200, 260, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing5_hour_end", ID_DROPDOWN_20, 595, 170, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing6_hour_end", ID_DROPDOWN_21, 595, 200, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing7_hour_end", ID_DROPDOWN_22, 595, 230, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing8_hour_end", ID_DROPDOWN_23, 595, 260, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing1_min_s", ID_DROPDOWN_24, 105, 170, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing2_min_s", ID_DROPDOWN_25, 105, 200, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing3_min_s", ID_DROPDOWN_26, 105, 230, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing4_min_s", ID_DROPDOWN_27, 105, 260, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing5_min_s", ID_DROPDOWN_28, 500, 170, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing6_min_s", ID_DROPDOWN_29, 500, 200, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing7_min_s", ID_DROPDOWN_30, 500, 230, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing8_min_s", ID_DROPDOWN_31, 500, 260, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing1_min_end", ID_DROPDOWN_32, 285, 170, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing2_min_end", ID_DROPDOWN_33, 285, 200, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing3_min_end", ID_DROPDOWN_34, 285, 230, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing4_min_end", ID_DROPDOWN_35, 285, 260, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing5_min_end", ID_DROPDOWN_36, 680, 170, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing6_min_end", ID_DROPDOWN_37, 680, 200, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing7_min_end", ID_DROPDOWN_38, 680, 230, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing8_min_end", ID_DROPDOWN_39, 680, 260, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_40, 125, 314, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, " sample_interval", ID_DROPDOWN_41, 618, 314, 55, 18, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_42, 88, 361, 55, 18, 0, 0x0, 0 },
   { TEXT_CreateIndirect, "fan_timing_times", ID_TEXT_8, 8, 148, 257, 21, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_9, 480, 263, 257, 24, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_10, 484, 232, 278, 23, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_11, 481, 206, 285, 24, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_12, 481, 175, 272, 25, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_13, 85, 233, 271, 25, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_14, 87, 267, 262, 27, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_15, 85, 200, 300, 25, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_16, 85, 170, 300, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_9, 480, 352, 257, 24, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_10, 461, 354, 278, 23, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_11, 452, 354, 285, 24, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_12, 454, 359, 272, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_13, 461, 358, 271, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_14, 463, 354, 262, 27, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_15, 454, 357, 300, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_16, 452, 362, 300, 25, 0, 0x0, 0 },
   { TEXT_CreateIndirect, "fan_run_time", ID_TEXT_17, 16, 315, 212, 26, 0, 0x0, 0 },
   { CHECKBOX_CreateIndirect, "alarm_sounds", ID_CHECKBOX_4, 299, 317, 114, 20, 0, 0x0, 0 },
   { TEXT_CreateIndirect, " sample interval_time", ID_TEXT_18, 577, 341, 170, 28, 0, 0x0, 0 },
-	
-	
   { TEXT_CreateIndirect, "volume", ID_TEXT_19, 26, 363, 80, 24, 0, 0x0, 0 },
-	
-	
   { CHECKBOX_CreateIndirect, "voice", ID_CHECKBOX_5, 212, 352, 80, 20, 0, 0x0, 0 },
   { BUTTON_CreateIndirect, "save", ID_BUTTON_0, 277, 384, 94, 33, 0, 0x0, 0 },
   { BUTTON_CreateIndirect, "close", ID_BUTTON_1, 437, 384, 86, 31, 0, 0x0, 0 },
@@ -224,7 +290,7 @@ void	init_hour_min(WM_MESSAGE * pMsg)
 	char	buf[2];
 	U16 i,n;
 	for(n =0;n <16;n++){
-		hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_0+n);
+		hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_8+n);
 			DROPDOWN_SetAutoScroll(hItem,1);	//启用自动使用滚动条
 		for(i = 0;i<24;i++){
 			sprintf(buf,"%d",i);
@@ -234,7 +300,7 @@ void	init_hour_min(WM_MESSAGE * pMsg)
 	for(n =0;n<16; n++){
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_24+n);
 			DROPDOWN_SetAutoScroll(hItem,1);	//启用自动使用滚动条
-		for(i = 0;i<59;i++){
+		for(i = 0;i<60;i++){
 			sprintf(buf,"%d",i);
 			DROPDOWN_AddString(hItem, buf);
 		}
@@ -391,7 +457,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_3);
     CHECKBOX_SetText(hItem, "fan_gang1");
     //
-    // Initialization of 'fan_gang_value3'
+    // Initialization of 'fan_gang_value1'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_0);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
@@ -403,19 +469,19 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'fan_gang_value1'
+    // Initialization of 'fan_gang_value3'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_2);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'humidity_alarm_value'
+    // Initialization of 'fan_gang_value4'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_3);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'temperature_alarm_value'
+    // Initialization of 'o2_alarm_value'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_4);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
@@ -427,43 +493,43 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'o2_alarm_value'
+    // Initialization of 'temperature_alarm_value'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_6);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'fan_gang_value4'
+    // Initialization of 'humidity_alarm_value'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_7);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing7_min_s'
+    // Initialization of 'timing1_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_8);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing6_min_s'
+    // Initialization of 'timing2_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_9);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing5_min_s'
+    // Initialization of 'timing3_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_10);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing8_hour_s'
+    // Initialization of 'timing4_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_11);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing7_hour_s'
+    // Initialization of 'timing5_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_12);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
@@ -475,63 +541,177 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing5_hour_s'
+    // Initialization of 'timing7_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_14);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing4_min_s'
+    // Initialization of 'timing8_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_15);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing3_min_s'
+    // Initialization of 'timing1_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_16);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing2_min_s'
+    // Initialization of 'timing2_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_17);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing1_min_s'
+    // Initialization of 'timing3_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_18);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing1_hour_s'
+    // Initialization of 'timing4_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_19);
     DROPDOWN_SetListHeight(hItem, 100);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     //
-    // Initialization of 'timing4_hour_s'
+    // Initialization of 'timing5_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_20);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing3_hour_s'
+    // Initialization of 'timing6_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_21);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing2_hour_s'
+    // Initialization of 'timing7_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_22);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
-    // Initialization of 'timing8_min_s'
+    // Initialization of 'timing8_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_23);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing1_min_s'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_24);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing2_min_s'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_25);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing3_min_s'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_26);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing4_min_s'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_27);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing5_min_s'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_28);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing6_min_s'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_29);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing7_min_s'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_30);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing8_min_s'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_31);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing1_min_end'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_32);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing2_min_end'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_33);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing3_min_end'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_34);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing4_min_end'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_35);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing5_min_end'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_36);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing6_min_end'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_37);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing7_min_end'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_38);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'timing8_min_end'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_39);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'Dropdown'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_40);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of ' sample_interval'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_41);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
+    //
+    // Initialization of 'Dropdown'
+    //
+    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_42);
     DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     DROPDOWN_SetListHeight(hItem, 100);
     //
@@ -539,24 +719,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_4);
     CHECKBOX_SetText(hItem, "alarm sounds");
-    //
-    // Initialization of 'Dropdown'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_24);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of ' sample_interval'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_25);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'Dropdown'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_26);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'voice'
     //
@@ -572,102 +734,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_1);
     BUTTON_SetFont(hItem, GUI_FONT_24_ASCII);
-    //
-    // Initialization of 'timing8_hour_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_27);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing7_hour_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_28);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing6_hour_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_29);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing5_hour_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_30);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing4_min_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_31);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing4_hour_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_32);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing3_min_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_33);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing3_hour_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_34);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing2_min_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_35);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing2_hour_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_36);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing1_min_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_37);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing1_hour_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_38);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing6_min_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_39);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing5_min_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_40);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing8_min_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_41);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
-    //
-    // Initialization of 'timing7_min_end'
-    //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_42);
-    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
-    DROPDOWN_SetListHeight(hItem, 100);
     // USER START (Optionally insert additional code for further widget initialization)
 		init(pMsg);
     // USER END
@@ -748,7 +814,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_0: // Notifications sent by 'fan_gang_value3'
+    case ID_DROPDOWN_0: // Notifications sent by 'fan_gang_value1'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -784,7 +850,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_2: // Notifications sent by 'fan_gang_value1'
+    case ID_DROPDOWN_2: // Notifications sent by 'fan_gang_value3'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -802,7 +868,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_3: // Notifications sent by 'humidity_alarm_value'
+    case ID_DROPDOWN_3: // Notifications sent by 'fan_gang_value4'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -820,7 +886,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_4: // Notifications sent by 'temperature_alarm_value'
+    case ID_DROPDOWN_4: // Notifications sent by 'o2_alarm_value'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -856,7 +922,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_6: // Notifications sent by 'o2_alarm_value'
+    case ID_DROPDOWN_6: // Notifications sent by 'temperature_alarm_value'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -874,7 +940,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_7: // Notifications sent by 'fan_gang_value4'
+    case ID_DROPDOWN_7: // Notifications sent by 'humidity_alarm_value'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -892,7 +958,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_8: // Notifications sent by 'timing7_min_s'
+    case ID_DROPDOWN_8: // Notifications sent by 'timing1_hour_s'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -910,7 +976,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_9: // Notifications sent by 'timing6_min_s'
+    case ID_DROPDOWN_9: // Notifications sent by 'timing2_hour_s'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -928,7 +994,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_10: // Notifications sent by 'timing5_min_s'
+    case ID_DROPDOWN_10: // Notifications sent by 'timing3_hour_s'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -946,7 +1012,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_11: // Notifications sent by 'timing8_hour_s'
+    case ID_DROPDOWN_11: // Notifications sent by 'timing4_hour_s'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -964,7 +1030,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_12: // Notifications sent by 'timing7_hour_s'
+    case ID_DROPDOWN_12: // Notifications sent by 'timing5_hour_s'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1000,7 +1066,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_14: // Notifications sent by 'timing5_hour_s'
+    case ID_DROPDOWN_14: // Notifications sent by 'timing7_hour_s'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1018,7 +1084,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_15: // Notifications sent by 'timing4_min_s'
+    case ID_DROPDOWN_15: // Notifications sent by 'timing8_hour_s'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1036,7 +1102,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_16: // Notifications sent by 'timing3_min_s'
+    case ID_DROPDOWN_16: // Notifications sent by 'timing1_hour_end'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1054,7 +1120,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_17: // Notifications sent by 'timing2_min_s'
+    case ID_DROPDOWN_17: // Notifications sent by 'timing2_hour_end'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1072,7 +1138,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_18: // Notifications sent by 'timing1_min_s'
+    case ID_DROPDOWN_18: // Notifications sent by 'timing3_hour_end'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1090,7 +1156,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_19: // Notifications sent by 'timing1_hour_s'
+    case ID_DROPDOWN_19: // Notifications sent by 'timing4_hour_end'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1108,7 +1174,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_20: // Notifications sent by 'timing4_hour_s'
+    case ID_DROPDOWN_20: // Notifications sent by 'timing5_hour_end'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1126,7 +1192,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_21: // Notifications sent by 'timing3_hour_s'
+    case ID_DROPDOWN_21: // Notifications sent by 'timing6_hour_end'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1144,7 +1210,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_22: // Notifications sent by 'timing2_hour_s'
+    case ID_DROPDOWN_22: // Notifications sent by 'timing7_hour_end'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1162,7 +1228,349 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       // USER END
       }
       break;
-    case ID_DROPDOWN_23: // Notifications sent by 'timing8_min_s'
+    case ID_DROPDOWN_23: // Notifications sent by 'timing8_hour_end'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_24: // Notifications sent by 'timing1_min_s'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_25: // Notifications sent by 'timing2_min_s'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_26: // Notifications sent by 'timing3_min_s'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_27: // Notifications sent by 'timing4_min_s'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_28: // Notifications sent by 'timing5_min_s'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_29: // Notifications sent by 'timing6_min_s'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_30: // Notifications sent by 'timing7_min_s'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_31: // Notifications sent by 'timing8_min_s'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_32: // Notifications sent by 'timing1_min_end'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_33: // Notifications sent by 'timing2_min_end'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_34: // Notifications sent by 'timing3_min_end'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_35: // Notifications sent by 'timing4_min_end'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_36: // Notifications sent by 'timing5_min_end'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_37: // Notifications sent by 'timing6_min_end'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_38: // Notifications sent by 'timing7_min_end'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_39: // Notifications sent by 'timing8_min_end'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_40: // Notifications sent by 'Dropdown'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_41: // Notifications sent by ' sample_interval'
+      switch(NCode) {
+      case WM_NOTIFICATION_CLICKED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_RELEASED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      case WM_NOTIFICATION_SEL_CHANGED:
+        // USER START (Optionally insert code for reacting on notification message)
+        // USER END
+        break;
+      // USER START (Optionally insert additional code for further notification handling)
+      // USER END
+      }
+      break;
+    case ID_DROPDOWN_42: // Notifications sent by 'Dropdown'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
         // USER START (Optionally insert code for reacting on notification message)
@@ -1191,60 +1599,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         // USER END
         break;
       case WM_NOTIFICATION_VALUE_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_24: // Notifications sent by 'Dropdown'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_25: // Notifications sent by ' sample_interval'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_26: // Notifications sent by 'Dropdown'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
         // USER START (Optionally insert code for reacting on notification message)
         // USER END
         break;
@@ -1293,294 +1647,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
 				GUI_EndDialog(hItem, 0 );
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_27: // Notifications sent by 'timing8_hour_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_28: // Notifications sent by 'timing7_hour_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_29: // Notifications sent by 'timing6_hour_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_30: // Notifications sent by 'timing5_hour_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_31: // Notifications sent by 'timing4_min_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_32: // Notifications sent by 'timing4_hour_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_33: // Notifications sent by 'timing3_min_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_34: // Notifications sent by 'timing3_hour_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_35: // Notifications sent by 'timing2_min_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_36: // Notifications sent by 'timing2_hour_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_37: // Notifications sent by 'timing1_min_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_38: // Notifications sent by 'timing1_hour_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_39: // Notifications sent by 'timing6_min_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_40: // Notifications sent by 'timing5_min_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_41: // Notifications sent by 'timing8_min_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
-      }
-      break;
-    case ID_DROPDOWN_42: // Notifications sent by 'timing7_min_end'
-      switch(NCode) {
-      case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-        // USER END
-        break;
-      case WM_NOTIFICATION_SEL_CHANGED:
-        // USER START (Optionally insert code for reacting on notification message)
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
