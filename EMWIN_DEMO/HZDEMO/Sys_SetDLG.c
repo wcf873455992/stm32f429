@@ -30,78 +30,79 @@
 *
 **********************************************************************
 */
-#define ID_FRAMEWIN_0       (GUI_ID_USER + 0x00)
-#define ID_TEXT_0       (GUI_ID_USER + 0x01)
-#define ID_TEXT_1       (GUI_ID_USER + 0x02)
-#define ID_TEXT_2       (GUI_ID_USER + 0x03)
-#define ID_TEXT_3       (GUI_ID_USER + 0x04)
-#define ID_CHECKBOX_0       (GUI_ID_USER + 0x05)
-#define ID_CHECKBOX_1       (GUI_ID_USER + 0x06)
-#define ID_CHECKBOX_2       (GUI_ID_USER + 0x07)
-#define ID_CHECKBOX_3       (GUI_ID_USER + 0x08)
-#define ID_TEXT_4       (GUI_ID_USER + 0x09)
-#define ID_TEXT_5       (GUI_ID_USER + 0x0A)
-#define ID_TEXT_6       (GUI_ID_USER + 0x0B)
-#define ID_TEXT_7       (GUI_ID_USER + 0x0C)
-#define ID_DROPDOWN_0       (GUI_ID_USER + 0x0D)
-#define ID_DROPDOWN_1       (GUI_ID_USER + 0x0E)
-#define ID_DROPDOWN_2       (GUI_ID_USER + 0x0F)
-#define ID_DROPDOWN_3       (GUI_ID_USER + 0x10)
-#define ID_DROPDOWN_4       (GUI_ID_USER + 0x11)
-#define ID_DROPDOWN_5       (GUI_ID_USER + 0x12)
-#define ID_DROPDOWN_6       (GUI_ID_USER + 0x13)
-#define ID_DROPDOWN_7       (GUI_ID_USER + 0x14)
-#define ID_DROPDOWN_8       (GUI_ID_USER + 0x15)
-#define ID_DROPDOWN_9       (GUI_ID_USER + 0x16)
-#define ID_DROPDOWN_10       (GUI_ID_USER + 0x17)
-#define ID_DROPDOWN_11       (GUI_ID_USER + 0x18)
-#define ID_DROPDOWN_12       (GUI_ID_USER + 0x19)
-#define ID_DROPDOWN_13       (GUI_ID_USER + 0x1A)
-#define ID_DROPDOWN_14       (GUI_ID_USER + 0x1B)
-#define ID_DROPDOWN_15       (GUI_ID_USER + 0x1C)
-#define ID_DROPDOWN_16       (GUI_ID_USER + 0x1D)
-#define ID_DROPDOWN_17       (GUI_ID_USER + 0x1E)
-#define ID_DROPDOWN_18       (GUI_ID_USER + 0x1F)
-#define ID_DROPDOWN_19       (GUI_ID_USER + 0x20)
-#define ID_DROPDOWN_20       (GUI_ID_USER + 0x21)
-#define ID_DROPDOWN_21       (GUI_ID_USER + 0x22)
-#define ID_DROPDOWN_22       (GUI_ID_USER + 0x23)
-#define ID_DROPDOWN_23       (GUI_ID_USER + 0x24)
-#define ID_TEXT_8       (GUI_ID_USER + 0x25)
-#define ID_TEXT_9       (GUI_ID_USER + 0x26)
-#define ID_TEXT_10       (GUI_ID_USER + 0x27)
-#define ID_TEXT_11       (GUI_ID_USER + 0x28)
-#define ID_TEXT_12       (GUI_ID_USER + 0x29)
-#define ID_TEXT_13       (GUI_ID_USER + 0x2A)
-#define ID_TEXT_14       (GUI_ID_USER + 0x2B)
-#define ID_TEXT_15       (GUI_ID_USER + 0x2C)
-#define ID_TEXT_16       (GUI_ID_USER + 0x2D)
-#define ID_TEXT_17       (GUI_ID_USER + 0x2E)
-#define ID_CHECKBOX_4       (GUI_ID_USER + 0x2F)
-#define ID_TEXT_18       (GUI_ID_USER + 0x30)
-#define ID_DROPDOWN_24       (GUI_ID_USER + 0x31)
-#define ID_DROPDOWN_25       (GUI_ID_USER + 0x32)
-#define ID_TEXT_19       (GUI_ID_USER + 0x33)
-#define ID_DROPDOWN_26       (GUI_ID_USER + 0x34)
-#define ID_CHECKBOX_5       (GUI_ID_USER + 0x35)
-#define ID_BUTTON_0       (GUI_ID_USER + 0x36)
-#define ID_BUTTON_1       (GUI_ID_USER + 0x37)
-#define ID_DROPDOWN_27       (GUI_ID_USER + 0x38)
-#define ID_DROPDOWN_28       (GUI_ID_USER + 0x39)
-#define ID_DROPDOWN_29       (GUI_ID_USER + 0x3A)
-#define ID_DROPDOWN_30       (GUI_ID_USER + 0x3B)
-#define ID_DROPDOWN_31       (GUI_ID_USER + 0x3C)
-#define ID_DROPDOWN_32       (GUI_ID_USER + 0x3D)
-#define ID_DROPDOWN_33       (GUI_ID_USER + 0x3E)
-#define ID_DROPDOWN_34       (GUI_ID_USER + 0x3F)
-#define ID_DROPDOWN_35       (GUI_ID_USER + 0x40)
-#define ID_DROPDOWN_36       (GUI_ID_USER + 0x41)
-#define ID_DROPDOWN_37       (GUI_ID_USER + 0x42)
-#define ID_DROPDOWN_38       (GUI_ID_USER + 0x43)
-#define ID_DROPDOWN_39       (GUI_ID_USER + 0x44)
-#define ID_DROPDOWN_40       (GUI_ID_USER + 0x45)
-#define ID_DROPDOWN_41       (GUI_ID_USER + 0x46)
-#define ID_DROPDOWN_42       (GUI_ID_USER + 0x47)
+#define	ID_FRAMEWIN_0	(GUI_ID_USER	+	0x00)
+#define	ID_DROPDOWN_0	(GUI_ID_USER	+	0x01)
+#define	ID_DROPDOWN_1	(GUI_ID_USER	+	0x02)
+#define	ID_DROPDOWN_2	(GUI_ID_USER	+	0x03)
+#define	ID_DROPDOWN_3	(GUI_ID_USER	+	0x04)
+#define	ID_DROPDOWN_4	(GUI_ID_USER	+	0x05)
+#define	ID_DROPDOWN_5	(GUI_ID_USER	+	0x06)
+#define	ID_DROPDOWN_6	(GUI_ID_USER	+	0x07)
+#define	ID_DROPDOWN_7	(GUI_ID_USER	+	0x08)
+#define	ID_DROPDOWN_8	(GUI_ID_USER	+	0x09)
+#define	ID_DROPDOWN_9	(GUI_ID_USER	+	0x0A)
+#define	ID_DROPDOWN_10	(GUI_ID_USER	+	0x0B)
+#define	ID_DROPDOWN_11	(GUI_ID_USER	+	0x0C)
+#define	ID_DROPDOWN_12	(GUI_ID_USER	+	0x0D)
+#define	ID_DROPDOWN_13	(GUI_ID_USER	+	0x0E)
+#define	ID_DROPDOWN_14	(GUI_ID_USER	+	0x0F)
+#define	ID_DROPDOWN_15	(GUI_ID_USER	+	0x10)
+#define	ID_DROPDOWN_16	(GUI_ID_USER	+	0x11)
+#define	ID_DROPDOWN_17	(GUI_ID_USER	+	0x12)
+#define	ID_DROPDOWN_18	(GUI_ID_USER	+	0x13)
+#define	ID_DROPDOWN_19	(GUI_ID_USER	+	0x14)
+#define	ID_DROPDOWN_20	(GUI_ID_USER	+	0x15)
+#define	ID_DROPDOWN_21	(GUI_ID_USER	+	0x16)
+#define	ID_DROPDOWN_22	(GUI_ID_USER	+	0x17)
+#define	ID_DROPDOWN_23	(GUI_ID_USER	+	0x18)
+#define	ID_DROPDOWN_24	(GUI_ID_USER	+	0x19)
+#define	ID_DROPDOWN_25	(GUI_ID_USER	+	0x1A)
+#define	ID_DROPDOWN_26	(GUI_ID_USER	+	0x1B)
+#define	ID_DROPDOWN_27	(GUI_ID_USER	+	0x1C)
+#define	ID_DROPDOWN_28	(GUI_ID_USER	+	0x1D)
+#define	ID_DROPDOWN_29	(GUI_ID_USER	+	0x1E)
+#define	ID_DROPDOWN_30	(GUI_ID_USER	+	0x1F)
+#define	ID_DROPDOWN_31	(GUI_ID_USER	+	0x20)
+#define	ID_DROPDOWN_32	(GUI_ID_USER	+	0x21)
+#define	ID_DROPDOWN_33	(GUI_ID_USER	+	0x22)
+#define	ID_DROPDOWN_34	(GUI_ID_USER	+	0x23)
+#define	ID_DROPDOWN_35	(GUI_ID_USER	+	0x24)
+#define	ID_DROPDOWN_36	(GUI_ID_USER	+	0x25)
+#define	ID_DROPDOWN_37	(GUI_ID_USER	+	0x26)
+#define	ID_DROPDOWN_38	(GUI_ID_USER	+	0x27)
+#define	ID_DROPDOWN_39	(GUI_ID_USER	+	0x28)
+#define	ID_DROPDOWN_40	(GUI_ID_USER	+	0x29)
+#define	ID_DROPDOWN_41	(GUI_ID_USER	+	0x2A)
+#define	ID_DROPDOWN_42	(GUI_ID_USER	+	0x2B)
+#define	ID_CHECKBOX_0	(GUI_ID_USER	+	0x2C)
+#define	ID_CHECKBOX_1	(GUI_ID_USER	+	0x2D)
+#define	ID_CHECKBOX_2	(GUI_ID_USER	+	0x2E)
+#define	ID_CHECKBOX_3	(GUI_ID_USER	+	0x2F)
+#define	ID_CHECKBOX_4	(GUI_ID_USER	+	0x30)
+#define	ID_CHECKBOX_5	(GUI_ID_USER	+	0x31)
+#define	ID_BUTTON_0	(GUI_ID_USER	+	0x32)
+#define	ID_BUTTON_1	(GUI_ID_USER	+	0x33)
+#define	ID_TEXT_0	(GUI_ID_USER	+	0x34)
+#define	ID_TEXT_1	(GUI_ID_USER	+	0x35)
+#define	ID_TEXT_2	(GUI_ID_USER	+	0x36)
+#define	ID_TEXT_3	(GUI_ID_USER	+	0x37)
+#define	ID_TEXT_4	(GUI_ID_USER	+	0x38)
+#define	ID_TEXT_5	(GUI_ID_USER	+	0x39)
+#define	ID_TEXT_6	(GUI_ID_USER	+	0x3A)
+#define	ID_TEXT_7	(GUI_ID_USER	+	0x3B)
+#define	ID_TEXT_8	(GUI_ID_USER	+	0x3C)
+#define	ID_TEXT_9	(GUI_ID_USER	+	0x3D)
+#define	ID_TEXT_10	(GUI_ID_USER	+	0x3E)
+#define	ID_TEXT_11	(GUI_ID_USER	+	0x3F)
+#define	ID_TEXT_12	(GUI_ID_USER	+	0x40)
+#define	ID_TEXT_13	(GUI_ID_USER	+	0x41)
+#define	ID_TEXT_14	(GUI_ID_USER	+	0x42)
+#define	ID_TEXT_15	(GUI_ID_USER	+	0x43)
+#define	ID_TEXT_16	(GUI_ID_USER	+	0x44)
+#define	ID_TEXT_17	(GUI_ID_USER	+	0x45)
+#define	ID_TEXT_18	(GUI_ID_USER	+	0x46)
+#define	ID_TEXT_19	(GUI_ID_USER	+	0x47)
+#define	ID_TEXT_20	(GUI_ID_USER	+	0x48)
 
 
 // USER START (Optionally insert additional defines)
@@ -115,30 +116,6 @@
 */
 
 // USER START (Optionally insert additional static data)
-typedef struct{
-	U8	start_hour;
-	U8	start_min;
-	U8	end_hour;
-	U8	end_min;
-}TIMING_TIME;
-typedef	struct{
-	float	alarm_O2;
-	float	alarm_CO2;
-	float alarm_temperature;
-	float	alarm_humidity;
-	_Bool	Fan_gang1;
-	_Bool	fan_gang2;
-	_Bool	Fan_gang3;
-	_Bool	fan_gang4;
-	float	fan_gang_value1;
-	float	fan_gang_value2;
-	float	fan_gang_value3;
-	float	fan_gang_value4;
-	TIMING_TIME	time1;
-	TIMING_TIME	time2;
-	TIMING_TIME	time3;
-	TIMING_TIME	time4;
-}SYS_SET;
 // USER END
 
 /*********************************************************************
@@ -147,77 +124,87 @@ typedef	struct{
 */
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { FRAMEWIN_CreateIndirect, "Sys_Set", ID_FRAMEWIN_0, 0, 0, 800, 480, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "humidity", ID_TEXT_0, 95, 111, 131, 25, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "temperature", ID_TEXT_1, 95, 81, 131, 24, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "CO2", ID_TEXT_2, 94, 48, 133, 24, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "O2", ID_TEXT_3, 94, 21, 125, 22, 0, 0x0, 0 },
-  { CHECKBOX_CreateIndirect, "fan_gang4", ID_CHECKBOX_0, 382, 110, 103, 20, 0, 0x0, 0 },
-  { CHECKBOX_CreateIndirect, "fan_gang3", ID_CHECKBOX_1, 383, 81, 106, 20, 0, 0x0, 0 },
-  { CHECKBOX_CreateIndirect, "fan_gang2", ID_CHECKBOX_2, 384, 52, 111, 20, 0, 0x0, 0 },
-  { CHECKBOX_CreateIndirect, "fan_gang1", ID_CHECKBOX_3, 383, 22, 110, 20, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "fan_gang_value4", ID_TEXT_4, 495, 112, 96, 28, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "fan_gang_value3", ID_TEXT_5, 494, 84, 93, 24, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "fan_gang_value2", ID_TEXT_6, 494, 52, 90, 26, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "fan_gang_value1", ID_TEXT_7, 494, 23, 84, 24, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "fan_gang_value3", ID_DROPDOWN_0, 602, 80, 80, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "fan_gang_value2", ID_DROPDOWN_1, 601, 50, 80, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "fan_gang_value1", ID_DROPDOWN_2, 602, 22, 80, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "humidity_alarm_value", ID_DROPDOWN_3, 232, 113, 80, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "temperature_alarm_value", ID_DROPDOWN_4, 231, 84, 80, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "co2_alarm_value", ID_DROPDOWN_5, 230, 52, 80, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "o2_alarm_value", ID_DROPDOWN_6, 229, 23, 80, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "fan_gang_value4", ID_DROPDOWN_7, 602, 112, 80, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing7_min_s", ID_DROPDOWN_8, 501, 226, 40, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing6_min_s", ID_DROPDOWN_9, 501, 198, 43, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing5_min_s", ID_DROPDOWN_10, 502, 169, 39, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing8_hour_s", ID_DROPDOWN_11, 418, 255, 50, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing7_hour_s", ID_DROPDOWN_12, 417, 225, 47, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing6_hour_s", ID_DROPDOWN_13, 417, 198, 47, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing5_hour_s", ID_DROPDOWN_14, 416, 168, 49, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing4_min_s", ID_DROPDOWN_15, 94, 258, 53, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing3_min_s", ID_DROPDOWN_16, 96, 230, 50, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing2_min_s", ID_DROPDOWN_17, 97, 198, 48, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing1_min_s", ID_DROPDOWN_18, 96, 167, 49, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing1_hour_s", ID_DROPDOWN_19, 28, 167, 42, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing4_hour_s", ID_DROPDOWN_20, 26, 257, 45, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing3_hour_s", ID_DROPDOWN_21, 27, 229, 43, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing2_hour_s", ID_DROPDOWN_22, 28, 198, 42, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing8_min_s", ID_DROPDOWN_23, 501, 254, 40, 18, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "fan_timing_times", ID_TEXT_8, 41, 138, 257, 21, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_9, 475, 253, 257, 24, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_10, 473, 224, 278, 23, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_11, 472, 195, 285, 24, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_12, 473, 166, 272, 25, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_13, 75, 195, 271, 25, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_14, 76, 225, 262, 27, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_15, 76, 257, 268, 28, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_16, 73, 167, 277, 23, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "humidity", ID_TEXT_0, 95, 110, 150, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "temperature", ID_TEXT_1, 95, 80, 150, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "CO2", ID_TEXT_2, 95, 50, 150, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "O2", ID_TEXT_3, 95, 20, 125, 25, 0, 0x0, 0 },
+  { CHECKBOX_CreateIndirect, "fan_gang4", ID_CHECKBOX_0, 380, 112, 103, 20, 0, 0x0, 0 },
+  { CHECKBOX_CreateIndirect, "fan_gang3", ID_CHECKBOX_1, 380, 82, 106, 20, 0, 0x0, 0 },
+  { CHECKBOX_CreateIndirect, "fan_gang2", ID_CHECKBOX_2, 380, 52, 111, 20, 0, 0x0, 0 },
+  { CHECKBOX_CreateIndirect, "fan_gang1", ID_CHECKBOX_3, 380, 22, 110, 20, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "fan_gang_value4", ID_TEXT_4, 495, 112, 100, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "fan_gang_value3", ID_TEXT_5, 495, 82, 100, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "fan_gang_value2", ID_TEXT_6, 495, 52, 100, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "fan_gang_value1", ID_TEXT_7, 494, 22, 100, 25, 0, 0x0, 0 },
+	
+  { DROPDOWN_CreateIndirect, "fan_gang_value1", ID_DROPDOWN_0, 600, 20, 80, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "fan_gang_value2", ID_DROPDOWN_1, 600, 50, 80, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "fan_gang_value3", ID_DROPDOWN_2, 600, 80, 80, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "fan_gang_value4", ID_DROPDOWN_3, 600, 110, 80, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "o2_alarm_value", ID_DROPDOWN_4, 230, 20, 80, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "co2_alarm_value", ID_DROPDOWN_5, 230, 50, 80, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "temperature_alarm_value", ID_DROPDOWN_6, 230, 80, 80, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "humidity_alarm_value", ID_DROPDOWN_7, 230, 110, 80, 25, 0, 0x0, 0 },
+	
+  { DROPDOWN_CreateIndirect, "timing1_hour_s", ID_DROPDOWN_8, 20, 170, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing2_hour_s", ID_DROPDOWN_9, 20, 200, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing3_hour_s", ID_DROPDOWN_10, 20, 230, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing4_hour_s", ID_DROPDOWN_11, 20, 260, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing5_hour_s", ID_DROPDOWN_12, 415, 170, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing6_hour_s", ID_DROPDOWN_13, 415, 200, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing7_hour_s", ID_DROPDOWN_14, 415, 230, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing8_hour_s", ID_DROPDOWN_15, 415, 260, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing1_hour_end", ID_DROPDOWN_16, 200, 170, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing2_hour_end", ID_DROPDOWN_17, 200, 200, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing3_hour_end", ID_DROPDOWN_18, 200, 230, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing4_hour_end", ID_DROPDOWN_19, 200, 260, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing5_hour_end", ID_DROPDOWN_20, 595, 170, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing6_hour_end", ID_DROPDOWN_21, 595, 200, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing7_hour_end", ID_DROPDOWN_22, 595, 230, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing8_hour_end", ID_DROPDOWN_23, 595, 260, 55, 25, 0, 0x0, 0 },
+	
+  { DROPDOWN_CreateIndirect, "timing1_min_s", ID_DROPDOWN_24, 105, 170, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing2_min_s", ID_DROPDOWN_25, 105, 200, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing3_min_s", ID_DROPDOWN_26, 105, 230, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing4_min_s", ID_DROPDOWN_27, 105, 260, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing5_min_s", ID_DROPDOWN_28, 500, 170, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing6_min_s", ID_DROPDOWN_29, 500, 200, 55, 25, 0, 0x0, 0 },	
+  { DROPDOWN_CreateIndirect, "timing7_min_s", ID_DROPDOWN_30, 500, 230, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing8_min_s", ID_DROPDOWN_31, 500, 260, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing1_min_end", ID_DROPDOWN_32, 285, 170, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing2_min_end", ID_DROPDOWN_33, 285, 200, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing3_min_end", ID_DROPDOWN_34, 285, 230, 55, 25, 0, 0x0, 0 },	
+  { DROPDOWN_CreateIndirect, "timing4_min_end", ID_DROPDOWN_35, 285, 260, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing5_min_end", ID_DROPDOWN_36, 680, 170, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing6_min_end", ID_DROPDOWN_37, 680, 200, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing7_min_end", ID_DROPDOWN_38, 680, 230, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "timing8_min_end", ID_DROPDOWN_39, 680, 260, 55, 25, 0, 0x0, 0 },
+	
+  { DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_40, 125, 314, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, " sample_interval", ID_DROPDOWN_41, 618, 314, 55, 25, 0, 0x0, 0 },
+  { DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_42, 88, 361, 55, 25, 0, 0x0, 0 },
+	
+  { TEXT_CreateIndirect, "fan_timing_times", ID_TEXT_8, 8, 148, 257, 21, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_9, 480, 263, 257, 24, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_10, 484, 232, 278, 23, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_11, 481, 206, 285, 24, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_12, 481, 175, 272, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_13, 85, 233, 271, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_14, 87, 267, 262, 27, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_15, 85, 200, 300, 25, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "dian feng dian feng", ID_TEXT_16, 85, 170, 300, 25, 0, 0x0, 0 },
   { TEXT_CreateIndirect, "fan_run_time", ID_TEXT_17, 16, 315, 212, 26, 0, 0x0, 0 },
-  { CHECKBOX_CreateIndirect, "alarm_sounds", ID_CHECKBOX_4, 298, 310, 114, 20, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, " sample interval_time", ID_TEXT_18, 498, 309, 170, 28, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_24, 125, 314, 47, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, " sample_interval", ID_DROPDOWN_25, 570, 309, 46, 18, 0, 0x0, 0 },
-  { TEXT_CreateIndirect, "volume", ID_TEXT_19, 26, 364, 80, 24, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "Dropdown", ID_DROPDOWN_26, 88, 361, 80, 18, 0, 0x0, 0 },
+  { CHECKBOX_CreateIndirect, "alarm_sounds", ID_CHECKBOX_4, 299, 317, 114, 20, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, " sample interval_time", ID_TEXT_18, 577, 341, 170, 28, 0, 0x0, 0 },
+	
+	
+  { TEXT_CreateIndirect, "volume", ID_TEXT_19, 26, 363, 80, 24, 0, 0x0, 0 },
+	
+	
   { CHECKBOX_CreateIndirect, "voice", ID_CHECKBOX_5, 212, 352, 80, 20, 0, 0x0, 0 },
   { BUTTON_CreateIndirect, "save", ID_BUTTON_0, 277, 384, 94, 33, 0, 0x0, 0 },
   { BUTTON_CreateIndirect, "close", ID_BUTTON_1, 437, 384, 86, 31, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing8_hour_end", ID_DROPDOWN_27, 596, 253, 43, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing7_hour_end", ID_DROPDOWN_28, 596, 225, 42, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing6_hour_end", ID_DROPDOWN_29, 594, 197, 43, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing5_hour_end", ID_DROPDOWN_30, 594, 167, 41, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing4_min_end", ID_DROPDOWN_31, 265, 259, 44, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing4_hour_end", ID_DROPDOWN_32, 196, 258, 43, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing3_min_end", ID_DROPDOWN_33, 266, 229, 42, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing3_hour_end", ID_DROPDOWN_34, 195, 227, 45, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing2_min_end", ID_DROPDOWN_35, 266, 196, 43, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing2_hour_end", ID_DROPDOWN_36, 196, 197, 42, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing1_min_end", ID_DROPDOWN_37, 266, 168, 44, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing1_hour_end", ID_DROPDOWN_38, 193, 167, 45, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing6_min_end", ID_DROPDOWN_39, 665, 197, 46, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing5_min_end", ID_DROPDOWN_40, 666, 167, 44, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing8_min_end", ID_DROPDOWN_41, 667, 252, 47, 18, 0, 0x0, 0 },
-  { DROPDOWN_CreateIndirect, "timing7_min_end", ID_DROPDOWN_42, 666, 225, 46, 18, 0, 0x0, 0 },
+  { TEXT_CreateIndirect, "print", ID_TEXT_20, 536, 393, 167, 20, 0, 0x0, 0 },
   // USER START (Optionally insert additional widgets)
   // USER END
 };
@@ -230,6 +217,30 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 */
 
 // USER START (Optionally insert additional static code)
+
+void	init_hour_min(WM_MESSAGE * pMsg)
+{
+	WM_HWIN	hItem;
+	char	buf[2];
+	U16 i,n;
+	for(n =0;n <16;n++){
+		hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_0+n);
+			DROPDOWN_SetAutoScroll(hItem,1);	//启用自动使用滚动条
+		for(i = 0;i<24;i++){
+			sprintf(buf,"%d",i);
+			DROPDOWN_AddString(hItem, buf);
+		}
+	}
+	for(n =0;n<16; n++){
+		hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_24+n);
+			DROPDOWN_SetAutoScroll(hItem,1);	//启用自动使用滚动条
+		for(i = 0;i<59;i++){
+			sprintf(buf,"%d",i);
+			DROPDOWN_AddString(hItem, buf);
+		}
+	}
+	
+}
 static void init(WM_MESSAGE * pMsg){
 	WM_HWIN hItem;
   int     NCode;
@@ -241,7 +252,7 @@ static void init(WM_MESSAGE * pMsg){
 	FRAMEWIN_SetFont(hItem,&GUI_FontHZ32);
 	//FRAMEWIN_SetTextColor(hItem, GUI_RED);
 	FRAMEWIN_SetText(hItem, "系统设置");
-	//
+	init_hour_min(pMsg);
     // Initialization of 'fan_gang4'
     hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_0);
 		CHECKBOX_SetFont(hItem,&GUI_FontHZ16);
@@ -305,28 +316,28 @@ static void init(WM_MESSAGE * pMsg){
 		//？点？分---？点？分
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_9);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
-		TEXT_SetText(hItem, "点       分---       点       分");	
+		TEXT_SetText(hItem, "点        分---       点       分");	
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_10);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
-		TEXT_SetText(hItem, "点       分---       点       分");	
+		TEXT_SetText(hItem, "点        分---       点       分");	
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_11);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
-		TEXT_SetText(hItem, "点       分---       点       分");	
+		TEXT_SetText(hItem, "点        分---       点       分");	
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_12);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
-		TEXT_SetText(hItem, "点       分---       点       分");	
+		TEXT_SetText(hItem, "点        分---       点       分");	
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_13);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
-		TEXT_SetText(hItem, "点       分---       点       分");	
+		TEXT_SetText(hItem, "点        分---       点       分");	
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_14);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
-		TEXT_SetText(hItem, "点       分---       点       分");	
+		TEXT_SetText(hItem, "点        分---       点       分");	
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_15);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
-		TEXT_SetText(hItem, "点       分---       点       分");	
+		TEXT_SetText(hItem, "点        分---       点       分");	
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_16);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
-		TEXT_SetText(hItem, "点       分---       点       分");	
+		TEXT_SetText(hItem, "点        分---       点       分");	
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_17);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);		
 		TEXT_SetText(hItem, "风机运行时间：       分钟");
@@ -383,146 +394,146 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     // Initialization of 'fan_gang_value3'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_0);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'fan_gang_value2'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_1);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'fan_gang_value1'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_2);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'humidity_alarm_value'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_3);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'temperature_alarm_value'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_4);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'co2_alarm_value'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_5);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'o2_alarm_value'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_6);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'fan_gang_value4'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_7);
-    DROPDOWN_AddString(hItem, "12");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing7_min_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_8);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing6_min_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_9);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing5_min_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_10);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing8_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_11);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing7_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_12);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing6_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_13);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing5_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_14);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing4_min_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_15);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing3_min_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_16);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing2_min_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_17);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing1_min_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_18);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing1_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_19);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetListHeight(hItem, 100);
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
     //
     // Initialization of 'timing4_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_20);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing3_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_21);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing2_hour_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_22);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing8_min_s'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_23);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'alarm_sounds'
     //
@@ -532,20 +543,20 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     // Initialization of 'Dropdown'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_24);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of ' sample_interval'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_25);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'Dropdown'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_26);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'voice'
     //
@@ -565,98 +576,98 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     // Initialization of 'timing8_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_27);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing7_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_28);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing6_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_29);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing5_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_30);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing4_min_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_31);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing4_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_32);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing3_min_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_33);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing3_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_34);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing2_min_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_35);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing2_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_36);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing1_min_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_37);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing1_hour_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_38);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing6_min_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_39);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing5_min_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_40);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing8_min_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_41);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     //
     // Initialization of 'timing7_min_end'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_42);
-    DROPDOWN_AddString(hItem, "1");
-    DROPDOWN_AddString(hItem, "2");
+    DROPDOWN_SetFont(hItem, GUI_FONT_20_ASCII);
+    DROPDOWN_SetListHeight(hItem, 100);
     // USER START (Optionally insert additional code for further widget initialization)
 		init(pMsg);
     // USER END

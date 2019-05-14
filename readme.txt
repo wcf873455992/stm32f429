@@ -14,7 +14,7 @@
 ·实时数据显示，listview，报警变色	？
 ·按钮状态切换						？
 ·下拉菜单转换，item					？
-·check box	存储					？
+·check box	存储					OK
 ·listview，编辑储存					？
 ·
 ·
