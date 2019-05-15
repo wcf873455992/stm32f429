@@ -3,6 +3,7 @@
 GUIBuilder_V530.ini
 # Object files
 *.o
+*.crf
 
 # Libraries
 *.lib
