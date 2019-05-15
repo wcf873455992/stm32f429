@@ -286,84 +286,6 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 
 // USER START (Optionally insert additional static code)
 
-#include "ff.h"
-#include "exfuns.h"
-#include "malloc.h"
-
-static FIL* f_rec=0;			//文件
-
-
-static void read_sys_set_file(){
-
-}
-static void write_once_record(){
-	u8 *buf=0;
-	u8	res;
-	int	i;
-	buf=mymalloc(SRAMIN,50);						//申请30个字节内存,类似"0:RECORDER/REC00001.wav"
-	buf[0]=0;
-	for(i=0; i <4; i++){
-		sprintf((char*)buf,"风机联动值%d\t%d\t开/关\t%d\r\n",
-									i+1, sys_set_data.fan_gang[i].Value, sys_set_data.fan_gang[i].enable);
-		res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-	}
-	for(i=0;i<8;i++){
-		sprintf((char*)buf,"定时时间%d\t%d\t:\t%d\t--\t%d\t:\t%d\r\n",
-									i+1, sys_set_data.timing[i].start_hour,sys_set_data.timing[i].start_min,
-											sys_set_data.timing[i].end_hour,sys_set_data.timing[i].end_min);
-		res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-	}
-	sprintf((char*)buf,"氧    气报警值\t%f\r\n",sys_set_data.alarm.O2);
-	res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-	sprintf((char*)buf,"二氧化碳报警值\t%f\r\n",sys_set_data.alarm.CO2);
-	res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-	sprintf((char*)buf,"温    度报警值\t%f\r\n",sys_set_data.alarm.Temperature);
-	res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-	sprintf((char*)buf,"湿    度报警值\t%f\r\n",sys_set_data.alarm.Humidity);
-	res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);	
-	sprintf((char*)buf,"风机运行时间\t%d\r\n",sys_set_data.fan_run_time);
-	res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-	sprintf((char*)buf,"报警器报警开关\t%d\r\n",sys_set_data.alarm.enable);
-	res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-	sprintf((char*)buf,"采样间隔\t%d\r\n",sys_set_data.sample_interval);
-	res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);	
-	sprintf((char*)buf,"语音音量\t%d\t开关\t%d\r\n",
-										sys_set_data.voice.value,sys_set_data.voice.enable);
-	res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-	myfree(SRAMIN,buf);		//释放内存
-
-}
-static void write_sys_set_file(){
-	DIR recdir;	 			//目录
-	u8 *pname=0,*buf=0;
-	u8 res;
-	char pos[20]="";
-	while(f_opendir(&recdir,"0:/SYS_SET"))//打开录音文件夹
- 	{
-		f_mkdir("0:/SYS_SET");				//创建该目录   
-	}
-  f_rec=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域 
-	pname=mymalloc(SRAMIN,30);						//申请30个字节内存,类似"0:RECORDER/REC00001.wav"
-	buf=mymalloc(SRAMIN,30);	
-	pname[0]=0;					//pname没有任何文件名
-	buf[0]=0;
-	sprintf((char*)pname,"0:SYS_SET/sys_set.xls");
-	res=f_open(f_rec,(const TCHAR*)pname, FA_READ | FA_WRITE); 
-	if(res)			//文件创建失败
-	{
-		res=f_open(f_rec,(const TCHAR*)pname, FA_CREATE_ALWAYS | FA_WRITE); 
-		f_close(f_rec);
-	}else	{	
-		//sprintf((char*)buf,"fan_gang1=%d",sys_set_data.fan_gang[1].Value);
-		//res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-		write_once_record();
-		f_close(f_rec);
-	}
-	myfree(SRAMIN,f_rec);		//释放内存
-	myfree(SRAMIN,pname);		//释放内存
-	myfree(SRAMIN,buf);		//释放内存
-}
-
 static void	init_DROPDOWN(WM_MESSAGE * pMsg)
 {
 	WM_HWIN	hItem;
@@ -420,7 +342,7 @@ static void	init_DROPDOWN(WM_MESSAGE * pMsg)
 			DROPDOWN_AddString(hItem, buf);
 	}
 	//语音音量大小
-	hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_42);//0
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_41);//默认5分钟
 	DROPDOWN_SetAutoScroll(hItem,1);	//启用自动使用滚动条
 	for(i = 0;i<4;i++){
 			sprintf(buf,"%d",i);
@@ -478,16 +400,16 @@ static void init(WM_MESSAGE * pMsg){
 		}
 		for(n =0;n<8; n++){
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_16+n);
-			DROPDOWN_SetSel(hItem, sys_set_data.timing[n].end_hour);
+			DROPDOWN_SetSel(hItem, sys_set_data.timing[m].end_hour);
 			
 		}
 		for(n =0;n<8; n++){
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_24+n);
-			DROPDOWN_SetSel(hItem, sys_set_data.timing[n].start_min);			
+			DROPDOWN_SetSel(hItem, sys_set_data.timing[m].start_min);			
 		}
 		for(n =0;n<8; n++){
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_32+n);
-			DROPDOWN_SetSel(hItem, sys_set_data.timing[n].end_min);			
+			DROPDOWN_SetSel(hItem, sys_set_data.timing[m].end_min);			
 		}
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_40);
 		DROPDOWN_SetSel(hItem, sys_set_data.fan_run_time);
@@ -1811,7 +1733,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
-				write_sys_set_file();
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
