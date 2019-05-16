@@ -200,6 +200,7 @@ extern char IPADDR[];
 extern int PORT;
 extern double double_test;
 
+char tempbuf[40];
 const char *filename_sys = "0:SYS_SET/sys.ini";	
 // USER END
 
@@ -521,7 +522,7 @@ static void init(WM_MESSAGE * pMsg){
 	//FRAMEWIN_SetTextColor(hItem, GUI_RED);
 	FRAMEWIN_SetText(hItem, "œµÕ≥…Ë÷√");
 	init_DROPDOWN(pMsg);
-	read_sys_ini(filename_sys);
+	//read_sys_ini(filename_sys);
     // Initialization of 'ID_CHECKBOX_?'	
 		for(n =0;n<6; n++){
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_0+n);
@@ -1895,11 +1896,12 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         // USER START (Optionally insert code for reacting on notification message)		
 //				save_sys_ini(filename_sys);			
 				//write_sys_set_file();
-			/*
+			
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_20);
-				Test_ini(hItem);
-				TEXT_SetText(hItem, IPADDR);//					
-				GUI_Delay(2000);
+				//Test_ini(hItem);
+				iniGetString(filename_sys,"ALARM","O2",tempbuf,20,"not find O2");
+				TEXT_SetText(hItem, tempbuf);//					
+			/*	GUI_Delay(2000);
 				sprintf(IPADDR,"port=%d",PORT);
 				TEXT_SetText(hItem, IPADDR);//					
 				GUI_Delay(2000);	

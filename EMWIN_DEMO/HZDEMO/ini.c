@@ -264,24 +264,26 @@ void iniFileFree()
 	return 1;
 }
 //读取值原始串
- static int iniGetValue(const char *section, const char *key, char *value, int maxlen, const char *defvalue)
+ static int iniGetValue(char *Buffer,const char *section, const char *key, char *value, int maxlen, const char *defvalue)
  {
 	int type;
  	char content[SIZE_LINE];
  	char *rem1, *rem2, *nextline;
  	char *key0, *value0;
  	char *p;
+	int Buflen;
  
 	int uselen = 0;
  	char found = 0;
  	int len;
- 	if (gBuffer == NULL || key == NULL) {
+ 	if (Buffer == NULL || key == NULL) {
  		if (value != NULL)
  			value[0] = 0;
  		return 0;
  	}
- 	while (gBuflen - uselen > 0) {
- 		p = gBuffer + uselen;
+	Buflen = Str_Len(Buffer);
+ 	while (Buflen - uselen > 0) {
+ 		p = Buffer + uselen;
  		type = GetLine(p, gBuflen - uselen, content, &rem1, &rem2, &nextline);
  		uselen += (int)(nextline - p);
  		if (LINE_SECTION == type) {
@@ -325,12 +327,40 @@ void iniFileFree()
  	return 0;
  }
 //获取字符串，不带引号
- int iniGetString(const char *section, const char *key, char *value, int maxlen, const char *defvalue)
+ int iniGetString(const char *filename, const char *section, const char *key, char *value, int maxlen, const char *defvalue)
  {
  	int ret;
  	int len;
-  
-	ret = iniGetValue(section, key, value, maxlen, defvalue);
+	char *Buffer;
+	FIL *file;
+	int Buflen;
+ 	//iniFileFree();
+ 	if (Str_Len(filename) >= SIZE_FILENAME)//sizeof(gFilename))
+ 		return 0;
+	
+	//gFilename = mymalloc(SRAMIN,Str_Len(filename));//sizeof(gFilename));	
+	//gFilename[0]=0;
+ 	//Str_Copy(gFilename, filename);	
+  file=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域
+ 	ret = f_open(file,(const TCHAR*)filename, FA_READ|FA_WRITE);
+ 	if (ret) 
+ 		return 0;
+ 	//f_lseek(file, 0, SEEK_END);
+ 	len = f_size(file);
+	Buffer = mymalloc(SRAMIN,len);
+	if (Buffer == NULL) {
+		f_close(file);
+		myfree(SRAMIN,Buffer);		//释放内存
+		myfree(SRAMIN,file);		//释放内存
+		return 0;
+	}
+	Buffer[0] = 0;
+	f_lseek(file, 0);
+	len = f_read(file,Buffer, len, &br);
+	//Buflen = Str_Len(Buffer);
+	//f_close(file);
+	//return 1;	 
+	ret = iniGetValue(Buffer, section, key, value, maxlen, defvalue);
  	if (!ret)
  		return ret;
  	//去首尾空格
@@ -344,15 +374,20 @@ void iniFileFree()
  		value[len - 1] = 0;
  		memmove(value, value + 1, len - 1);
  	}
+	
+		f_close(file);
+		myfree(SRAMIN,Buffer);		//释放内存
+		myfree(SRAMIN,file);		//释放内存
  	return ret;
  }
+ 
 //获取整数值
  int iniGetInt(const char *section, const char *key, int defvalue)
  {
  	char valstr[64];
  
-	if (iniGetValue(section, key, valstr, sizeof(valstr), NULL))
- 	    return (int)strtol(valstr, NULL, 0);
+	//if (iniGetValue(section, key, valstr, sizeof(valstr), NULL))
+ 	  //  return (int)strtol(valstr, NULL, 0);
  	return defvalue;
  }
   
@@ -360,8 +395,8 @@ void iniFileFree()
  double iniGetDouble(const char *section, const char *key, double defvalue)
  {
  	char valstr[64];
- 	if (iniGetValue(section, key, valstr, sizeof(valstr), NULL))
- 	    return (int)atof(valstr);
+ 	//if (iniGetValue(section, key, valstr, sizeof(valstr), NULL))
+ 	  //  return (int)atof(valstr);
  	return defvalue;
  }
 //设置字符串：若value为NULL，则删除该key所在行，包括注释
@@ -484,7 +519,7 @@ void iniFileFree()
  	//加载IP地址和端口
  	sect = "IPCONFIG";
  	key  = "IP";
- 	iniGetString(sect, key, IPADDR, 15/*Str_Len(IPADDR)*/, "notfound!");
+ 	iniGetString(filename, sect, key, IPADDR, 15/*Str_Len(IPADDR)*/, "notfound!");
 	//sprintf(print_buf,"[%11s] %11s = %sn", sect, key, IPADDR);
  	//TEXT_SetText(hItem_sys_dialog,print_buf);
 	 

@@ -9,7 +9,7 @@ int iniFileLoad(const char *filename);
 //释放ini文件所占资源
 void iniFileFree();
 //获取字符串，不带引号
-int iniGetString(const char *section, const char *key, char *value, int size, const char *defvalue);
+int iniGetString(const char *filename,const char *section, const char *key, char *value, int size, const char *defvalue);
 //获取整数值
 int iniGetInt(const char *section, const char *key, int defvalue);
 //获取浮点数
