@@ -8,6 +8,7 @@
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\Global.h
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\GUI_Version.h
 ..\obj\sys_setdlg.o: ..\EMWIN_DEMO\HZDEMO\sys_set.h
+..\obj\sys_setdlg.o: ..\EMWIN_DEMO\HZDEMO\ini.h
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\DIALOG.h
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\WM.h
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\WM_GUI.h

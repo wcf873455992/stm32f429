@@ -129,7 +129,7 @@ int main(void)
     FTL_Init();                     //NAND初始化
     TP_Init();				        //触摸屏初始化
 		RTC_Init();
-		BEEP_Init();
+		//BEEP_Init();
     my_mem_init(SRAMIN);		    //初始化内部内存池
 	my_mem_init(SRAMEX);		    //初始化外部内存池
 	my_mem_init(SRAMCCM);		    //初始化CCM内存池

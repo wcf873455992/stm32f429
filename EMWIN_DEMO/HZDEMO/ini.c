@@ -5,7 +5,7 @@
 #include "stdlib.h"
 #include  "lib_str.h"
 #include "malloc.h"
-
+#include "DIALOG.h"
 #include "ff.h"
 #include "exfuns.h"
 
@@ -20,9 +20,11 @@ typedef enum _ELineType_ {
 	LINE_SECTION,	//节定义行
 	LINE_VALUE		//值定义行
 } ELineType ;
-static char gFilename[SIZE_FILENAME];
+//static char gFilename[SIZE_FILENAME];
+static char *gFilename;
 static char *gBuffer;
 static int gBuflen;
+static 	FIL *file;
 //去除串首尾空格，原串被改写
 static char *StrStrip(char *s)
 {
@@ -95,10 +97,10 @@ static int GetLine(char *buf, int buflen, char *content, char **rem1, char **rem
  		if ((cntCR || cntLF) && *p != 'r' && *p != 'n')
  			break;
  		switch (*p) {
-			case 'r':
+			case '\r':
 				cntCR ++;
 				break;
-			case 'n':
+			case '\n':
 				cntLF ++;
 				break;
 			//case ''':
@@ -217,8 +219,11 @@ static int GetLine(char *buf, int buflen, char *content, char **rem1, char **rem
 //释放ini文件所占资源
 void iniFileFree()
 {
-	if (gBuffer != NULL) {
-		free(gBuffer);
+	if (gBuffer != NULL) {		
+	//	free(gBuffer);
+		myfree(SRAMIN,gBuffer);		//释放内存
+		myfree(SRAMIN,file);		//释放内存
+		myfree(SRAMIN,gFilename);		//释放内存
  		gBuffer = 0;
  		gBuflen = 0;
 	}
@@ -226,16 +231,18 @@ void iniFileFree()
 //加载ini文件至内存
  int iniFileLoad(const char *filename)
  {
- 	FIL *file;
  	int len;
 	int ret;
  	iniFileFree();
- 	if (Str_Len(filename) >= sizeof(gFilename))
+ 	if (Str_Len(filename) >= SIZE_FILENAME)//sizeof(gFilename))
  		return 0;
+	
+	gFilename = mymalloc(SRAMIN,Str_Len(filename));//sizeof(gFilename));	
+	gFilename[0]=0;
  	Str_Copy(gFilename, filename);	
   file=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域
- 	ret = f_open(file,gFilename, FA_READ);
- 	if (ret == NULL) 
+ 	ret = f_open(file,(const TCHAR*)gFilename, FA_READ|FA_WRITE);
+ 	if (ret) 
  		return 0;
  	//f_lseek(file, 0, SEEK_END);
  	len = f_size(file);
@@ -244,10 +251,11 @@ void iniFileFree()
 		f_close(file);
 		return 0;
 	}
+	gBuffer[0] = 0;
 	f_lseek(file, 0);
 	len = f_read(file,gBuffer, len, &br);
+	gBuflen = Str_Len(gBuffer);
 	f_close(file);
-	gBuflen = len;
 	return 1;
 }
 //读取值原始串
@@ -453,8 +461,9 @@ void iniFileFree()
  }
   
 //用法举例：
- char *IPADDR = "192.168.1.1";
+ char *IPADDR = "192.168.1.10";
  int PORT=5053;
+ extern WM_HWIN	hItem_sys_dialog;
  void Test_ini( void )
  {
  	char *sect;
@@ -462,17 +471,21 @@ void iniFileFree()
  	char value[256];
  	char stadate[10];
  	char enddate[10];
+	char	print_buf[30];
  	//==================加载配置文件
- 	const char *file = "sys.ini";
- 	iniFileLoad(file);
+ 	const char *filename = "0:SYS_SET/sys.ini";
+ 	iniFileLoad(filename);
  	//加载IP地址和端口
  	sect = "IpConfig";
  	key  = "IP";
  	iniGetString(sect, key, IPADDR, sizeof(IPADDR), "notfound!");
- 	//printf("[%11s] %11s = %sn", sect, key, IPADDR);
+	//sprintf(print_buf,"[%11s] %11s = %sn", sect, key, IPADDR);
+ 	//TEXT_SetText(hItem_sys_dialog,print_buf);
+	 /*
  	key = "PORT";
  	PORT = iniGetInt(sect, key, 5035);
- 	printf("[%11s] %11s = %dn", sect, key, PORT);
+ 	sprintf(print_buf,"[%11s] %11s = %dn", sect, key, PORT);
+	TEXT_SetText(hItem_sys_dialog,print_buf);
  	//加载终端编号
  	sect = "OthCfg";
  	key  = "PosCode";
@@ -503,5 +516,6 @@ void iniFileFree()
  	printf("[%11s] %11s = %sn", sect, key, value);
  	Str_Copy(enddate,value);  
 	//Get_RecNum(Rec_Name,stadate,enddate);  
+	*/
 	iniFileFree();
  }

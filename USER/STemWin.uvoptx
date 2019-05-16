@@ -393,7 +393,7 @@
 
   <Group>
     <GroupName>USER</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2176,8 +2176,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\EMWIN_DEMO\HZDEMO\inirw.c</PathWithFileName>
-      <FilenameWithoutPath>inirw.c</FilenameWithoutPath>
+      <PathWithFileName>..\EMWIN_DEMO\HZDEMO\ini.c</PathWithFileName>
+      <FilenameWithoutPath>ini.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -21,6 +21,8 @@
 // USER START (Optionally insert additional includes)
 #include "EmWinHZFont.h"
 #include "sys_set.h"
+#include "ini.h"
+
 // USER END
 
 #include "DIALOG.h"
@@ -193,6 +195,8 @@
 
 // USER START (Optionally insert additional static data)
 static SYS_SET sys_set_data;
+WM_HWIN	hItem_sys_dialog;
+extern char *IPADDR;
 // USER END
 
 /*********************************************************************
@@ -434,7 +438,7 @@ static void init(WM_MESSAGE * pMsg){
   int     Id;
 	int	m,n;
 	//³õÊ¼»¯FRAMEWIN
-	hItem = pMsg->hWin;
+	hItem_sys_dialog=hItem = pMsg->hWin;
 	//FRAMEWIN_SetTextAlign(hItem, GUI_TA_HCENTER | GUI_TA_VCENTER);
 	//FRAMEWIN_SetTitleHeight(hItem, 10);
 	FRAMEWIN_SetFont(hItem,&GUI_FontHZ32);
@@ -1810,8 +1814,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         // USER END
         break;
       case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
-				write_sys_set_file();
+        // USER START (Optionally insert code for reacting on notification message)			
+				//write_sys_set_file();
+				hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_20);
+				Test_ini(hItem);
+				TEXT_SetText(hItem, IPADDR);//
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
