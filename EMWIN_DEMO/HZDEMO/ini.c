@@ -21,10 +21,12 @@ typedef enum _ELineType_ {
 	LINE_VALUE		//值定义行
 } ELineType ;
 //static char gFilename[SIZE_FILENAME];
-static char *gFilename;
-static char *gBuffer;
-static int gBuflen;
-static 	FIL *file;
+/*
+*/
+extern  char *gFilename;
+extern char *gBuffer;
+extern int gBuflen;
+extern 	FIL *file;
 //去除串首尾空格，原串被改写
 static char *StrStrip(char *s)
 {
@@ -36,7 +38,7 @@ static char *StrStrip(char *s)
 	p2 = s + size - 1;
 	while ((p2 >= s) && isspace(*p2))
 		p2 --;
-	*(p2 + 1) = ' ';
+	*(p2 + 1) = 0x00;
 	p1 = s;
 	while (*p1 && isspace(*p1))
 		p1 ++;
@@ -209,7 +211,7 @@ static int GetLine(char *buf, int buflen, char *content, char **rem1, char **rem
  {
  	char *p;
  	p = Str_Char(content, '=');
- 	*p = 0;
+ 	*p = 0x00;
  	StrStrip(content);
 	StrStrip(p + 1);
 	*key = content;
@@ -219,13 +221,16 @@ static int GetLine(char *buf, int buflen, char *content, char **rem1, char **rem
 //释放ini文件所占资源
 void iniFileFree()
 {
-	if (gBuffer != NULL) {		
-	//	free(gBuffer);
+	if (gBuffer != NULL) {
 		myfree(SRAMIN,gBuffer);		//释放内存
-		myfree(SRAMIN,file);		//释放内存
-		myfree(SRAMIN,gFilename);		//释放内存
  		gBuffer = 0;
  		gBuflen = 0;
+	}
+	if (file != NULL) {
+		myfree(SRAMIN,file);		//释放内存
+	}
+	if (gFilename != NULL) {
+		myfree(SRAMIN,gFilename);		//释放内存
 	}
 }
 //加载ini文件至内存
@@ -300,7 +305,7 @@ void iniFileFree()
  				if (value != NULL) {
  					len = min(len, maxlen - 1);
  					Str_Copy_N(value, value0, len);
- 					value[len] = 0;
+ 					value[len] = 0x00;
  				}
  				return 1;
  			}
@@ -461,8 +466,9 @@ void iniFileFree()
  }
   
 //用法举例：
- char *IPADDR = "192.168.1.10";
+ char IPADDR[] = "192.168.255.255";
  int PORT=5053;
+ double double_test;
  extern WM_HWIN	hItem_sys_dialog;
  void Test_ini( void )
  {
@@ -476,16 +482,19 @@ void iniFileFree()
  	const char *filename = "0:SYS_SET/sys.ini";
  	iniFileLoad(filename);
  	//加载IP地址和端口
- 	sect = "IpConfig";
+ 	sect = "IPCONFIG";
  	key  = "IP";
- 	iniGetString(sect, key, IPADDR, sizeof(IPADDR), "notfound!");
+ 	iniGetString(sect, key, IPADDR, 15/*Str_Len(IPADDR)*/, "notfound!");
 	//sprintf(print_buf,"[%11s] %11s = %sn", sect, key, IPADDR);
  	//TEXT_SetText(hItem_sys_dialog,print_buf);
-	 /*
+	 
  	key = "PORT";
  	PORT = iniGetInt(sect, key, 5035);
- 	sprintf(print_buf,"[%11s] %11s = %dn", sect, key, PORT);
-	TEXT_SetText(hItem_sys_dialog,print_buf);
+ 	//sprintf(print_buf,"[%11s] %11s = %dn", sect, key, PORT);
+	//TEXT_SetText(hItem_sys_dialog,print_buf);
+	 key = "double";
+	 double_test = iniGetDouble(sect,key,0);
+	 /*
  	//加载终端编号
  	sect = "OthCfg";
  	key  = "PosCode";
