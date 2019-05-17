@@ -2,6 +2,7 @@
 #include "EmWinHZFont.h"
 #include "DIALOG.h"
 #include "rtc.h"
+#include "malloc.h"
 
 
 #define ID_FRAMEWIN_0 	(GUI_ID_USER + 0)
@@ -33,9 +34,14 @@
 #define ID_SLIDER_0 	(GUI_ID_USER + 160)
 #define ID_LISTVIEW_1 	(GUI_ID_USER + 170)
 
+
+#define MAX_TRANSMITTER 10
+
 WM_HWIN hDialog;
 WM_HWIN hDialog_help_t;
 GUI_HWIN	hwin_data;
+
+
 typedef struct{
 	_Bool	state;	
 	RTC_TimeTypeDef	Time;
@@ -50,23 +56,47 @@ enum	trasmitter_alarm{
 	O2_CO2,
 };
 typedef	struct{
-	char name[30];
+	int number;
 	int O2;
 	int CO2;	
+	int	alarm;
 	RTC_TimeTypeDef	Time;
 	RTC_DateTypeDef Date;
-	enum  trasmitter_alarm alarm;//0=无，1=O2报警，2=CO2报警，3=O2，CO2报警
+	//enum  trasmitter_alarm alarm;//0=无，1=O2报警，2=CO2报警，3=O2，CO2报警
 }TRANSMITTER;
 typedef struct{
 	FAN fan;
-	TRANSMITTER	transmitter[7];	
-	
-	RTC_TimeTypeDef	Time;
-	RTC_DateTypeDef Date;
+	TRANSMITTER	transmitter[MAX_TRANSMITTER];	
+	RTC_TimeTypeDef	sys_Time;
+	RTC_DateTypeDef sys_Date;
 }REAL_DATA;
-
-
 static REAL_DATA data;
+
+typedef struct{
+	char name[20];
+	char O2[20];
+	char CO2[20];
+	char time[20];
+	char alarm[30];
+}TEMP_LIST;
+//static TEMP_LIST *transmitter[MAX_TRANSMITTER];
+
+#if 0
+static char *transmitter[7][5]={
+	{"1#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "CO2超标"},
+	{"2#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
+	{"3#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "O2超标"},
+	{"4#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
+	{"5#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
+	{"6#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
+	{"7#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "  "},
+};
+#else
+static char *transmitter[7][5];
+#endif
+
+
+/**/
 static const char *_ListViewTable[][5]={
 	{"1#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "CO2超标"},
 	{"2#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
@@ -99,13 +129,13 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 
 
 
-u8 timebuf[40];
+char timebuf[40];
 void GetSysTime(){
-	HAL_RTC_GetTime(&RTC_Handler,&data.Time,RTC_FORMAT_BIN); 
-	HAL_RTC_GetDate(&RTC_Handler,&data.Date,RTC_FORMAT_BIN);
+	HAL_RTC_GetTime(&RTC_Handler,&data.sys_Time,RTC_FORMAT_BIN); 
+	HAL_RTC_GetDate(&RTC_Handler,&data.sys_Date,RTC_FORMAT_BIN);
 	sprintf((char*)timebuf,"系统时间：20%02d-%02d-%02d %02d:%02d:%02d  版本V1.0",
-				data.Date.Year,data.Date.Month,data.Date.Date,
-				data.Time.Hours,data.Time.Minutes,data.Time.Seconds); 
+				data.sys_Date.Year,data.sys_Date.Month,data.sys_Date.Date,
+				data.sys_Time.Hours,data.sys_Time.Minutes,data.sys_Time.Seconds); 
 		
 }
 void update_fan(WM_MESSAGE * pMsg){
@@ -121,17 +151,39 @@ void update_fan(WM_MESSAGE * pMsg){
 			HAL_RTC_GetTime(&RTC_Handler,&stop_time,RTC_FORMAT_BIN); 
 			HAL_RTC_GetDate(&RTC_Handler,&stop_date,RTC_FORMAT_BIN);
 			if(&stop_date == &data.fan.Date){
-				data.fan.Last_run_min= stop_time.Minutes - data.fan.Time.Minutes;
+				data.fan.Last_run_min= 10;//stop_time.Minutes - data.fan.Time.Minutes;
 			}
 		}
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_0);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
 		//TEXT_SetTextColor(hItem,GUI_YELLOW);
-		sprintf(buf,"状态:%d   上次运行时间：20%02d-%02d-%02d %02d:%02d:%02d   上次运行：%d分钟",	data.fan.state,
+		sprintf(buf,"状态:%d   %d上次运行时间：20%02d-%02d-%02d %02d:%02d:%02d   上次运行：%d分钟",	data.fan.state,stop_time.Minutes,
 					data.fan.Date.Year,data.fan.Date.Month,data.fan.Date.Date,
 					data.fan.Time.Hours,data.fan.Time.Minutes,data.fan.Time.Seconds,
 					data.fan.Last_run_min);
-		TEXT_SetText(hItem, buf);				
+		TEXT_SetText(hItem, buf);
+}
+void update_List(WM_MESSAGE * pMsg,int number){	
+	WM_HWIN hItem;
+	int i,j;
+	char buf[40];
+	for(i = 0; i<7;i++)
+		for(j = 0;j<5;j++)
+				transmitter[i][j]=(char *)mymalloc(SRAMIN,40);		//开辟40字节的内存区域
+	for(i=0; i<7;i++){
+		sprintf((char*)transmitter[i][0],"%d#变送器",data.transmitter[i+number].number);
+		sprintf((char*)transmitter[i][1],"O2:%d ",data.transmitter[i+number].O2);
+		sprintf((char*)transmitter[i][2],"CO2:%dPPM",data.transmitter[i+number].CO2);
+		sprintf((char*)transmitter[i][3],"20%02d-%02d-%02d %02d:%02d:%02d",
+					data.transmitter[i+number].Date.Year,data.transmitter[i+number].Date.Month,data.transmitter[i+number].Date.Date,
+					data.transmitter[i+number].Time.Hours,data.transmitter[i+number].Time.Minutes,data.transmitter[i+number].Time.Seconds);		
+		sprintf((char*)transmitter[i][4],"%d报警",data.transmitter[i+number].alarm);
+	}	
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+	for(i=0;i<GUI_COUNTOF(transmitter);i++)
+	{
+		LISTVIEW_SetUserDataRow(hItem,i,transmitter[i]);
+	}
 }
 	
 //对话框窗口回调函数
@@ -202,6 +254,7 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 			{
 				LISTVIEW_AddRow(hItem,_ListViewTable[i]);
 			}
+			update_List(pMsg,0);
  
 			//初始化TEXT
 			update_fan(pMsg);
@@ -296,12 +349,15 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 			}
 			break;
 		case WM_TIMER:
+			WM_RestartTimer(pMsg->Data.v, 1000);
 			GetSysTime();
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_4);
 			TEXT_SetFont(hItem,&GUI_FontHZ24);
 			//TEXT_SetTextColor(hItem,GUI_YELLOW);
 			TEXT_SetText(hItem, timebuf);		
-			WM_RestartTimer(pMsg->Data.v, 1000);
+			for(i=0;i<MAX_TRANSMITTER;i+=8){
+				update_List(pMsg,i);
+			}
 			break;
 		default:
 			WM_DefaultProc(pMsg);
@@ -313,7 +369,7 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 //pMsg:消息
 static void _cbBkWindow(WM_MESSAGE *pMsg)
 {
-	WM_HWIN hItem;
+	//WM_HWIN hItem;
 	switch(pMsg->MsgId)
 	{
 		case WM_PAINT:
@@ -325,7 +381,7 @@ static void _cbBkWindow(WM_MESSAGE *pMsg)
 }
 
 static void _cbWin(WM_MESSAGE * pMsg){
-	WM_HWIN hItem;
+//	WM_HWIN hItem;
 	switch (pMsg->MsgId) {
   default:
     WM_DefaultProc(pMsg);
@@ -334,11 +390,19 @@ static void _cbWin(WM_MESSAGE * pMsg){
 }
 void HZFontDemo(void) 
 {
+	int i;
 	GUI_CURSOR_Show();
 	#if GUI_SUPPORT_MEMDEV
 		WM_SetCreateFlags(WM_CF_MEMDEV);
 	#endif		
 	data.fan.state = 0;
+	data.fan.Last_run_min = 0;
+	for(i = 1;i<MAX_TRANSMITTER;i++){
+		data.transmitter[i].number=i;
+		data.transmitter[i].O2	= i;
+		data.transmitter[i].CO2 = i;
+		data.transmitter[i].alarm = i;
+	}
   WM_SetCallback(WM_HBKWIN,_cbBkWindow);
 	hDialog = GUI_CreateDialogBox(_aDialogCreate, GUI_COUNTOF(_aDialogCreate), _cbDialog, WM_HBKWIN, 0, 0);
 	
@@ -349,5 +413,5 @@ void HZFontDemo(void)
 	while(1)
 	{
 		GUI_Delay(100);
-	}/**/
+	}
 }

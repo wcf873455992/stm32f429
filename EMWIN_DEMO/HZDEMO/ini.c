@@ -3,7 +3,7 @@
 //inirw.c文件：
 #include "ini.h"
 #include "stdlib.h"
-#include  "lib_str.h"
+#include "lib_str.h"
 #include "malloc.h"
 #include "DIALOG.h"
 #include "ff.h"

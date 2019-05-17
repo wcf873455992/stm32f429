@@ -5,7 +5,7 @@
 <h2>Tool Versions:</h2>
 IDE-Version: μVision V5.27.1.0
 Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: wcf Administrator, wcf, LIC=MPP74-FJL53-T30MI-TPRPK-NS04C-H0YJT
+License Information: wcf Microsoft, Microsoft, LIC=47GX7-EXXJH-8TL3P-MBP2A-HCELS-HWJYU
  
 Tool Versions:
 Toolchain:       MDK-ARM Plus  Version: 5.27.1.0
@@ -21,38 +21,33 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.6.0
 Dialog DLL:      TCM.DLL V1.36.1.0
  
 <h2>Project:</h2>
-H:\气体检测\code\3，EMWIN扩展例程\stm32f429\USER\STemWin.uvprojx
-Project File Date:  05/17/2019
+E:\STM32\3，扩展例程\3，EMWIN扩展例程\stm32f429\USER\STemWin.uvprojx
+Project File Date:  05/16/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'STemWin RGBLCD'
 compiling hzfontdemo.c...
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(235): warning:  #223-D: function "CreateSys_Set" declared implicitly
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(185): error:  #167: argument of type "char **" is incompatible with parameter of type "unsigned long"
+  		LISTVIEW_SetUserDataRow(hItem,i,transmitter[i]);
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(169): warning:  #177-D: variable "buf"  was declared but never referenced
+  	char buf[40];
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(288): warning:  #223-D: function "CreateSys_Set" declared implicitly
   							CreateSys_Set();
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(243): warning:  #223-D: function "CreateDevice_Config" declared implicitly
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(296): warning:  #223-D: function "CreateDevice_Config" declared implicitly
   							CreateDevice_Config();
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(259): warning:  #223-D: function "CreateHistorical_Data" declared implicitly
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(312): warning:  #223-D: function "CreateHistorical_Data" declared implicitly
   							CreateHistorical_Data();
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(267): warning:  #223-D: function "CreateFan_Record" declared implicitly
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(320): warning:  #223-D: function "CreateFan_Record" declared implicitly
   							CreateFan_Record();
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(275): warning:  #223-D: function "CreateHELP" declared implicitly
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(328): warning:  #223-D: function "CreateHELP" declared implicitly
   							CreateHELP();
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(303): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *"
-  			TEXT_SetText(hItem, timebuf);		
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(316): warning:  #177-D: variable "hItem"  was declared but never referenced
-  	WM_HWIN hItem;
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(328): warning:  #177-D: variable "hItem"  was declared but never referenced
-  	WM_HWIN hItem;
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(345): warning:  #550-D: variable "hTimer"  was set but never used
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(409): warning:  #550-D: variable "hTimer"  was set but never used
   	WM_HTIMER hTimer;
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(327): warning:  #177-D: function "_cbWin"  was declared but never referenced
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(383): warning:  #177-D: function "_cbWin"  was declared but never referenced
   static void _cbWin(WM_MESSAGE * pMsg){
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c: 10 warnings, 0 errors
-linking...
-Program Size: Code=213600 RO-data=78500 RW-data=2800 ZI-data=24486032  
-FromELF: creating hex file...
-"..\OBJ\Tempate.axf" - 0 Error(s), 10 Warning(s).
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c: 8 warnings, 1 error
+"..\OBJ\Tempate.axf" - 1 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -66,7 +61,8 @@ Package Vendor: Keil
   C:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:05
+Target not created.
+Build Time Elapsed:  00:00:08
 </pre>
 </body>
 </html>

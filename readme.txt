@@ -13,7 +13,7 @@
 ·按钮创建对话框						ok
 ·按键更新字库						ok
 ·实时数据显示，listview，报警变色	？
-·按钮状态切换						？
+·按钮状态切换						OK
 ·下拉菜单转换，item					ok
 ·check box	存储					OK
 ·listview，编辑储存					？

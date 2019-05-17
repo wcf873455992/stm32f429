@@ -119,3 +119,4 @@
 ..\obj\hzfontdemo.o: ..\EMWIN\STemWin\inc\TREEVIEW.h
 ..\obj\hzfontdemo.o: ..\EMWIN\STemWin\inc\KNOB.h
 ..\obj\hzfontdemo.o: ..\HARDWARE\RTC\rtc.h
+..\obj\hzfontdemo.o: ..\MALLOC\malloc.h

@@ -15,7 +15,7 @@ typedef struct{
 //加载ini文件至内存
 int iniFileLoad(INI_FILE *file);
 //释放ini文件所占资源
-void iniFileFree();
+void iniFileFree(INI_FILE *file);
 //获取字符串，不带引号
 int iniGetString(INI_FILE *file,const char *section, const char *key, char *value, int size, const char *defvalue);
 //获取整数值
