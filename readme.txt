@@ -7,13 +7,14 @@
 
 功能
 ·开机画面							ok
-·SD卡读写文件--						ok
+·SD卡读ini文件--					ok
+·SD卡写ini文件						？
 ·7寸液晶，GUI界面配置				ok
 ·按钮创建对话框						ok
 ·按键更新字库						ok
 ·实时数据显示，listview，报警变色	？
 ·按钮状态切换						？
-·下拉菜单转换，item					？
+·下拉菜单转换，item					ok
 ·check box	存储					OK
 ·listview，编辑储存					？
 ·
