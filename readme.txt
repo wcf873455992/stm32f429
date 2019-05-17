@@ -8,7 +8,7 @@
 功能
 ·开机画面							ok
 ·SD卡读ini文件--					ok
-·SD卡写ini文件						？
+·SD卡写ini文件						OK
 ·7寸液晶，GUI界面配置				ok
 ·按钮创建对话框						ok
 ·按键更新字库						ok

@@ -447,35 +447,32 @@ static void read_sys_ini(INI_FILE *file ){
 	int i,n;
 	char buf[50];
  	iniFileLoad(file);
-	sys_set_data.alarm.O2=iniGetDouble(file, "ALARM", "O2",  -1);
-	sys_set_data.alarm.CO2=iniGetDouble(file, "ALARM", "CO2",  -1);
-	sys_set_data.alarm.Temperature=iniGetDouble(file, "ALARM", "Temperature",  -1);
-	sys_set_data.alarm.Humidity=iniGetDouble(file, "ALARM", "Humidity",  -1);
-	sys_set_data.alarm.enable = iniGetInt(file, "ALARM", "enable",  -1);
-	
-	
-		//sprintf(buf,"fan_gang%d_value",i+1);
-		//sys_set_data.fan_gang[0].Value=iniGetDouble(file, "FAN_GANG", "fan_gang1_value", -1);
+	sys_set_data.alarm.O2=iniGetDouble(file, "ALARM", "O2",  1);
+	sys_set_data.alarm.CO2=iniGetDouble(file, "ALARM", "CO2",  2);
+	sys_set_data.alarm.Temperature=iniGetDouble(file, "ALARM", "Temperature",  3);
+	sys_set_data.alarm.Humidity=iniGetDouble(file, "ALARM", "Humidity",  4);
+	sys_set_data.alarm.enable = iniGetInt(file, "ALARM", "enable",  1);
+		
 	for(i = 0; i<4; i++){
 		sprintf(buf,"fan_gang%d_value",i+1);
-		sys_set_data.fan_gang[i].Value=iniGetDouble(file, "FAN_GANG", buf, -1);
+		sys_set_data.fan_gang[i].Value=iniGetDouble(file, "FAN_GANG", buf, 1);
 		sprintf(buf,"fan_gang%d_enable",i+1);
-		sys_set_data.fan_gang[i].enable=iniGetInt(file, "FAN_GANG", buf, -1);
+		sys_set_data.fan_gang[i].enable=iniGetInt(file, "FAN_GANG", buf, 1);
 	}
 	for(i = 0; i<8; i++){
 		sprintf(buf,"time%d_start_hour",i+1);
-		sys_set_data.timing[i].start_hour=iniGetInt(file, "TIMING_TIME", buf, -1);
+		sys_set_data.timing[i].start_hour=iniGetInt(file, "TIMING_TIME", buf, 1);
 		sprintf(buf,"time%d_start_min",i+1);
-		sys_set_data.timing[i].start_min=iniGetInt(file, "TIMING_TIME", buf, -1);
+		sys_set_data.timing[i].start_min=iniGetInt(file, "TIMING_TIME", buf, 2);
 		sprintf(buf,"time%d_end_hour",i+1);
-		sys_set_data.timing[i].end_hour=iniGetInt(file, "TIMING_TIME", buf, -1);
+		sys_set_data.timing[i].end_hour=iniGetInt(file, "TIMING_TIME", buf, 3);
 		sprintf(buf,"time%d_end_min",i+1);
-		sys_set_data.timing[i].end_min=iniGetInt(file, "TIMING_TIME", buf, -1);
+		sys_set_data.timing[i].end_min=iniGetInt(file, "TIMING_TIME", buf, 4);
 	}
-	sys_set_data.voice.value = iniGetInt(file, "VOICE","value",-1);
-	sys_set_data.voice.enable = iniGetInt(file, "VOICE","enable",-1);
-	sys_set_data.fan_run_time = iniGetInt(file, "OTHER","fan_run_time",-1);	
-	sys_set_data.sample_interval = iniGetInt(file, "OTHER","sample_interval",-1);
+	sys_set_data.voice.value = iniGetInt(file, "VOICE","value",1);
+	sys_set_data.voice.enable = iniGetInt(file, "VOICE","enable",1);
+	sys_set_data.fan_run_time = iniGetInt(file, "OTHER","fan_run_time",1);	
+	sys_set_data.sample_interval = iniGetInt(file, "OTHER","sample_interval",1);
 	
 	iniFileFree(file);
 }
@@ -484,7 +481,8 @@ static void save_sys_ini(INI_FILE * file){
 	char buf[50];
 	
  	iniFileLoad(file);
-	iniSetInt(file,"ALARM", "O2", sys_set_data.alarm.O2, 10);
+	iniSetInt(file,"ALARM", "O2", sys_set_data.alarm.O2, 10);	
+	
 	iniSetInt(file, "ALARM", "CO2", sys_set_data.alarm.CO2, 10);
 	iniSetInt(file, "ALARM", "Temperature", sys_set_data.alarm.Temperature, 10);
 	iniSetInt(file, "ALARM", "Humidity", sys_set_data.alarm.Humidity , 10);
@@ -510,7 +508,7 @@ static void save_sys_ini(INI_FILE * file){
 	iniSetInt(file, "VOICE", "enable",sys_set_data.voice.enable , 10);
 	iniSetInt(file, "OTHER", "fan_run_time",sys_set_data.fan_run_time, 10);	
 	iniSetInt(file, "OTHER", "sample_interval", sys_set_data.sample_interval , 10);
-	
+	/**/
 	iniFileFree(file);
 }
 static void init(WM_MESSAGE * pMsg){

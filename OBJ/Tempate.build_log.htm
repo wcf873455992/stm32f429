@@ -36,23 +36,41 @@ compiling Sys_SetDLG.c...
   #endif
 ..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(447): warning:  #177-D: variable "n"  was declared but never referenced
   	int i,n;
-..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(483): warning:  #177-D: variable "n"  was declared but never referenced
+..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(480): warning:  #177-D: variable "n"  was declared but never referenced
   	int i,n;
-..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(518): warning:  #177-D: variable "NCode"  was declared but never referenced
+..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(516): warning:  #177-D: variable "NCode"  was declared but never referenced
     int     NCode;
-..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(519): warning:  #177-D: variable "Id"  was declared but never referenced
+..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(517): warning:  #177-D: variable "Id"  was declared but never referenced
     int     Id;
-..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(1916): warning:  #9-D: nested comment is not allowed
+..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(1914): warning:  #9-D: nested comment is not allowed
   				TEXT_SetText(hItem, IPADDR);//*/
 ..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(302): warning:  #177-D: variable "f_rec"  was declared but never referenced
   static FIL* f_rec=0;			//нд╪Ч
 ..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c(309): warning:  #177-D: function "read_sys_set_file"  was declared but never referenced
   static void read_sys_set_file(){
 ..\EMWIN_DEMO\HZDEMO\Sys_SetDLG.c: 10 warnings, 0 errors
+compiling ini.c...
+..\EMWIN_DEMO\HZDEMO\ini.h(18): warning:  #1295-D: Deprecated declaration iniFileFree - give arg types
+  void iniFileFree();
+..\EMWIN_DEMO\HZDEMO\ini.h(32): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\EMWIN_DEMO\HZDEMO\ini.c(39): warning:  #223-D: function "isspace" declared implicitly
+  	while ((p2 >= s) && isspace(*p2))
+..\EMWIN_DEMO\HZDEMO\ini.c(43): warning:  #223-D: function "isspace" declared implicitly
+  	while (*p1 && isspace(*p1))
+..\EMWIN_DEMO\HZDEMO\ini.c(46): warning:  #223-D: function "memmove" declared implicitly
+  		memmove(s, p1, p2 - p1 + 2);
+..\EMWIN_DEMO\HZDEMO\ini.c(345): warning:  #223-D: function "memmove" declared implicitly
+   		memmove(value, value + 1, len - 1);
+..\EMWIN_DEMO\HZDEMO\ini.c(349): warning:  #223-D: function "memmove" declared implicitly
+   		memmove(value, value + 1, len - 1);
+..\EMWIN_DEMO\HZDEMO\ini.c(502): warning:  #9-D: nested comment is not allowed
+  	 /*
+..\EMWIN_DEMO\HZDEMO\ini.c: 8 warnings, 0 errors
 linking...
-Program Size: Code=212864 RO-data=78424 RW-data=2796 ZI-data=24485500  
+Program Size: Code=213444 RO-data=78424 RW-data=2796 ZI-data=24485500  
 FromELF: creating hex file...
-"..\OBJ\Tempate.axf" - 0 Error(s), 10 Warning(s).
+"..\OBJ\Tempate.axf" - 0 Error(s), 18 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -66,7 +84,7 @@ Package Vendor: Keil
   C:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:05
+Build Time Elapsed:  00:00:06
 </pre>
 </body>
 </html>

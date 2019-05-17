@@ -247,8 +247,12 @@ void iniFileFree(INI_FILE *file)
  	//Str_Copy(gFilename, filename);	
   file->fil=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域
  	ret = f_open(file->fil,(const TCHAR*)file->name, FA_READ|FA_WRITE);
- 	if (ret) 
+ 	if (ret){
+		ret=f_open(file->fil,(const TCHAR*)file->name, FA_CREATE_ALWAYS | FA_WRITE); //创建ini文件
+		f_close(file->fil);
+		ret = f_open(file->fil,(const TCHAR*)file->name, FA_READ|FA_WRITE);
  		return 0;
+	}
  	//f_lseek(file, 0, SEEK_END);
  	len = f_size(file->fil);
 	file->buf = mymalloc(SRAMIN,len);
@@ -389,7 +393,7 @@ void iniFileFree(INI_FILE *file)
 		
 		file->fil=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域 
  		ret = f_open(file->fil,file->name, FA_READ|FA_WRITE);
- 		if (ret == 0) 
+ 		if (ret) 
  			return 0;
  		///_fprintf(file, "n[%s]n%s = %sn", section, key, value);
  		f_close(file->fil);
@@ -406,9 +410,9 @@ void iniFileFree(INI_FILE *file)
  		if (LINE_VALUE == type) {
  			GetKeyValue(content, &key0, &value0);
  			if (StriCmp(key0, key) == 0) {
- 				//找到key
- 				ret = f_open(file->fil, file->name, FA_WRITE);
- 				if (ret == 0) 
+ 				//找到keyf_open(file->fil,(const TCHAR*)file->name, FA_READ|FA_WRITE);
+ 				ret = f_open(file->fil,(const TCHAR*) file->name, FA_WRITE|FA_WRITE);
+ 				if (ret)
  					return 0;
  				len = (int)(p - file->buf);
  				f_write(file->fil,file->buf, len,&bw );					//写入key之前部分
@@ -417,10 +421,10 @@ void iniFileFree(INI_FILE *file)
  					len = (int)(nextline - file->buf);			//整行连同注释一并删除
  				} else {
  					//value有效，改写
- 					//fprintf(file, "%s = %s", key, value);
+ 					f_printf(file->fil, "%s = %s", key, value);
  					len = (int)(rem1 - file->buf);				//保留尾部原注释!
- 				}
- 				f_write(file->fil, file->buf + len,  file->buflen - len,&bw );	//写入key所在行含注释之后部分
+ 				}//	res=f_write(f_rec,(const void*)real_data.Date,strlen(real_data.Date),&bw);
+ 				f_write(file->fil, (const void*)(file->buf + len),  file->buflen - len,&bw );	//写入key所在行含注释之后部分
  				f_close(file->fil);
  				iniFileLoad(file);
  				return 1;
@@ -437,7 +441,7 @@ void iniFileFree(INI_FILE *file)
  		return 0;
  	//在文件尾部添加
  	ret = f_open(file->fil,file->name, FA_WRITE);
- 	if (ret == NULL) 
+ 	if (ret) 
  		return 0;
  	len = (int)(cont2 - file->buf);
  	f_write(file->fil,file->buf, len,&bw );					//写入key之前部分
