@@ -9,6 +9,9 @@
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\GUI_Version.h
 ..\obj\sys_setdlg.o: ..\EMWIN_DEMO\HZDEMO\sys_set.h
 ..\obj\sys_setdlg.o: ..\EMWIN_DEMO\HZDEMO\ini.h
+..\obj\sys_setdlg.o: ..\FATFS\src\ff.h
+..\obj\sys_setdlg.o: ..\FATFS\src\integer.h
+..\obj\sys_setdlg.o: ..\FATFS\src\ffconf.h
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\DIALOG.h
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\WM.h
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\WM_GUI.h
@@ -47,9 +50,6 @@
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\TEXT.h
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\TREEVIEW.h
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\KNOB.h
-..\obj\sys_setdlg.o: ..\FATFS\src\ff.h
-..\obj\sys_setdlg.o: ..\FATFS\src\integer.h
-..\obj\sys_setdlg.o: ..\FATFS\src\ffconf.h
 ..\obj\sys_setdlg.o: ..\FATFS\exfuns\exfuns.h
 ..\obj\sys_setdlg.o: ..\SYSTEM\sys\sys.h
 ..\obj\sys_setdlg.o: ..\USER\stm32f4xx.h

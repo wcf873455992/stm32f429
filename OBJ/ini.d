@@ -1,5 +1,8 @@
 ..\obj\ini.o: ..\EMWIN_DEMO\HZDEMO\ini.c
 ..\obj\ini.o: ..\EMWIN_DEMO\HZDEMO\ini.h
+..\obj\ini.o: ..\FATFS\src\ff.h
+..\obj\ini.o: ..\FATFS\src\integer.h
+..\obj\ini.o: ..\FATFS\src\ffconf.h
 ..\obj\ini.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\ini.o: ..\UCOSIII\uC-LIB\lib_str.h
 ..\obj\ini.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView\cpu.h
@@ -126,7 +129,4 @@
 ..\obj\ini.o: ..\EMWIN\STemWin\inc\TEXT.h
 ..\obj\ini.o: ..\EMWIN\STemWin\inc\TREEVIEW.h
 ..\obj\ini.o: ..\EMWIN\STemWin\inc\KNOB.h
-..\obj\ini.o: ..\FATFS\src\ff.h
-..\obj\ini.o: ..\FATFS\src\integer.h
-..\obj\ini.o: ..\FATFS\src\ffconf.h
 ..\obj\ini.o: ..\FATFS\exfuns\exfuns.h

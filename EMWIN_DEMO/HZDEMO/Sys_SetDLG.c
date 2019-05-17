@@ -200,7 +200,8 @@ extern char IPADDR[];
 extern int PORT;
 extern double double_test;
 
-const char *filename_sys = "0:SYS_SET/sys.ini";	
+INI_FILE file_ini;
+const char *filename_sys = "0:SYS_SET/sys.ini";
 // USER END
 
 /*********************************************************************
@@ -299,10 +300,10 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 #include "malloc.h"
 
 static FIL* f_rec=0;			//文件
-char *gFilename;
-char *gBuffer;
-int gBuflen;
-FIL *file_sys;
+//char *gFilename;
+//char *gBuffer;
+//int gBuflen;
+//FIL *file_sys;
 
 
 static void read_sys_set_file(){
@@ -441,72 +442,76 @@ static void	init_DROPDOWN(WM_MESSAGE * pMsg)
 	}
 	
 }
-static void read_sys_ini(const char *filename ){	
+
+static void read_sys_ini(INI_FILE *file ){	
 	int i,n;
 	char buf[50];
- 	iniFileLoad(filename);
-	sys_set_data.alarm.O2=iniGetDouble("ALARM", "O2",  -1);
-	sys_set_data.alarm.CO2=iniGetDouble("ALARM", "CO2",  -1);
-	sys_set_data.alarm.Temperature=iniGetDouble("ALARM", "Temperature",  -1);
-	sys_set_data.alarm.Humidity=iniGetDouble("ALARM", "Humidity",  -1);
-	sys_set_data.alarm.enable = iniGetInt("ALARM", "enable",  -1);
+ 	iniFileLoad(file);
+	sys_set_data.alarm.O2=iniGetDouble(file, "ALARM", "O2",  -1);
+	sys_set_data.alarm.CO2=iniGetDouble(file, "ALARM", "CO2",  -1);
+	sys_set_data.alarm.Temperature=iniGetDouble(file, "ALARM", "Temperature",  -1);
+	sys_set_data.alarm.Humidity=iniGetDouble(file, "ALARM", "Humidity",  -1);
+	sys_set_data.alarm.enable = iniGetInt(file, "ALARM", "enable",  -1);
 	
+	
+		//sprintf(buf,"fan_gang%d_value",i+1);
+		//sys_set_data.fan_gang[0].Value=iniGetDouble(file, "FAN_GANG", "fan_gang1_value", -1);
 	for(i = 0; i<4; i++){
 		sprintf(buf,"fan_gang%d_value",i+1);
-		sys_set_data.fan_gang[i].Value=iniGetDouble("FAN_GANG", buf, -1);
+		sys_set_data.fan_gang[i].Value=iniGetDouble(file, "FAN_GANG", buf, -1);
 		sprintf(buf,"fan_gang%d_enable",i+1);
-		sys_set_data.fan_gang[i].enable=iniGetInt("FAN_GANG", buf, -1);
+		sys_set_data.fan_gang[i].enable=iniGetInt(file, "FAN_GANG", buf, -1);
 	}
 	for(i = 0; i<8; i++){
 		sprintf(buf,"time%d_start_hour",i+1);
-		sys_set_data.timing[i].start_hour=iniGetInt("TIMING_TIME", buf, -1);
+		sys_set_data.timing[i].start_hour=iniGetInt(file, "TIMING_TIME", buf, -1);
 		sprintf(buf,"time%d_start_min",i+1);
-		sys_set_data.timing[i].start_min=iniGetInt("TIMING_TIME", buf, -1);
+		sys_set_data.timing[i].start_min=iniGetInt(file, "TIMING_TIME", buf, -1);
 		sprintf(buf,"time%d_end_hour",i+1);
-		sys_set_data.timing[i].end_hour=iniGetInt("TIMING_TIME", buf, -1);
+		sys_set_data.timing[i].end_hour=iniGetInt(file, "TIMING_TIME", buf, -1);
 		sprintf(buf,"time%d_end_min",i+1);
-		sys_set_data.timing[i].end_min=iniGetInt("TIMING_TIME", buf, -1);
+		sys_set_data.timing[i].end_min=iniGetInt(file, "TIMING_TIME", buf, -1);
 	}
-	sys_set_data.voice.value = iniGetInt("VOICE","value",-1);
-	sys_set_data.voice.enable = iniGetInt("VOICE","enable",-1);
-	sys_set_data.fan_run_time = iniGetInt("OTHER","fan_run_time",-1);	
-	sys_set_data.sample_interval = iniGetInt("OTHER","sample_interval",-1);
+	sys_set_data.voice.value = iniGetInt(file, "VOICE","value",-1);
+	sys_set_data.voice.enable = iniGetInt(file, "VOICE","enable",-1);
+	sys_set_data.fan_run_time = iniGetInt(file, "OTHER","fan_run_time",-1);	
+	sys_set_data.sample_interval = iniGetInt(file, "OTHER","sample_interval",-1);
 	
-	iniFileFree();
+	iniFileFree(file);
 }
-static void save_sys_ini(char * filename){	
+static void save_sys_ini(INI_FILE * file){	
 	int i,n;
 	char buf[50];
 	
- 	iniFileLoad(filename);
-	iniSetInt("ALARM", "O2", sys_set_data.alarm.O2, 10);
-	iniSetInt("ALARM", "CO2", sys_set_data.alarm.CO2, 10);
-	iniSetInt("ALARM", "Temperature", sys_set_data.alarm.Temperature, 10);
-	iniSetInt("ALARM", "Humidity", sys_set_data.alarm.Humidity , 10);
-	iniSetInt("ALARM", "enable", sys_set_data.alarm.enable,10);
+ 	iniFileLoad(file);
+	iniSetInt(file,"ALARM", "O2", sys_set_data.alarm.O2, 10);
+	iniSetInt(file, "ALARM", "CO2", sys_set_data.alarm.CO2, 10);
+	iniSetInt(file, "ALARM", "Temperature", sys_set_data.alarm.Temperature, 10);
+	iniSetInt(file, "ALARM", "Humidity", sys_set_data.alarm.Humidity , 10);
+	iniSetInt(file, "ALARM", "enable", sys_set_data.alarm.enable,10);
 	
 	for(i = 0; i<4; i++){
 		sprintf(buf,"fan_gang%d_value",i+1);
-		iniSetInt("FAN_GANG", buf, sys_set_data.fan_gang[i].Value, 10);
+		iniSetInt(file, "FAN_GANG", buf, sys_set_data.fan_gang[i].Value, 10);
 		sprintf(buf,"fan_gang%d_enable",i+1);
-		iniSetInt("FAN_GANG", buf, sys_set_data.fan_gang[i].enable, 10);
+		iniSetInt(file, "FAN_GANG", buf, sys_set_data.fan_gang[i].enable, 10);
 	}
 	for(i = 0; i<8; i++){
 		sprintf(buf,"time%d_start_hour",i+1);
-		iniSetInt("TIMING_TIME", buf,sys_set_data.timing[i].start_hour, 10);
+		iniSetInt(file, "TIMING_TIME", buf,sys_set_data.timing[i].start_hour, 10);
 		sprintf(buf,"time%d_start_min",i+1);
-		iniSetInt("TIMING_TIME", buf, sys_set_data.timing[i].start_min,10);
+		iniSetInt(file, "TIMING_TIME", buf, sys_set_data.timing[i].start_min,10);
 		sprintf(buf,"time%d_end_hour",i+1);
-		iniSetInt("TIMING_TIME", buf,sys_set_data.timing[i].end_hour, 10);
+		iniSetInt(file, "TIMING_TIME", buf,sys_set_data.timing[i].end_hour, 10);
 		sprintf(buf,"time%d_end_min",i+1);
-		iniSetInt("TIMING_TIME", buf, sys_set_data.timing[i].end_min,10);
+		iniSetInt(file, "TIMING_TIME", buf, sys_set_data.timing[i].end_min,10);
 	}
-	iniSetInt("VOICE", "value", sys_set_data.voice.value,10);
-	iniSetInt("VOICE", "enable",sys_set_data.voice.enable , 10);
-	iniSetInt("OTHER", "fan_run_time",sys_set_data.fan_run_time, 10);	
-	iniSetInt("OTHER", "sample_interval", sys_set_data.sample_interval , 10);
+	iniSetInt(file, "VOICE", "value", sys_set_data.voice.value,10);
+	iniSetInt(file, "VOICE", "enable",sys_set_data.voice.enable , 10);
+	iniSetInt(file, "OTHER", "fan_run_time",sys_set_data.fan_run_time, 10);	
+	iniSetInt(file, "OTHER", "sample_interval", sys_set_data.sample_interval , 10);
 	
-	iniFileFree();
+	iniFileFree(file);
 }
 static void init(WM_MESSAGE * pMsg){
 	WM_HWIN hItem;
@@ -521,7 +526,11 @@ static void init(WM_MESSAGE * pMsg){
 	//FRAMEWIN_SetTextColor(hItem, GUI_RED);
 	FRAMEWIN_SetText(hItem, "系统设置");
 	init_DROPDOWN(pMsg);
-	read_sys_ini(filename_sys);
+	
+	
+	file_ini.name =filename_sys;	
+	read_sys_ini(&file_ini);
+	
     // Initialization of 'ID_CHECKBOX_?'	
 		for(n =0;n<6; n++){
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_CHECKBOX_0+n);
@@ -1893,7 +1902,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)		
-//				save_sys_ini(filename_sys);			
+				save_sys_ini(&file_ini);			
 				//write_sys_set_file();
 			/*
 				hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_20);

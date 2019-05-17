@@ -11,7 +11,7 @@ typedef struct{
 
 typedef struct{
 	_Bool	enable;
-	int	Value;
+	float	Value;
 }FAN_GANG;
 
 typedef	struct{
