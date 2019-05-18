@@ -234,10 +234,27 @@ static void update_fan(WM_MESSAGE * pMsg){
 		{
 			HAL_RTC_GetTime(&RTC_Handler,&data.fan.Time,RTC_FORMAT_BIN); 
 			HAL_RTC_GetDate(&RTC_Handler,&data.fan.Date,RTC_FORMAT_BIN);
+			
+			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_1);
+			TEXT_SetFont(hItem,&GUI_FontHZ16);
+			//TEXT_SetTextColor(hItem,GUI_YELLOW);
+			sprintf(buf,"上次运行时间：20%02d-%02d-%02d %02d:%02d:%02d   上次运行：?分钟",	//stop_time.Minutes,
+					data.fan.Date.Year,data.fan.Date.Month,data.fan.Date.Date,
+					data.fan.Time.Hours,data.fan.Time.Minutes,data.fan.Time.Seconds,//stop_time.Seconds);
+					data.fan.Last_run_min);
+			TEXT_SetText(hItem, buf);
 		}else{
 			HAL_RTC_GetTime(&RTC_Handler,&stop_time,RTC_FORMAT_BIN); 
 			HAL_RTC_GetDate(&RTC_Handler,&stop_date,RTC_FORMAT_BIN);
 			data.fan.Last_run_min= minuteCompare(&data.fan.Date, &data.fan.Time, &stop_date, &stop_time);
+			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_1);
+			TEXT_SetFont(hItem,&GUI_FontHZ16);
+			//TEXT_SetTextColor(hItem,GUI_YELLOW);
+			sprintf(buf,"上次运行时间：20%02d-%02d-%02d %02d:%02d:%02d   上次运行：%d分钟",	//stop_time.Minutes,
+					data.fan.Date.Year,data.fan.Date.Month,data.fan.Date.Date,
+					data.fan.Time.Hours,data.fan.Time.Minutes,data.fan.Time.Seconds,//stop_time.Seconds);
+					data.fan.Last_run_min);
+			TEXT_SetText(hItem, buf);			
 		}
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_0);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
@@ -246,14 +263,7 @@ static void update_fan(WM_MESSAGE * pMsg){
 		else
 			TEXT_SetText(hItem, "状态：停止");
 		
-		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_1);
-		TEXT_SetFont(hItem,&GUI_FontHZ16);
-		//TEXT_SetTextColor(hItem,GUI_YELLOW);
-		sprintf(buf,"上次运行时间：20%02d-%02d-%02d %02d:%02d:%02d   上次运行：%d分钟",	//stop_time.Minutes,
-					data.fan.Date.Year,data.fan.Date.Month,data.fan.Date.Date,
-					data.fan.Time.Hours,data.fan.Time.Minutes,data.fan.Time.Seconds,//stop_time.Seconds);
-					data.fan.Last_run_min);
-		TEXT_SetText(hItem, buf);
+
 }
 static void init_fan(WM_MESSAGE * pMsg){
 	WM_HWIN hItem;
