@@ -28,31 +28,47 @@ Project File Date:  05/16/2019
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'STemWin RGBLCD'
 compiling hzfontdemo.c...
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(321): warning:  #223-D: function "CreateSys_Set" declared implicitly
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(232): warning:  #177-D: variable "run_day"  was declared but never referenced
+  	char run_day,run_hour,run_min;
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(232): warning:  #177-D: variable "run_hour"  was declared but never referenced
+  	char run_day,run_hour,run_min;
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(232): warning:  #177-D: variable "run_min"  was declared but never referenced
+  	char run_day,run_hour,run_min;
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(260): warning:  #177-D: variable "buf"  was declared but never referenced
+  	char buf[100];
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(261): warning:  #177-D: variable "stop_time"  was declared but never referenced
+  	RTC_TimeTypeDef	stop_time;
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(262): warning:  #177-D: variable "stop_date"  was declared but never referenced
+  	RTC_DateTypeDef stop_date;
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(263): warning:  #177-D: variable "run_day"  was declared but never referenced
+  	char run_day,run_hour,run_min;
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(263): warning:  #177-D: variable "run_hour"  was declared but never referenced
+  	char run_day,run_hour,run_min;
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(263): warning:  #177-D: variable "run_min"  was declared but never referenced
+  	char run_day,run_hour,run_min;
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(433): warning:  #223-D: function "CreateSys_Set" declared implicitly
   							CreateSys_Set();
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(329): warning:  #223-D: function "CreateDevice_Config" declared implicitly
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(441): warning:  #223-D: function "CreateDevice_Config" declared implicitly
   							CreateDevice_Config();
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(345): warning:  #223-D: function "CreateHistorical_Data" declared implicitly
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(457): warning:  #223-D: function "CreateHistorical_Data" declared implicitly
   							CreateHistorical_Data();
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(353): warning:  #223-D: function "CreateFan_Record" declared implicitly
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(465): warning:  #223-D: function "CreateFan_Record" declared implicitly
   							CreateFan_Record();
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(361): warning:  #223-D: function "CreateHELP" declared implicitly
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(473): warning:  #223-D: function "CreateHELP" declared implicitly
   							CreateHELP();
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(227): warning:  #177-D: variable "hHeader"  was declared but never referenced
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(338): warning:  #177-D: variable "hHeader"  was declared but never referenced
   	WM_HWIN hHeader;
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(230): warning:  #177-D: variable "i"  was declared but never referenced
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(341): warning:  #177-D: variable "i"  was declared but never referenced
   	int 	i;
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(443): warning:  #550-D: variable "hTimer"  was set but never used
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(555): warning:  #550-D: variable "hTimer"  was set but never used
   	WM_HTIMER hTimer;
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(100): warning:  #177-D: variable "_ListViewTable"  was declared but never referenced
-  static const char *_ListViewTable[][5]={
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(417): warning:  #177-D: function "_cbWin"  was declared but never referenced
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c(529): warning:  #177-D: function "_cbWin"  was declared but never referenced
   static void _cbWin(WM_MESSAGE * pMsg){
-..\EMWIN_DEMO\HZDEMO\hzfontdemo.c: 10 warnings, 0 errors
+..\EMWIN_DEMO\HZDEMO\hzfontdemo.c: 18 warnings, 0 errors
 linking...
-Program Size: Code=214416 RO-data=78364 RW-data=2664 ZI-data=24486072  
+Program Size: Code=215016 RO-data=78392 RW-data=2664 ZI-data=24487672  
 FromELF: creating hex file...
-"..\OBJ\Tempate.axf" - 0 Error(s), 10 Warning(s).
+"..\OBJ\Tempate.axf" - 0 Error(s), 18 Warning(s).
 
 <h2>Software Packages used:</h2>
 

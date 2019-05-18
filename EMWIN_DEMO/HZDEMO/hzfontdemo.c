@@ -35,7 +35,7 @@
 #define ID_LISTVIEW_1 	(GUI_ID_USER + 170)
 
 
-#define MAX_TRANSMITTER 10
+#define MAX_TRANSMITTER 50
 
 WM_HWIN hDialog;
 WM_HWIN hDialog_help_t;
@@ -96,7 +96,7 @@ static char *transmitter[7][5];
 #endif
 
 
-/**/
+/*
 static const char *_ListViewTable[][5]={
 	{"1#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "CO2超标"},
 	{"2#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
@@ -105,7 +105,7 @@ static const char *_ListViewTable[][5]={
 	{"5#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
 	{"6#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
 	{"7#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "  "},
-};
+};*/
 
 	
 //对话框资源列表
@@ -118,9 +118,10 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { BUTTON_CreateIndirect, 		"历史数据", 		ID_BUTTON_3, 	400,	0, 	133, 	50, 	0, 0x0, 0 },
   { BUTTON_CreateIndirect, 		"风机记录", 		ID_BUTTON_4, 	533,	0, 	133, 	50, 	0, 0x0, 0 },
   { BUTTON_CreateIndirect, 		"使用帮助", 		ID_BUTTON_5, 	666, 	0, 	133, 	50, 	0, 0x0, 0 },
-  { BUTTON_CreateIndirect, 		"状态切换", 		ID_BUTTON_6, 	25, 	390, 	100, 	30, 	0, 0x0, 0 },
+  { BUTTON_CreateIndirect, 		"状态切换", 		ID_BUTTON_6, 	25, 	395, 	100, 	30, 	0, 0x0, 0 },
   { LISTVIEW_CreateIndirect, 	"Listview", 	ID_LISTVIEW_0, 	5, 	55, 	780, 	300, 	0, 0x0, 0 },
-  { TEXT_CreateIndirect, 		"状态", 		ID_TEXT_0, 		160, 	398, 	700, 	30, 	0, 0x64, 0 },
+  { TEXT_CreateIndirect, 		"状态", 		ID_TEXT_0, 		140, 	400, 	100, 	30, 	0, 0x64, 0 },
+  { TEXT_CreateIndirect, 		"运行记录", 		ID_TEXT_1, 		250, 	400, 	700, 	30, 	0, 0x64, 0 },
   { TEXT_CreateIndirect, 		"系统时间", 		ID_TEXT_4, 		280, 	440, 	500, 	35, 	0, 0x64, 0 },
   { TEXT_CreateIndirect, 		"时间测试", 		ID_TEXT_5, 		0, 	440, 	200, 	35, 	0, 0x64, 0 },
   { TEXT_CreateIndirect, 		"风机", 		ID_TEXT_6, 		20, 	360, 	30, 	30, 	0, 0x64, 0 },
@@ -138,11 +139,97 @@ void GetSysTime(){
 				data.sys_Time.Hours,data.sys_Time.Minutes,data.sys_Time.Seconds); 
 		
 }
+/*计算两个日期相差的天数*/
+unsigned long DayCompare(RTC_DateTypeDef *pastDay,RTC_TimeTypeDef *pastTime,
+												RTC_DateTypeDef *nowDay,RTC_TimeTypeDef *nowTime)
+{
+    unsigned long valueCompare=0;
+    unsigned char days[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+    if(nowDay->Year -pastDay->Year==0)//相同年份
+    { 
+        if(nowDay->Month-pastDay->Month==0)//相同月份
+        { 
+            valueCompare = nowDay->Date - pastDay->Date;
+            return valueCompare;
+        } 
+        else//不同月份
+        { 
+            for(unsigned char i=pastDay->Month-1+1;i<nowDay->Month-1;i++)
+            {
+                valueCompare = valueCompare + days[i];
+            }
+            valueCompare = valueCompare + nowDay->Date + days[pastDay->Month-1] - pastDay->Date;
+            if(pastDay->Month==2 && pastDay->Date!=29)//包含在2月份,并且不是29号
+            { 
+                if(((nowDay->Year+2000)%4==0)&&((nowDay->Year+2000)%100!=0)||((nowDay->Year+2000)%400==0))//闰年
+                { 
+                    ++valueCompare;
+                }
+            }
+            return valueCompare;
+        }
+    } 
+    else//不同年份
+    {           
+        //结算现年的天数
+        for(unsigned char i=0;i<(unsigned int)nowDay->Month-1;i++)
+        {
+            valueCompare = valueCompare + days[i];
+        }
+        valueCompare = valueCompare + nowDay->Date;
+        if(((nowDay->Year+2000)%4==0)&&((nowDay->Year+2000)%100!=0)||((nowDay->Year)+2000%400==0))
+        {
+            if(nowDay->Month>2)
+            {
+                ++valueCompare;
+            }
+        }   
+        //结算当年的天数
+        for(unsigned char i=pastDay->Month-1+1;i<12;i++)
+        {
+            valueCompare = valueCompare + days[i];
+        }
+        valueCompare = days[pastDay->Month-1] - pastDay->Date + valueCompare;
+        if(((pastDay->Year+2000)%4==0)&&((pastDay->Year+2000)%100!=0)||((pastDay->Year+2000)%400==0))
+        {
+            if(pastDay->Month<=2)
+            {
+                ++valueCompare;
+            }
+        }
+        //结算年数相隔的天数
+        if(nowDay->Year-pastDay->Year-1>0)
+        {
+            valueCompare = valueCompare + 365*(nowDay->Year-pastDay->Year-1);
+            for(unsigned char i=pastDay->Year+1;i<nowDay->Year;i++)
+            {
+                if(((i+2000)%4==0)&&((i+2000)%100!=0)||((i+2000)%400==0))
+                {
+                    ++valueCompare;
+                }
+            }
+        }
+        return valueCompare;
+    }
+}
+ 
+ 
+ 
+/*计算两个日期相差的分钟*/
+unsigned long minuteCompare(RTC_DateTypeDef *pastDay,RTC_TimeTypeDef *pastTime,
+												RTC_DateTypeDef *nowDay,RTC_TimeTypeDef *nowTime)
+{
+    unsigned long valueCompare;
+    valueCompare = DayCompare(pastDay,pastTime,nowDay,nowTime)*24 - pastTime->Hours + nowTime->Hours;
+    return (valueCompare*60-pastTime->Minutes+nowTime->Minutes);
+}
+
 static void update_fan(WM_MESSAGE * pMsg){
 	WM_HWIN hItem;
 	char buf[100];
 	RTC_TimeTypeDef	stop_time;
 	RTC_DateTypeDef stop_date;
+	char run_day,run_hour,run_min;
 		if(data.fan.state	)
 		{
 			HAL_RTC_GetTime(&RTC_Handler,&data.fan.Time,RTC_FORMAT_BIN); 
@@ -150,18 +237,38 @@ static void update_fan(WM_MESSAGE * pMsg){
 		}else{
 			HAL_RTC_GetTime(&RTC_Handler,&stop_time,RTC_FORMAT_BIN); 
 			HAL_RTC_GetDate(&RTC_Handler,&stop_date,RTC_FORMAT_BIN);
-			if(&stop_date == &data.fan.Date){
-				data.fan.Last_run_min= 10;//stop_time.Minutes - data.fan.Time.Minutes;
-			}
+			data.fan.Last_run_min= minuteCompare(&data.fan.Date, &data.fan.Time, &stop_date, &stop_time);
 		}
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_0);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
+		if(data.fan.state)
+			TEXT_SetText(hItem, "状态：运行");
+		else
+			TEXT_SetText(hItem, "状态：停止");
+		
+		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_1);
+		TEXT_SetFont(hItem,&GUI_FontHZ16);
 		//TEXT_SetTextColor(hItem,GUI_YELLOW);
-		sprintf(buf,"状态:%d   %d上次运行时间：20%02d-%02d-%02d %02d:%02d:%02d   上次运行：%d分钟",	data.fan.state,stop_time.Minutes,
+		sprintf(buf,"上次运行时间：20%02d-%02d-%02d %02d:%02d:%02d   上次运行：%d分钟",	//stop_time.Minutes,
 					data.fan.Date.Year,data.fan.Date.Month,data.fan.Date.Date,
-					data.fan.Time.Hours,data.fan.Time.Minutes,data.fan.Time.Seconds,
+					data.fan.Time.Hours,data.fan.Time.Minutes,data.fan.Time.Seconds,//stop_time.Seconds);
 					data.fan.Last_run_min);
 		TEXT_SetText(hItem, buf);
+}
+static void init_fan(WM_MESSAGE * pMsg){
+	WM_HWIN hItem;
+	
+		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_0);
+		TEXT_SetFont(hItem,&GUI_FontHZ16);
+		if(data.fan.state)
+			TEXT_SetText(hItem, "状态：运行");
+		else
+			TEXT_SetText(hItem, "状态：停止");
+		
+		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_1);
+		TEXT_SetFont(hItem,&GUI_FontHZ16);
+		//TEXT_SetTextColor(hItem,GUI_YELLOW);
+		TEXT_SetText(hItem, "上次运行时间：2000-00-00 00:00:00   上次运行:00分钟");
 }
 static void update_List(WM_MESSAGE * pMsg,int number){
 	int i,j;
@@ -173,7 +280,7 @@ static void update_List(WM_MESSAGE * pMsg,int number){
 				sprintf((char*)transmitter[i][j],"");
 		}else{
 			sprintf((char*)transmitter[i][0],"%d#变送器",data.transmitter[i+number].number);
-			sprintf((char*)transmitter[i][1],"O2:%d ",data.transmitter[i+number].O2);
+			sprintf((char*)transmitter[i][1],"O2:%d%",data.transmitter[i+number].O2);
 			sprintf((char*)transmitter[i][2],"CO2:%dPPM",data.transmitter[i+number].CO2);
 			sprintf((char*)transmitter[i][3],"20%02d-%02d-%02d %02d:%02d:%02d",
 					data.transmitter[i+number].Date.Year,data.transmitter[i+number].Date.Month,data.transmitter[i+number].Date.Date,
@@ -182,10 +289,10 @@ static void update_List(WM_MESSAGE * pMsg,int number){
 		}
 	}
 	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
-	for (i = 0; i < 7; i++) 
+	for (i = 0; i < 7; i++)
 		for (j = 0; j < GUI_COUNTOF(transmitter[i]); j++) {
 				LISTVIEW_SetItemText(hItem, j, i, transmitter[i][j]);
-		}	
+		}
 }
 static void init_List(WM_MESSAGE * pMsg){
 	WM_HWIN hItem;
@@ -272,7 +379,8 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 			init_List(pMsg);
  
 			//初始化TEXT
-			update_fan(pMsg);
+			//update_fan(pMsg);
+			init_fan(pMsg);
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_6);
 			TEXT_SetFont(hItem,&GUI_FontHZ16);
 			TEXT_SetText(hItem, "风机");					
