@@ -254,7 +254,7 @@ static void update_fan(WM_MESSAGE * pMsg){
 					data.fan.Date.Year,data.fan.Date.Month,data.fan.Date.Date,
 					data.fan.Time.Hours,data.fan.Time.Minutes,data.fan.Time.Seconds,//stop_time.Seconds);
 					data.fan.Last_run_min);
-			TEXT_SetText(hItem, buf);			
+			TEXT_SetText(hItem, buf);
 		}
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_0);
 		TEXT_SetFont(hItem,&GUI_FontHZ16);
