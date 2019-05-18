@@ -138,7 +138,7 @@ void GetSysTime(){
 				data.sys_Time.Hours,data.sys_Time.Minutes,data.sys_Time.Seconds); 
 		
 }
-void update_fan(WM_MESSAGE * pMsg){
+static void update_fan(WM_MESSAGE * pMsg){
 	WM_HWIN hItem;
 	char buf[100];
 	RTC_TimeTypeDef	stop_time;
@@ -163,28 +163,62 @@ void update_fan(WM_MESSAGE * pMsg){
 					data.fan.Last_run_min);
 		TEXT_SetText(hItem, buf);
 }
-void update_List(WM_MESSAGE * pMsg,int number){	
-	WM_HWIN hItem;
+static void update_List(WM_MESSAGE * pMsg,int number){
 	int i,j;
-	char buf[40];
-	for(i = 0; i<7;i++)
-		for(j = 0;j<5;j++)
-				transmitter[i][j]=(char *)mymalloc(SRAMIN,40);		//开辟40字节的内存区域
+	WM_HWIN hItem;
+	
 	for(i=0; i<7;i++){
-		sprintf((char*)transmitter[i][0],"%d#变送器",data.transmitter[i+number].number);
-		sprintf((char*)transmitter[i][1],"O2:%d ",data.transmitter[i+number].O2);
-		sprintf((char*)transmitter[i][2],"CO2:%dPPM",data.transmitter[i+number].CO2);
-		sprintf((char*)transmitter[i][3],"20%02d-%02d-%02d %02d:%02d:%02d",
+		if((i+number) > (MAX_TRANSMITTER-1)){
+			for(j = 0; j<5; j++)
+				sprintf((char*)transmitter[i][j],"");
+		}else{
+			sprintf((char*)transmitter[i][0],"%d#变送器",data.transmitter[i+number].number);
+			sprintf((char*)transmitter[i][1],"O2:%d ",data.transmitter[i+number].O2);
+			sprintf((char*)transmitter[i][2],"CO2:%dPPM",data.transmitter[i+number].CO2);
+			sprintf((char*)transmitter[i][3],"20%02d-%02d-%02d %02d:%02d:%02d",
 					data.transmitter[i+number].Date.Year,data.transmitter[i+number].Date.Month,data.transmitter[i+number].Date.Date,
 					data.transmitter[i+number].Time.Hours,data.transmitter[i+number].Time.Minutes,data.transmitter[i+number].Time.Seconds);		
-		sprintf((char*)transmitter[i][4],"%d报警",data.transmitter[i+number].alarm);
-	}	
+			sprintf((char*)transmitter[i][4],"%d报警",data.transmitter[i+number].alarm);
+		}
+	}
 	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+	for (i = 0; i < 7; i++) 
+		for (j = 0; j < GUI_COUNTOF(transmitter[i]); j++) {
+				LISTVIEW_SetItemText(hItem, j, i, transmitter[i][j]);
+		}	
+}
+static void init_List(WM_MESSAGE * pMsg){
+	WM_HWIN hItem;
+	WM_HWIN hHeader;
+	int i,j;
+	
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+	hHeader = LISTVIEW_GetHeader(hItem);
+	LISTVIEW_SetHeaderHeight(hItem, 100);
+	HEADER_SetFont(hHeader,&GUI_FontHZ24);
+	LISTVIEW_AddColumn(hItem, 100, "名称", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 140, "氧气", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 140, "二氧化碳", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 200, "时间", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 160, "报警信息", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_SetGridVis(hItem, 1);
+	LISTVIEW_SetAutoScrollH(hItem, 1);
+	LISTVIEW_SetAutoScrollV(hItem, 1);
+	LISTVIEW_SetRowHeight(hItem, 30);
+	LISTVIEW_SetFont(hItem,&GUI_FontHZ16);
+	LISTVIEW_SetBkColor(hItem,LISTVIEW_CI_UNSEL,GUI_ORANGE);
+	
+	for(i = 0; i<7;i++)
+		for(j = 0;j<5;j++){
+				transmitter[i][j]=(char *)mymalloc(SRAMIN,40);		//开辟40字节的内存区域
+	}
 	for(i=0;i<GUI_COUNTOF(transmitter);i++)
 	{
-		LISTVIEW_SetUserDataRow(hItem,i,transmitter[i]);
-	}
+		LISTVIEW_AddRow(hItem,transmitter[i]);
+	}	
+	update_List(pMsg,0);
 }
+
 	
 //对话框窗口回调函数
 static void _cbDialog(WM_MESSAGE * pMsg) 
@@ -194,6 +228,7 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 	int     NCode;
 	int     Id;
 	int 	i;
+	static int line=0;
 	switch (pMsg->MsgId) 
 	{
 		case WM_INIT_DIALOG:
@@ -231,30 +266,10 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 			if(data.fan.state)
 				BUTTON_SetText(hItem,"停止");
 			else
-				BUTTON_SetText(hItem,"开始");
-		
+				BUTTON_SetText(hItem,"开始");		
   
 			//初始化LISTVIEW
-			hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
-			hHeader = LISTVIEW_GetHeader(hItem);
-			LISTVIEW_SetHeaderHeight(hItem, 100);
-			HEADER_SetFont(hHeader,&GUI_FontHZ24);
-			LISTVIEW_AddColumn(hItem, 100, "名称", GUI_TA_HCENTER | GUI_TA_VCENTER);
-			LISTVIEW_AddColumn(hItem, 140, "氧气", GUI_TA_HCENTER | GUI_TA_VCENTER);
-			LISTVIEW_AddColumn(hItem, 140, "二氧化碳", GUI_TA_HCENTER | GUI_TA_VCENTER);
-			LISTVIEW_AddColumn(hItem, 200, "时间", GUI_TA_HCENTER | GUI_TA_VCENTER);
-			LISTVIEW_AddColumn(hItem, 160, "报警信息", GUI_TA_HCENTER | GUI_TA_VCENTER);
-			LISTVIEW_SetGridVis(hItem, 1);
-			LISTVIEW_SetAutoScrollH(hItem, 1);
-			LISTVIEW_SetAutoScrollV(hItem, 1);
-			LISTVIEW_SetRowHeight(hItem, 30);
-			LISTVIEW_SetFont(hItem,&GUI_FontHZ16);
-			LISTVIEW_SetBkColor(hItem,LISTVIEW_CI_UNSEL,GUI_ORANGE);
-			for(i=0;i<GUI_COUNTOF(_ListViewTable);i++)
-			{
-				LISTVIEW_AddRow(hItem,_ListViewTable[i]);
-			}
-			update_List(pMsg,0);
+			init_List(pMsg);
  
 			//初始化TEXT
 			update_fan(pMsg);
@@ -266,7 +281,25 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 			Id = WM_GetId(pMsg->hWinSrc);
 			NCode = pMsg->Data.v;
 			switch(Id) 
-			{
+			{    
+				case ID_LISTVIEW_0: // Notifications sent by 'Listview'
+					switch(NCode) {
+						case WM_NOTIFICATION_CLICKED:
+						// USER START (Optionally insert code for reacting on notification message)
+						// USER END
+						break;
+						case WM_NOTIFICATION_RELEASED:
+							// USER START (Optionally insert code for reacting on notification message)
+							// USER END
+							break;
+						case WM_NOTIFICATION_SEL_CHANGED:
+							// USER START (Optionally insert code for reacting on notification message)
+						// USER END
+						break;
+					// USER START (Optionally insert additional code for further notification handling)
+					// USER END
+					}
+				break;
 				case ID_MULTIEDIT_0: 
 					switch(NCode) 
 					{
@@ -355,9 +388,10 @@ static void _cbDialog(WM_MESSAGE * pMsg)
 			TEXT_SetFont(hItem,&GUI_FontHZ24);
 			//TEXT_SetTextColor(hItem,GUI_YELLOW);
 			TEXT_SetText(hItem, timebuf);		
-			for(i=0;i<MAX_TRANSMITTER;i+=8){
-				update_List(pMsg,i);
-			}
+			update_List(pMsg,line);
+			line = line + 8;
+			if(line > MAX_TRANSMITTER-1)
+				line =0;
 			break;
 		default:
 			WM_DefaultProc(pMsg);
