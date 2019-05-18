@@ -2,6 +2,40 @@
 #define _HZFONTDEMO_H
 #include "sys.h"
 #if 1
+
+#define MAX_TRANSMITTER 50
+
+typedef struct{
+	_Bool	state;	
+	RTC_TimeTypeDef	start_time;
+	RTC_DateTypeDef start_date;
+	RTC_TimeTypeDef	end_time;
+	RTC_DateTypeDef end_date;
+	int 	Last_run_min;	
+}FAN;
+
+enum	trasmitter_alarm{
+	NO,
+	O2,
+	CO2,
+	O2_CO2,
+};
+typedef	struct{
+	int number;
+	int O2;
+	int CO2;	
+	int	alarm;
+	RTC_TimeTypeDef	Time;
+	RTC_DateTypeDef Date;
+	//enum  trasmitter_alarm alarm;//0=无，1=O2报警，2=CO2报警，3=O2，CO2报警
+}TRANSMITTER;
+typedef struct{
+	FAN fan;
+	TRANSMITTER	transmitter[MAX_TRANSMITTER];	
+	RTC_TimeTypeDef	sys_Time;
+	RTC_DateTypeDef sys_Date;
+}REAL_DATA;
+
 typedef struct{
 	char	*	Date;	
 	char 	*	Time;

@@ -35,41 +35,13 @@
 #define ID_LISTVIEW_1 	(GUI_ID_USER + 170)
 
 
-#define MAX_TRANSMITTER 50
 
 WM_HWIN hDialog;
 WM_HWIN hDialog_help_t;
 GUI_HWIN	hwin_data;
 
 
-typedef struct{
-	_Bool	state;	
-	RTC_TimeTypeDef	Time;
-	RTC_DateTypeDef Date;
-	int 	Last_run_min;	
-}FAN;
 
-enum	trasmitter_alarm{
-	NO,
-	O2,
-	CO2,
-	O2_CO2,
-};
-typedef	struct{
-	int number;
-	int O2;
-	int CO2;	
-	int	alarm;
-	RTC_TimeTypeDef	Time;
-	RTC_DateTypeDef Date;
-	//enum  trasmitter_alarm alarm;//0=无，1=O2报警，2=CO2报警，3=O2，CO2报警
-}TRANSMITTER;
-typedef struct{
-	FAN fan;
-	TRANSMITTER	transmitter[MAX_TRANSMITTER];	
-	RTC_TimeTypeDef	sys_Time;
-	RTC_DateTypeDef sys_Date;
-}REAL_DATA;
 static REAL_DATA data;
 
 typedef struct{
@@ -227,32 +199,30 @@ unsigned long minuteCompare(RTC_DateTypeDef *pastDay,RTC_TimeTypeDef *pastTime,
 static void update_fan(WM_MESSAGE * pMsg){
 	WM_HWIN hItem;
 	char buf[100];
-	RTC_TimeTypeDef	stop_time;
-	RTC_DateTypeDef stop_date;
 	char run_day,run_hour,run_min;
 		if(data.fan.state	)
 		{
-			HAL_RTC_GetTime(&RTC_Handler,&data.fan.Time,RTC_FORMAT_BIN); 
-			HAL_RTC_GetDate(&RTC_Handler,&data.fan.Date,RTC_FORMAT_BIN);
+			HAL_RTC_GetTime(&RTC_Handler,&data.fan.start_time, RTC_FORMAT_BIN); 
+			HAL_RTC_GetDate(&RTC_Handler,&data.fan.start_date, RTC_FORMAT_BIN);
 			
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_1);
 			TEXT_SetFont(hItem,&GUI_FontHZ16);
 			//TEXT_SetTextColor(hItem,GUI_YELLOW);
 			sprintf(buf,"上次运行时间：20%02d-%02d-%02d %02d:%02d:%02d   上次运行：?分钟",	//stop_time.Minutes,
-					data.fan.Date.Year,data.fan.Date.Month,data.fan.Date.Date,
-					data.fan.Time.Hours,data.fan.Time.Minutes,data.fan.Time.Seconds,//stop_time.Seconds);
+					data.fan.start_date.Year,data.fan.start_date.Month,data.fan.start_date.Date,
+					data.fan.start_time.Hours,data.fan.start_time.Minutes,data.fan.start_time.Seconds,//stop_time.Seconds);
 					data.fan.Last_run_min);
 			TEXT_SetText(hItem, buf);
 		}else{
-			HAL_RTC_GetTime(&RTC_Handler,&stop_time,RTC_FORMAT_BIN); 
-			HAL_RTC_GetDate(&RTC_Handler,&stop_date,RTC_FORMAT_BIN);
-			data.fan.Last_run_min= minuteCompare(&data.fan.Date, &data.fan.Time, &stop_date, &stop_time);
+			HAL_RTC_GetTime(&RTC_Handler,&data.fan.end_time,RTC_FORMAT_BIN); 
+			HAL_RTC_GetDate(&RTC_Handler,&data.fan.end_date,RTC_FORMAT_BIN);
+			data.fan.Last_run_min= minuteCompare(&data.fan.start_date, &data.fan.start_time, &data.fan.end_date, &data.fan.end_time);
 			hItem = WM_GetDialogItem(pMsg->hWin, ID_TEXT_1);
 			TEXT_SetFont(hItem,&GUI_FontHZ16);
 			//TEXT_SetTextColor(hItem,GUI_YELLOW);
 			sprintf(buf,"上次运行时间：20%02d-%02d-%02d %02d:%02d:%02d   上次运行：%d分钟",	//stop_time.Minutes,
-					data.fan.Date.Year,data.fan.Date.Month,data.fan.Date.Date,
-					data.fan.Time.Hours,data.fan.Time.Minutes,data.fan.Time.Seconds,//stop_time.Seconds);
+					data.fan.start_date.Year,data.fan.start_date.Month,data.fan.start_date.Date,
+					data.fan.start_time.Hours,data.fan.start_time.Minutes,data.fan.start_time.Seconds,//stop_time.Seconds);
 					data.fan.Last_run_min);
 			TEXT_SetText(hItem, buf);
 		}

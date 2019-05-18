@@ -522,7 +522,39 @@ WM_HWIN CreateHistorical_Data(void) {
 
 // USER START (Optionally insert additional public code)
 
+/*
+void save_record(FAN * fan)
+{	
+	FIL *f_rec;
+	u8 res;	
+	char pname ="0:fan_record.txt";
+	char buf[100];
+	
+  f_rec=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域 
+	res=f_open(f_rec,(const TCHAR*)pname, FA_READ | FA_WRITE); 
+	if(res)			//文件创建失败
+	{ 		
+		res=f_open(f_rec,(const TCHAR*)pname, FA_CREATE_ALWAYS | FA_WRITE); 
+		sprint(buf,"风扇运行日期、");
+		f_close(f_rec);
+		res=f_open(f_rec,(const TCHAR*)pname, FA_READ | FA_WRITE); 
+	}else	{
+		res=f_lseek(f_rec,f_size(f_rec));
+		sprintf(buf,"20%02d-%02d-%02d\t%02d:%02d:%02d\t%d\r\n",	//stop_time.Minutes,
+					data.fan.Date.Year,data.fan.Date.Month,data.fan.Date.Date,
+					data.fan.Time.Hours,data.fan.Time.Minutes,data.fan.Time.Seconds,//stop_time.Seconds);
+					data.fan.Last_run_min);
+		
+		sprintf((char*)pos,"OK,f_lseek=%05d",f_rec->obj.objsize);
+		emwin_print(pos);
+		read_once_record();
+		write_once_record();
+		f_close(f_rec);
+	}
+	myfree(SRAMIN,f_rec);		//释放内存
+}
 
+*/
 u32 emwin_print(char * buffer)
 {
     WM_HWIN hItem;
