@@ -58,6 +58,17 @@
 // USER START (Optionally insert additional defines)
 //extern WM_HWIN hDialog;
 void read_data(void);
+typedef struct{
+	
+}RECORD;
+
+typedef enum _ELineType_ {
+  LINE_IDLE,		//未处理行
+	LINE_ERROR,		//错误行
+	LINE_EMPTY,		//空白行或注释行
+	LINE_SECTION,	//节定义行
+	LINE_VALUE		//值定义行
+} ELineType ;
 // USER END
 
 /*********************************************************************
@@ -68,7 +79,7 @@ void read_data(void);
 */
 
 // USER START (Optionally insert additional static data)
-static const char *_ListViewTable1[][5]={
+/*static const char *_ListViewTable1[][5]={
 	{"1#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "CO2超标"},
 	{"2#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
 	{"3#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "O2超标"},
@@ -76,14 +87,21 @@ static const char *_ListViewTable1[][5]={
 	{"5#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
 	{"6#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
 	{"7#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "  "},
-};
+};*/
+
+
 static const char *tempdata[2] = {"1#变送器","2#变送器"};
 static const char tempdata2[] = "1#变送器";
 
+static const char *pname ="0:fan/fan_record.xls";
+
+static	char *record_buf;
+static char *record_list[7][3];
+static int record_line;
 REAL_TIME_DATA real_data;
 #define	ROW_MAX	7
-
 FIL* f_rec=0;			//文件
+
 // USER END
 
 /*********************************************************************
@@ -119,8 +137,192 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 *
 **********************************************************************
 */
-
 // USER START (Optionally insert additional static code)
+/*
+static int GetLinen(char *buf, int buflen, char *content, char **rem1, char **rem2, char **nextline)
+ { 
+	char *cont1, *cont2;
+	int cntblank, cntCR, cntLF;		//连续空格、换行符数量
+	char isQuot1, isQuot2;			//引号
+	int i;
+	char *p;
+ 
+	//首先断行断注释，支持如下换行符：r、n、rn、nr 
+	cntblank = 0; 
+	cntCR = cntLF = 0; 
+	isQuot1 = isQuot2 = 0; 
+	cont1 = *rem1 = 0; 
+	content[0] = 0; 
+	for (i = 0, p = buf; i < buflen; i ++, p ++) 
+	{
+		if (*p == 0) { 
+			p ++; 
+			break; 
+		}
+		//2个CR或LF，行结束 
+		if (cntCR == 2 || cntLF == 2) {
+			p --;	//回溯1 
+			break; 
+		} 
+		//CR或LF各1个之后任意字符，行结束
+ 		if (cntCR + cntLF >= 2) {
+ 			break;
+ 		}
+ 		//CR或LF之后出现其它字符，行结束
+ 		if ((cntCR || cntLF) && *p != 'r' && *p != 'n')
+ 			break;
+ 		switch (*p) {
+			case '\r':
+				cntCR ++;
+				break;
+			case '\n':
+				cntLF ++;
+				break;
+			//case ''':
+			case ' ':
+				if (!isQuot2)
+ 				isQuot1 = 1 - isQuot1;
+				break;
+			case '"':
+ 			if (!isQuot1) 
+				isQuot2 = 1 - isQuot2; 
+			break; 
+		case ';':
+ 		case '#':
+ 			if (isQuot1 || isQuot2)
+ 				break;
+ 			if (*rem1 == NULL)
+ 				*rem1 = p - cntblank;
+			break;
+		default: 
+			if (ASCII_IS_SPACE((unsigned char)*p)) {
+ 				cntblank ++;
+ 			} else {
+ 				cntblank = 0;
+ 				if ((*rem1 == NULL) && (cont1 == NULL))
+ 					cont1 = p;
+ 			} 
+			break;
+ 		}
+ 	}
+  
+	*nextline = p;
+ 	*rem2 = p - cntCR - cntLF;
+ 	if (*rem1 == NULL)
+ 		*rem1 = *rem2;
+	cont2 = *rem1 - cntblank;
+ 	if (cont1 == NULL) {
+ 		cont1 = cont2;
+ 		return LINE_EMPTY;
+ 	}
+ 	i = (int)(cont2 - cont1);
+ 	if (i >= SIZE_LINE) 
+		return LINE_ERROR;
+  
+	//内容头尾已无空格
+ 	mymemcpy(content, cont1, i);
+ 	content[i] = 0;
+ 	if (content[0] == '[' && content[i - 1] == ']')
+ 		return LINE_SECTION;
+ 	if (Str_Char(content, '=') != NULL) 
+		return LINE_VALUE; 
+	return LINE_ERROR; 
+}
+ */
+
+static int getline(char *buf, int buflen, char *column[7][3],int row)
+{
+	char *cont1, *cont2;
+	int cntblank, cntCR, cntLF;		//连续空格、换行符数量
+	char isQuot1, isQuot2;			//引号
+	int i;
+	char *p;
+	int line;
+	for (i = 0, p = buf; i < buflen; i ++, p ++) 
+	{
+		if (*p == 0) {
+			p ++;
+			break; 
+		}		
+		switch (*p) {
+			case '\r':
+				column = (p-i);
+				column++;
+				line++;
+				break;
+			case '\t':
+				column[][]=p-i
+				row++;
+			break;
+			
+			default:
+				break;
+		}
+			
+		
+	}
+	
+}
+ static void update_List(WM_MESSAGE * pMsg,int number){
+	int i,j;
+	WM_HWIN hItem;
+	char *column[4];
+	for(i=0; i<7;i++){
+		if((i+number) > (record_line-1)){
+			for(j = 0; j<5; j++)
+				sprintf((char*)record_list[i][j],"");
+		}else{
+			
+			
+			
+			/*
+			sprintf((char*)record_list[i][0],"%d#变送器",data.transmitter[i+number].number);
+			sprintf((char*)record_list[i][1],"O2:%d%",data.transmitter[i+number].O2);
+			sprintf((char*)record_list[i][2],"CO2:%dPPM",data.transmitter[i+number].CO2);
+			sprintf((char*)record_list[i][3],"20%02d-%02d-%02d %02d:%02d:%02d",
+					data.transmitter[i+number].Date.Year,data.transmitter[i+number].Date.Month,data.transmitter[i+number].Date.Date,
+					data.transmitter[i+number].Time.Hours,data.transmitter[i+number].Time.Minutes,data.transmitter[i+number].Time.Seconds);		
+			sprintf((char*)transmitter[i][4],"%d报警",data.transmitter[i+number].alarm);
+			*/
+		}
+	}
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+	for (i = 0; i < 7; i++)
+		for (j = 0; j < GUI_COUNTOF(record_list[i]); j++) {
+				LISTVIEW_SetItemText(hItem, j, i, record_list[i][j]);
+		}
+}
+static void init_List(WM_MESSAGE * pMsg){
+	WM_HWIN hItem;
+	WM_HWIN hHeader;
+	int i,j;
+	
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+	hHeader = LISTVIEW_GetHeader(hItem);
+	LISTVIEW_SetHeaderHeight(hItem, 100);
+	HEADER_SetFont(hHeader,&GUI_FontHZ24);
+	LISTVIEW_AddColumn(hItem, 100, "序号", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 200, "开始时间", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 200, "结束时间", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 100, "运行时间", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_SetGridVis(hItem, 1);
+	LISTVIEW_SetAutoScrollH(hItem, 1);
+	LISTVIEW_SetAutoScrollV(hItem, 1);
+	LISTVIEW_SetRowHeight(hItem, 40);
+	LISTVIEW_SetFont(hItem,&GUI_FontHZ16);
+	LISTVIEW_SetBkColor(hItem,LISTVIEW_CI_UNSEL,GUI_ORANGE);
+	
+	for(i = 0; i<7;i++)
+		for(j = 0;j<3;j++){
+				record_list[i][j]=(char *)mymalloc(SRAMIN,40);		//开辟40字节的内存区域
+	}
+	for(i=0;i<GUI_COUNTOF(record_list);i++)
+	{
+		LISTVIEW_AddRow(hItem,record_list[i]);
+	}	
+	update_List(pMsg,0);
+}
+
 // USER END
 
 /*********************************************************************
@@ -464,6 +666,10 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+				for(int i = 0; i<7;i++)
+					for(int j = 0;j<3;j++){
+						myfree(SRAMIN,record_list[i][j]);		//释放内存
+				}
 				GUI_EndDialog(hItem, 0 );
         // USER END
         break;
@@ -522,12 +728,10 @@ WM_HWIN CreateHistorical_Data(void) {
 
 // USER START (Optionally insert additional public code)
 
-
 void save_record(FAN * fan)
 {	
 	FIL *f_rec;
 	u8 res;	
-	char *pname ="0:fan/fan_record.xls";
 	char buf[100];
 	
   f_rec=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域 
@@ -552,6 +756,22 @@ void save_record(FAN * fan)
 		f_close(f_rec);
 	
 	myfree(SRAMIN,f_rec);		//释放内存
+}
+
+void read_record()
+{
+	FIL *f_rec;
+	u8 res;	
+	int len;
+	
+  f_rec=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域 
+	res=f_open(f_rec,(const TCHAR*)pname, FA_READ | FA_WRITE); 
+	if(res)
+		return;	
+  record_buf=(char *)mymalloc(SRAMIN,f_size(f_rec));		//开辟FIL字节的内存区域 	
+	len = f_read(f_rec,record_buf, f_size(f_rec), &br);
+	record_line =;
+	
 }
 
 
