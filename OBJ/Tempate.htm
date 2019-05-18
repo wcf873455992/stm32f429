@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\Tempate.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Tempate.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat May 18 11:12:32 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat May 18 11:16:12 2019
 <BR><P>
 <H3>Maximum Stack Usage =       2432 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1108,9 +1108,9 @@ Global Symbols
 <LI><a href="#[789]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_DROPDOWN
 <LI><a href="#[791]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_once_record
 <LI><a href="#[72e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_data
+<LI><a href="#[45c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSysTime
 <LI><a href="#[72b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_fan
 <LI><a href="#[72c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_List
-<LI><a href="#[45c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSysTime
 </UL>
 
 <P><STRONG><a name="[1fe]"></a>_printf_pre_padding</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, _printf_pad.o(.text))
@@ -1818,8 +1818,8 @@ Global Symbols
 <BR>[Address Reference Count : 6]<UL><LI> historical_datadlg.o(.constdata)
 <LI> device_configdlg.o(.constdata)
 <LI> fan_recorddlg.o(.constdata)
-<LI> helpdlg.o(.constdata)
 <LI> hzfontdemo.o(.constdata)
+<LI> helpdlg.o(.constdata)
 <LI> sys_setdlg.o(.constdata)
 </UL>
 <P><STRONG><a name="[24c]"></a>BUTTON_CreateUser</STRONG> (Thumb, 116 bytes, Stack size 56 bytes, button.o(i.BUTTON_CreateUser))
@@ -2882,8 +2882,8 @@ Global Symbols
 <BR>[Address Reference Count : 6]<UL><LI> historical_datadlg.o(.constdata)
 <LI> device_configdlg.o(.constdata)
 <LI> fan_recorddlg.o(.constdata)
-<LI> helpdlg.o(.constdata)
 <LI> hzfontdemo.o(.constdata)
+<LI> helpdlg.o(.constdata)
 <LI> sys_setdlg.o(.constdata)
 </UL>
 <P><STRONG><a name="[2f6]"></a>FRAMEWIN_CreateUser</STRONG> (Thumb, 230 bytes, Stack size 80 bytes, framewin.o(i.FRAMEWIN_CreateUser))
@@ -8271,8 +8271,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[487]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_Bcd2ToByte
 </UL>
 <BR>[Called By]<UL><LI><a href="#[791]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_once_record
-<LI><a href="#[72b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_fan
 <LI><a href="#[45c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSysTime
+<LI><a href="#[72b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_fan
 </UL>
 
 <P><STRONG><a name="[45d]"></a>HAL_RTC_GetTime</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, stm32f4xx_hal_rtc.o(i.HAL_RTC_GetTime))
@@ -8281,8 +8281,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[487]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_Bcd2ToByte
 </UL>
 <BR>[Called By]<UL><LI><a href="#[791]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_once_record
-<LI><a href="#[72b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_fan
 <LI><a href="#[45c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSysTime
+<LI><a href="#[72b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_fan
 </UL>
 
 <P><STRONG><a name="[488]"></a>HAL_RTC_Init</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, stm32f4xx_hal_rtc.o(i.HAL_RTC_Init))
@@ -12624,9 +12624,9 @@ Global Symbols
 <BR>[Address Reference Count : 7]<UL><LI> historical_datadlg.o(.constdata)
 <LI> device_configdlg.o(.constdata)
 <LI> fan_recorddlg.o(.constdata)
-<LI> helpdlg.o(.constdata)
 <LI> hzfontupdata.o(.constdata)
 <LI> hzfontdemo.o(.constdata)
+<LI> helpdlg.o(.constdata)
 <LI> sys_setdlg.o(.constdata)
 </UL>
 <P><STRONG><a name="[612]"></a>TEXT_CreateUser</STRONG> (Thumb, 152 bytes, Stack size 72 bytes, text.o(i.TEXT_CreateUser))
@@ -15735,28 +15735,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[787]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iniSetInt
 </UL>
 
-<P><STRONG><a name="[72a]"></a>init_List</STRONG> (Thumb, 224 bytes, Stack size 32 bytes, hzfontdemo.o(i.init_List))
-<BR><BR>[Stack]<UL><LI>Max Depth = 656 + Unknown Stack Size
-<LI>Call Chain = init_List &rArr; LISTVIEW_AddRow &rArr; LISTVIEW__UpdateScrollParas &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM_BringToBottom &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[323]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mymalloc
-<LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
-<LI><a href="#[568]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetRowHeight
-<LI><a href="#[566]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetHeaderHeight
-<LI><a href="#[565]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetGridVis
-<LI><a href="#[564]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetFont
-<LI><a href="#[563]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetBkColor
-<LI><a href="#[562]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetAutoScrollV
-<LI><a href="#[560]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetAutoScrollH
-<LI><a href="#[559]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_GetHeader
-<LI><a href="#[550]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_AddRow
-<LI><a href="#[54b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_AddColumn
-<LI><a href="#[4da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEADER_SetFont
-<LI><a href="#[72c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_List
-</UL>
-<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
-</UL>
-
 <P><STRONG><a name="[765]"></a>jpegdisplay_demo</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, jpegdisplay.o(i.jpegdisplay_demo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1760 + Unknown Stack Size
 <LI>Call Chain = jpegdisplay_demo &rArr; displyjpeg &rArr; GUI_JPEG_DrawScaled &rArr; GUI_JPEG_DrawScaledEx &rArr; _Draw &rArr; _DrawScanlinesScaledBanding &rArr; GUI_JPEG__DecodeProgressiveBanding &rArr; _InitScan &rArr; _CheckHuffmanTables &rArr; _CreateHuffmanTable &rArr; GUI__memset
@@ -15969,32 +15947,6 @@ Global Symbols
 <LI><a href="#[77e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fupd_prog
 </UL>
 <BR>[Called By]<UL><LI><a href="#[78d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_font
-</UL>
-
-<P><STRONG><a name="[72c]"></a>update_List</STRONG> (Thumb, 196 bytes, Stack size 48 bytes, hzfontdemo.o(i.update_List))
-<BR><BR>[Stack]<UL><LI>Max Depth = 416 + Unknown Stack Size
-<LI>Call Chain = update_List &rArr; LISTVIEW_SetItemText &rArr; LISTVIEW__InvalidateRow &rArr; WM_GetInsideRectExScrollbar &rArr; WM_GetDialogItem &rArr; _GetDialogItem &rArr;  _GetDialogItem (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
-<LI><a href="#[567]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetItemText
-<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
-</UL>
-<BR>[Called By]<UL><LI><a href="#[72a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_List
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
-</UL>
-
-<P><STRONG><a name="[72b]"></a>update_fan</STRONG> (Thumb, 138 bytes, Stack size 168 bytes, hzfontdemo.o(i.update_fan))
-<BR><BR>[Stack]<UL><LI>Max Depth = 464 + Unknown Stack Size
-<LI>Call Chain = update_fan &rArr; TEXT_SetText &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
-</UL>
-<BR>[Calls]<UL><LI><a href="#[45d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_GetTime
-<LI><a href="#[45e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_GetDate
-<LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
-<LI><a href="#[2ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetText
-<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetFont
-<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
-</UL>
-<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
 </UL>
 
 <P><STRONG><a name="[78d]"></a>update_font</STRONG> (Thumb, 402 bytes, Stack size 64 bytes, fontupd.o(i.update_font))
@@ -17475,13 +17427,61 @@ Local Symbols
 <LI><a href="#[298]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CreateDevice_Config
 <LI><a href="#[24d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_SetText
 <LI><a href="#[260]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_SetFont
+<LI><a href="#[45c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSysTime
 <LI><a href="#[72b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_fan
 <LI><a href="#[72c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_List
 <LI><a href="#[72a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_List
-<LI><a href="#[45c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSysTime
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> hzfontdemo.o(i.HZFontDemo)
 </UL>
+<P><STRONG><a name="[72a]"></a>init_List</STRONG> (Thumb, 224 bytes, Stack size 32 bytes, hzfontdemo.o(i.init_List))
+<BR><BR>[Stack]<UL><LI>Max Depth = 656 + Unknown Stack Size
+<LI>Call Chain = init_List &rArr; LISTVIEW_AddRow &rArr; LISTVIEW__UpdateScrollParas &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM_BringToBottom &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[323]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mymalloc
+<LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
+<LI><a href="#[568]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetRowHeight
+<LI><a href="#[566]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetHeaderHeight
+<LI><a href="#[565]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetGridVis
+<LI><a href="#[564]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetFont
+<LI><a href="#[563]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetBkColor
+<LI><a href="#[562]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetAutoScrollV
+<LI><a href="#[560]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetAutoScrollH
+<LI><a href="#[559]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_GetHeader
+<LI><a href="#[550]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_AddRow
+<LI><a href="#[54b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_AddColumn
+<LI><a href="#[4da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEADER_SetFont
+<LI><a href="#[72c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_List
+</UL>
+<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
+</UL>
+
+<P><STRONG><a name="[72c]"></a>update_List</STRONG> (Thumb, 196 bytes, Stack size 48 bytes, hzfontdemo.o(i.update_List))
+<BR><BR>[Stack]<UL><LI>Max Depth = 416 + Unknown Stack Size
+<LI>Call Chain = update_List &rArr; LISTVIEW_SetItemText &rArr; LISTVIEW__InvalidateRow &rArr; WM_GetInsideRectExScrollbar &rArr; WM_GetDialogItem &rArr; _GetDialogItem &rArr;  _GetDialogItem (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
+<LI><a href="#[567]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_SetItemText
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[72a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_List
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
+</UL>
+
+<P><STRONG><a name="[72b]"></a>update_fan</STRONG> (Thumb, 138 bytes, Stack size 168 bytes, hzfontdemo.o(i.update_fan))
+<BR><BR>[Stack]<UL><LI>Max Depth = 464 + Unknown Stack Size
+<LI>Call Chain = update_fan &rArr; TEXT_SetText &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
+</UL>
+<BR>[Calls]<UL><LI><a href="#[45d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_GetTime
+<LI><a href="#[45e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_GetDate
+<LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
+<LI><a href="#[2ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetText
+<LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetFont
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
+</UL>
+
 <P><STRONG><a name="[b5]"></a>_cbDialog</STRONG> (Thumb, 538 bytes, Stack size 16 bytes, device_configdlg.o(i._cbDialog))
 <BR><BR>[Stack]<UL><LI>Max Depth = 984 + Unknown Stack Size
 <LI>Call Chain = _cbDialog &rArr; init &rArr; DROPDOWN_SetFont &rArr; DROPDOWN_Expand &rArr; LISTBOX_CreateAsChild &rArr; LISTBOX_CreateEx &rArr; LISTBOX_CreateUser &rArr; LISTBOX_SetText &rArr; LISTBOX_AddString &rArr; LISTBOX_UpdateScrollers &rArr; _ManageAutoScroll &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM_BringToBottom &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
