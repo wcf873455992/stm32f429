@@ -19,6 +19,12 @@
 */
 
 // USER START (Optionally insert additional includes)
+#include "hzfontdemo.h"
+#include "EmWinHZFont.h"
+#include "ff.h"
+#include "exfuns.h"
+#include "malloc.h"
+#include "rtc.h"
 // USER END
 
 #include "DIALOG.h"
@@ -56,6 +62,8 @@ extern WM_HWIN hDialog;
 */
 
 // USER START (Optionally insert additional static data)
+
+static const	char *pname_fan ="0:fan/fan_record.xls";
 // USER END
 
 /*********************************************************************
@@ -88,6 +96,38 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 */
 
 // USER START (Optionally insert additional static code)
+
+void save_fan_record(FAN * fan)
+{	
+	FIL *f_rec;
+	u8 res;	
+	char buf[100];
+	
+  f_rec=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域 
+	res=f_open(f_rec,(const TCHAR*)pname_fan, FA_READ | FA_WRITE); 
+	if(res)			//文件创建失败
+	{ 
+		res=f_open(f_rec,(const TCHAR*)pname_fan, FA_CREATE_ALWAYS | FA_WRITE); 
+		sprintf(buf,"序号\t开始时间\t结束时间\t运行时间\r\n");
+		res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
+		f_close(f_rec);
+		res=f_open(f_rec,(const TCHAR*)pname_fan, FA_READ | FA_WRITE); 
+	}
+	
+		res=f_lseek(f_rec,f_size(f_rec));
+		sprintf(buf,"1\t20%02d-%02d-%02d %02d:%02d:%02d\t20%02d-%02d-%02d %02d:%02d:%02d \t%d\r\n",	
+					fan->start_date.Year, fan->start_date.Month, fan->start_date.Date,
+					fan->start_time.Hours, fan->start_time.Minutes, fan->start_time.Seconds,
+					fan->end_date.Year, fan->end_date.Month, fan->end_date.Date,
+					fan->end_time.Hours, fan->end_time.Minutes, fan->end_time.Seconds,
+					fan->Last_run_min);
+		res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
+		f_close(f_rec);
+	
+	myfree(SRAMIN,f_rec);		//释放内存
+}
+
+
 // USER END
 
 /*********************************************************************

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\Tempate.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Tempate.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat May 18 15:20:02 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat May 18 19:31:45 2019
 <BR><P>
 <H3>Maximum Stack Usage =       2432 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1108,7 +1108,7 @@ Global Symbols
 <LI><a href="#[78a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_DROPDOWN
 <LI><a href="#[794]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_once_record
 <LI><a href="#[72f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_data
-<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_record
+<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_fan_record
 <LI><a href="#[45c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSysTime
 <LI><a href="#[72c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_fan
 <LI><a href="#[72d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_List
@@ -1220,7 +1220,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[795]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_once_record
 <LI><a href="#[2e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EDIT_SetText
 <LI><a href="#[2ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DROPDOWN_AddString
-<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_record
+<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_fan_record
 <LI><a href="#[4c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEADER_AddItem
 <LI><a href="#[2e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_IsSpaceInBuffer
 <LI><a href="#[2d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InsertChar
@@ -1263,9 +1263,9 @@ Global Symbols
 <P><STRONG><a name="[7eb]"></a>_memcpy_lastbytes</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_v6.o(.text), UNUSED)
 
 <P><STRONG><a name="[60e]"></a>__aeabi_memmove</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memmove_v6.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveHoles
-<LI><a href="#[32d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StrStrip
+<BR><BR>[Called By]<UL><LI><a href="#[32d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StrStrip
 <LI><a href="#[2d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InsertChar
+<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveHoles
 <LI><a href="#[69c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InsertChar
 </UL>
 
@@ -1281,7 +1281,6 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[468]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_LTDC_ConfigLayer
 <LI><a href="#[344]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetDataFromMemory
-<LI><a href="#[6f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_EnlargeBlocks
 <LI><a href="#[558]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_CreateUser
 <LI><a href="#[4cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEADER_CreateUser
 <LI><a href="#[2f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN_CreateUser
@@ -1290,6 +1289,7 @@ Global Symbols
 <LI><a href="#[267]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_CreateUser
 <LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_CreateUser
 <LI><a href="#[345]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUITASK_CopyContext
+<LI><a href="#[6f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_EnlargeBlocks
 <LI><a href="#[412]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SaveContext_W
 <LI><a href="#[40a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_RestoreContext
 <LI><a href="#[534]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTBOX_CreateUser
@@ -1413,9 +1413,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
 <LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_hex
-<LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_oct
+<BR>[Called By]<UL><LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_oct
 <LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_dec
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_hex
 </UL>
 
 <P><STRONG><a name="[7f9]"></a>__lib_sel_fp_printf</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, _printf_fp_dec.o(.text), UNUSED)
@@ -1598,10 +1598,10 @@ Global Symbols
 <P><STRONG><a name="[22c]"></a>_scanf_really_hex_real</STRONG> (Thumb, 786 bytes, Stack size 80 bytes, scanf_hexfp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = _scanf_really_hex_real &rArr; __support_ldexp &rArr; __hardfp_ldexp &rArr; __mathlib_dbl_underflow &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[22d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
-<LI><a href="#[22a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_narrow
+<BR>[Calls]<UL><LI><a href="#[22a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_narrow
 <LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_chval
 <LI><a href="#[22e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__support_ldexp
+<LI><a href="#[22d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[229]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_scanf_hex_real
 </UL>
@@ -1820,8 +1820,8 @@ Global Symbols
 <BR>[Address Reference Count : 6]<UL><LI> historical_datadlg.o(.constdata)
 <LI> device_configdlg.o(.constdata)
 <LI> fan_recorddlg.o(.constdata)
-<LI> helpdlg.o(.constdata)
 <LI> hzfontdemo.o(.constdata)
+<LI> helpdlg.o(.constdata)
 <LI> sys_setdlg.o(.constdata)
 </UL>
 <P><STRONG><a name="[24c]"></a>BUTTON_CreateUser</STRONG> (Thumb, 116 bytes, Stack size 56 bytes, button.o(i.BUTTON_CreateUser))
@@ -1969,10 +1969,10 @@ Global Symbols
 <LI><a href="#[25e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringInRect
 <LI><a href="#[25f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetHasTrans
 <LI><a href="#[26b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetClientRect
-<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawFocus
 <LI><a href="#[269]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBitmap
 <LI><a href="#[268]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
+<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> checkbox.o(.data)
 </UL>
@@ -2479,9 +2479,9 @@ Global Symbols
 <LI><a href="#[258]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__IsEnabled
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[25f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetHasTrans
 <LI><a href="#[2bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawText
+<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> dropdown.o(.data)
 </UL>
@@ -2890,8 +2890,8 @@ Global Symbols
 <BR>[Address Reference Count : 6]<UL><LI> historical_datadlg.o(.constdata)
 <LI> device_configdlg.o(.constdata)
 <LI> fan_recorddlg.o(.constdata)
-<LI> helpdlg.o(.constdata)
 <LI> hzfontdemo.o(.constdata)
+<LI> helpdlg.o(.constdata)
 <LI> sys_setdlg.o(.constdata)
 </UL>
 <P><STRONG><a name="[2f6]"></a>FRAMEWIN_CreateUser</STRONG> (Thumb, 230 bytes, Stack size 80 bytes, framewin.o(i.FRAMEWIN_CreateUser))
@@ -3591,13 +3591,12 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
 <LI>Call Chain = GUI_ALLOC_Free &rArr; GUI_Lock &rArr; GUI_X_Lock &rArr; OSSemPend &rArr; OS_Pend &rArr; OS_TaskBlock &rArr; OS_RdyListRemove
 </UL>
-<BR>[Calls]<UL><LI><a href="#[351]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_PushFreeBlock
-<LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
+<BR>[Calls]<UL><LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
 <LI><a href="#[251]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Unlock
 <LI><a href="#[24e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Lock
+<LI><a href="#[351]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_PushFreeBlock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_DeleteWindow
-<LI><a href="#[6f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_EnlargeBlocks
 <LI><a href="#[3bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_JPEG_GetInfoEx
 <LI><a href="#[3b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_JPEG_DrawEx
 <LI><a href="#[4e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_CreateTimer
@@ -3611,15 +3610,16 @@ Global Symbols
 <LI><a href="#[3cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_JPEG(long double, ..., ...)
 <LI><a href="#[366]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SPRITE_Delete
 <LI><a href="#[246]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_FreePtr
+<LI><a href="#[6f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_EnlargeBlocks
 <LI><a href="#[421]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_TIMER_Delete
 <LI><a href="#[3e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MEMDEV_Delete
 <LI><a href="#[649]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_DeleteTimer
-<LI><a href="#[719]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
 <LI><a href="#[411]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DoColorConversion
 <LI><a href="#[3fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_WriteToActiveOpaque_HT
 <LI><a href="#[3fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_WriteToActiveOpaque_8
 <LI><a href="#[3e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_USAGE_DecUseCnt
 <LI><a href="#[3e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MEMDEV__CreateFixed
+<LI><a href="#[719]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
 <LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GUI_USAGE_BM_Delete
 </UL>
 
@@ -3641,13 +3641,13 @@ Global Symbols
 <LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_Free
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EDIT_SetText
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[35e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ARRAY_ResizeItemLocked
 <LI><a href="#[35a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ARRAY_DeleteItem
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN_Callback
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EDIT_Callback
 <LI><a href="#[2b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ARRAY_Delete
 <LI><a href="#[264]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__SetText
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[247]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_FreePtrArray
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MULTIEDIT_Callback
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_Callback
@@ -3668,10 +3668,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 232 + Unknown Stack Size
 <LI>Call Chain = GUI_ALLOC_GetFixedBlock &rArr; _InitOnce &rArr; _EnlargeBlocks &rArr;  _Alloc (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveHoles
+<BR>[Calls]<UL><LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
+<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveHoles
 <LI><a href="#[354]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveFreeBlock
 <LI><a href="#[352]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InitOnce
-<LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
 </UL>
 <BR>[Called By]<UL><LI><a href="#[442]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__GetAlphaBuffer
 <LI><a href="#[500]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_InitColors
@@ -3744,7 +3744,6 @@ Global Symbols
 <LI><a href="#[2fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN_SetFont
 <LI><a href="#[24d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_SetText
 <LI><a href="#[260]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_SetFont
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnTouchDefault
 <LI><a href="#[249]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnButtonReleased
 <LI><a href="#[248]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnButtonPressed
@@ -3854,6 +3853,7 @@ Global Symbols
 <LI><a href="#[264]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__SetText
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_DrawSkinFlex
 <LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_CreateUser
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[6c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawScanlinesScaledBanding
 <LI><a href="#[6f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawScanlineScaled
 <LI><a href="#[3bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Draw
@@ -3946,8 +3946,6 @@ Global Symbols
 <LI><a href="#[573]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CalcScrollParas
 <LI><a href="#[6a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CalcNextValidCursorPos
 <LI><a href="#[578]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddKey
-<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Link
-<LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetPixelIndex
 <LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_FillRect
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawVLine
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawHLine
@@ -3989,6 +3987,8 @@ Global Symbols
 <LI><a href="#[410]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SpriteDraw
 <LI><a href="#[40d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetPosition
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetPixelIndex
+<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Link
+<LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetPixelIndex
 <LI><a href="#[62e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__UpdateChildPositions
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_Callback
 <LI><a href="#[611]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Paint
@@ -4045,7 +4045,6 @@ Global Symbols
 <LI><a href="#[690]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetScrollbar
 <LI><a href="#[66e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__MoveWindow
 <LI><a href="#[642]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_BringToTop
-<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawFocus
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Paint
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Create
@@ -4068,6 +4067,7 @@ Global Symbols
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Create
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CalcPositions
 <LI><a href="#[5fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_SetWidth
+<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 </UL>
 
 <P><STRONG><a name="[357]"></a>GUI_ALLOC_Realloc</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, gui_realloc.o(i.GUI_ALLOC_Realloc))
@@ -4146,7 +4146,6 @@ Global Symbols
 <LI><a href="#[2fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN_SetFont
 <LI><a href="#[24d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_SetText
 <LI><a href="#[260]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_SetFont
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnTouchDefault
 <LI><a href="#[249]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnButtonReleased
 <LI><a href="#[248]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnButtonPressed
@@ -4259,6 +4258,7 @@ Global Symbols
 <LI><a href="#[264]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__SetText
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_DrawSkinFlex
 <LI><a href="#[24c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_CreateUser
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[6c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawScanlinesScaledBanding
 <LI><a href="#[6f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawScanlineScaled
 <LI><a href="#[3bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Draw
@@ -4357,9 +4357,6 @@ Global Symbols
 <LI><a href="#[573]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CalcScrollParas
 <LI><a href="#[6a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CalcNextValidCursorPos
 <LI><a href="#[578]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddKey
-<LI><a href="#[719]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
-<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Link
-<LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetPixelIndex
 <LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_FillRect
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawVLine
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawHLine
@@ -4400,6 +4397,9 @@ Global Symbols
 <LI><a href="#[410]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SpriteDraw
 <LI><a href="#[40d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetPosition
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetPixelIndex
+<LI><a href="#[719]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
+<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Link
+<LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetPixelIndex
 <LI><a href="#[62e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__UpdateChildPositions
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_Callback
 <LI><a href="#[611]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Paint
@@ -4457,7 +4457,6 @@ Global Symbols
 <LI><a href="#[690]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetScrollbar
 <LI><a href="#[66e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__MoveWindow
 <LI><a href="#[642]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_BringToTop
-<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawFocus
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Paint
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Create
@@ -4480,6 +4479,7 @@ Global Symbols
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Create
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CalcPositions
 <LI><a href="#[5fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_SetWidth
+<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 </UL>
 
 <P><STRONG><a name="[356]"></a>GUI_ALLOC_h2p</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gui_alloc.o(i.GUI_ALLOC_h2p))
@@ -4889,8 +4889,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[375]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DEVICE_CreateAndLink
 <LI><a href="#[41c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetOrientationExCached
 <LI><a href="#[379]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DEVICE_LinkDevices
-<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Link
 <LI><a href="#[3dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MEMDEV_Select
+<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Link
 </UL>
 
 <P><STRONG><a name="[379]"></a>GUI_DEVICE_LinkDevices</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, gui_device.o(i.GUI_DEVICE_LinkDevices))
@@ -4940,8 +4940,8 @@ Global Symbols
 <LI><a href="#[3fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MULTIBUF_BeginEx
 <LI><a href="#[3b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_Init
 <LI><a href="#[3b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
-<LI><a href="#[452]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__ManageCacheEx
 <LI><a href="#[6bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CreateBuffer
+<LI><a href="#[452]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__ManageCacheEx
 <LI><a href="#[3de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MEMDEV_CreateEx
 </UL>
 
@@ -5156,9 +5156,9 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN_DrawSkinFlex
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_DrawSkinFlex
-<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[4d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawOverlap
 <LI><a href="#[4d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
+<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[268]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackgroundH
 </UL>
@@ -5177,11 +5177,11 @@ Global Symbols
 <LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN_DrawSkinFlex
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DROPDOWN_DrawSkinFlex
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_DrawSkinFlex
-<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[5f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET__DrawTriangle
 <LI><a href="#[4d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawOverlap
 <LI><a href="#[4d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[4d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawArrow
+<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawGraspV
 <LI><a href="#[6cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawFrame
 </UL>
@@ -5229,10 +5229,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[553]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnPaint
 <LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN_DrawSkinFlex
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_DrawSkinFlex
-<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[5f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET__DrawTriangle
 <LI><a href="#[4d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawOverlap
 <LI><a href="#[4d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
+<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawGraspH
 <LI><a href="#[6cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawFrame
 </UL>
@@ -5288,8 +5288,8 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN_DrawSkinFlex
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_DrawSkinFlex
-<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[2fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_FillRectEx
+<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 </UL>
 
 <P><STRONG><a name="[2fc]"></a>GUI_FillRectEx</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gui_fillrectex.o(i.GUI_FillRectEx))
@@ -5306,8 +5306,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetBitmapPixelIndexEx
 </UL>
-<BR>[Called By]<UL><LI><a href="#[708]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_PixelExists
-<LI><a href="#[6fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetBkIndexAlpha
+<BR>[Called By]<UL><LI><a href="#[6fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetBkIndexAlpha
 <LI><a href="#[6fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetBkIndex
 <LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_FillRect
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawVLine
@@ -5318,6 +5317,7 @@ Global Symbols
 <LI><a href="#[410]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SpriteDraw
 <LI><a href="#[40d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetPosition
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetPixelIndex
+<LI><a href="#[708]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_PixelExists
 </UL>
 
 <P><STRONG><a name="[3a0]"></a>GUI_GetBitmapPixelIndexEx</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, gui_getbitmappixelindex.o(i.GUI_GetBitmapPixelIndexEx))
@@ -5728,8 +5728,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = GUI_JPEG__GetData
 </UL>
 <BR>[Address Reference Count : 3]<UL><LI> gui_jpeg_drawscaled.o(i.GUI_JPEG_DrawScaled)
-<LI> gui_jpeg.o(i.GUI_JPEG_GetInfo)
 <LI> gui_jpeg.o(i.GUI_JPEG_Draw)
+<LI> gui_jpeg.o(i.GUI_JPEG_GetInfo)
 </UL>
 <P><STRONG><a name="[3c0]"></a>GUI_JPEG__GetInfoEx</STRONG> (Thumb, 40 bytes, Stack size 24 bytes, gui_jpeg.o(i.GUI_JPEG__GetInfoEx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = GUI_JPEG__GetInfoEx &rArr; GUI_JPEG__ReadUntilSOF &rArr; _ReadMarkers &rArr; _GetDQT &rArr; _GetU16
@@ -6045,12 +6045,12 @@ Global Symbols
 <LI><a href="#[66d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_IsFocussable
 <LI><a href="#[654]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetFlags
 <LI><a href="#[651]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_ForEachDesc
-<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 <LI><a href="#[3f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MEMDEV_WriteAt
 <LI><a href="#[633]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetYSize
 <LI><a href="#[632]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetXSize
 <LI><a href="#[67a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_ValidateWindow
 <LI><a href="#[5fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_SetWidth
+<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 </UL>
 
 <P><STRONG><a name="[3d9]"></a>GUI_MEMDEV_Clear</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, guidev_clear.o(i.GUI_MEMDEV_Clear))
@@ -6481,8 +6481,8 @@ Global Symbols
 <LI><a href="#[24e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Lock
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Link
 <LI><a href="#[410]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SpriteDraw
+<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Link
 </UL>
 <BR>[Called By]<UL><LI><a href="#[368]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Show
 </UL>
@@ -6498,9 +6498,9 @@ Global Symbols
 <LI><a href="#[24e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Lock
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Link
 <LI><a href="#[411]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DoColorConversion
 <LI><a href="#[410]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SpriteDraw
+<LI><a href="#[40f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Link
 </UL>
 <BR>[Called By]<UL><LI><a href="#[361]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_CURSOR_SelectEx
 </UL>
@@ -6577,7 +6577,6 @@ Global Symbols
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_DrawSkinFlex
 <LI><a href="#[333]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GL_SetDefault
 <LI><a href="#[650]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawNext
-<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_DrawSkinFlex
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_DrawSkinFlex
 <LI><a href="#[4d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawText
@@ -6585,6 +6584,7 @@ Global Symbols
 <LI><a href="#[4d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[4d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawArrow
 <LI><a href="#[2bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawText
+<LI><a href="#[2ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBackground
 <LI><a href="#[44e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawTwinArc4
 <LI><a href="#[44d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawTwinArc2
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawFocus
@@ -7361,12 +7361,12 @@ Global Symbols
 <LI><a href="#[66d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_IsFocussable
 <LI><a href="#[654]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetFlags
 <LI><a href="#[651]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_ForEachDesc
-<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 <LI><a href="#[3f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MEMDEV_WriteAt
 <LI><a href="#[633]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetYSize
 <LI><a href="#[632]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetXSize
 <LI><a href="#[67a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_ValidateWindow
 <LI><a href="#[5fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_SetWidth
+<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 </UL>
 
 <P><STRONG><a name="[394]"></a>GUI_WrapGetNumLines</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, gui_dispstringinrectwrap.o(i.GUI_WrapGetNumLines))
@@ -7775,13 +7775,13 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[347]"></a>GUI__RegisterExit</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gui_core.o(i.GUI__RegisterExit))
-<BR><BR>[Called By]<UL><LI><a href="#[352]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InitOnce
-<LI><a href="#[442]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__GetAlphaBuffer
+<BR><BR>[Called By]<UL><LI><a href="#[442]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__GetAlphaBuffer
 <LI><a href="#[500]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_InitColors
 <LI><a href="#[361]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_CURSOR_SelectEx
 <LI><a href="#[3b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_Init
 <LI><a href="#[346]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUITASK_Init
 <LI><a href="#[3b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__Config
+<LI><a href="#[352]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InitOnce
 <LI><a href="#[41f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_TIMER_Create
 </UL>
 
@@ -7841,8 +7841,7 @@ Global Symbols
 <P><STRONG><a name="[349]"></a>GUI__memset</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, gui__memset.o(i.GUI__memset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GUI__memset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnExit
-<LI><a href="#[6be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InitOnce
+<BR>[Called By]<UL><LI><a href="#[6be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InitOnce
 <LI><a href="#[3d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_JPEG__SetNextBand
 <LI><a href="#[6c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ProcessRestart
 <LI><a href="#[3c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_LoadNextRow
@@ -7854,6 +7853,7 @@ Global Symbols
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnExit
 <LI><a href="#[346]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUITASK_Init
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnExit
+<LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnExit
 <LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_FillRect_CX
 <LI><a href="#[3f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CreateStaticDevice
 <LI><a href="#[34c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_AllocInit
@@ -12632,9 +12632,9 @@ Global Symbols
 <BR>[Address Reference Count : 7]<UL><LI> historical_datadlg.o(.constdata)
 <LI> device_configdlg.o(.constdata)
 <LI> fan_recorddlg.o(.constdata)
-<LI> helpdlg.o(.constdata)
 <LI> hzfontupdata.o(.constdata)
 <LI> hzfontdemo.o(.constdata)
+<LI> helpdlg.o(.constdata)
 <LI> sys_setdlg.o(.constdata)
 </UL>
 <P><STRONG><a name="[612]"></a>TEXT_CreateUser</STRONG> (Thumb, 152 bytes, Stack size 72 bytes, text.o(i.TEXT_CreateUser))
@@ -13062,13 +13062,13 @@ Global Symbols
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
 <LI><a href="#[62e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__UpdateChildPositions
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_Callback
+<BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_Callback
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEADER_Callback
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN_Callback
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN__cbClient
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EDIT_Callback
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DROPDOWN_Callback
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WINDOW_Callback
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MULTIEDIT_Callback
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_Callback
@@ -13384,7 +13384,6 @@ Global Symbols
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbBkWindow
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LISTVIEW_Callback
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HEADER_Callback
 <LI><a href="#[2f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMessage
@@ -13392,6 +13391,7 @@ Global Symbols
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FRAMEWIN__cbClient
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EDIT_Callback
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DROPDOWN_Callback
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbBackWin
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WINDOW_Callback
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MULTIEDIT_Callback
@@ -15420,7 +15420,7 @@ Global Symbols
 <LI><a href="#[781]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iniFileLoad
 <LI><a href="#[72f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_data
 <LI><a href="#[75e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displyjpeg
-<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_record
+<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_fan_record
 </UL>
 
 <P><STRONG><a name="[76a]"></a>f_lseek</STRONG> (Thumb, 700 bytes, Stack size 64 bytes, ff.o(i.f_lseek))
@@ -15438,7 +15438,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[781]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iniFileLoad
 <LI><a href="#[72f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_data
-<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_record
+<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_fan_record
 </UL>
 
 <P><STRONG><a name="[76b]"></a>f_mkdir</STRONG> (Thumb, 476 bytes, Stack size 144 bytes, ff.o(i.f_mkdir))
@@ -15503,7 +15503,7 @@ Global Symbols
 <LI><a href="#[781]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iniFileLoad
 <LI><a href="#[72f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_data
 <LI><a href="#[75e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displyjpeg
-<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_record
+<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_fan_record
 </UL>
 
 <P><STRONG><a name="[779]"></a>f_opendir</STRONG> (Thumb, 212 bytes, Stack size 40 bytes, ff.o(i.f_opendir))
@@ -15588,7 +15588,7 @@ Global Symbols
 <LI><a href="#[77b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;putc_bfd
 <LI><a href="#[789]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iniSetString
 <LI><a href="#[795]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;write_once_record
-<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_record
+<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_fan_record
 </UL>
 
 <P><STRONG><a name="[741]"></a>ff_convert</STRONG> (Thumb, 106 bytes, Stack size 40 bytes, mycc936.o(i.ff_convert))
@@ -15856,7 +15856,7 @@ Global Symbols
 <LI><a href="#[780]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iniFileFree
 <LI><a href="#[72f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_data
 <LI><a href="#[75e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displyjpeg
-<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_record
+<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_fan_record
 </UL>
 
 <P><STRONG><a name="[323]"></a>mymalloc</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, malloc.o(i.mymalloc))
@@ -15876,7 +15876,7 @@ Global Symbols
 <LI><a href="#[781]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;iniFileLoad
 <LI><a href="#[72f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_data
 <LI><a href="#[75e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;displyjpeg
-<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_record
+<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_fan_record
 <LI><a href="#[72a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_List
 </UL>
 
@@ -15922,9 +15922,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[72f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_data
 </UL>
 
-<P><STRONG><a name="[796]"></a>save_record</STRONG> (Thumb, 184 bytes, Stack size 160 bytes, historical_datadlg.o(i.save_record))
+<P><STRONG><a name="[796]"></a>save_fan_record</STRONG> (Thumb, 184 bytes, Stack size 160 bytes, fan_recorddlg.o(i.save_fan_record))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1048 + Unknown Stack Size
-<LI>Call Chain = save_record &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; FTL_WriteSectors &rArr; FTL_CopyAndWriteToBlock &rArr; FTL_FindSamePlaneUnusedBlock &rArr; FTL_FindUnusedBlock &rArr; NAND_ReadSpare &rArr; NAND_ReadPage &rArr; NAND_ECC_Correction &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
+<LI>Call Chain = save_fan_record &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; FTL_WriteSectors &rArr; FTL_CopyAndWriteToBlock &rArr; FTL_FindSamePlaneUnusedBlock &rArr; FTL_FindUnusedBlock &rArr; NAND_ReadSpare &rArr; NAND_ReadPage &rArr; NAND_ECC_Correction &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[323]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mymalloc
 <LI><a href="#[322]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;myfree
@@ -17450,7 +17450,7 @@ Local Symbols
 </UL>
 <P><STRONG><a name="[d8]"></a>_cbDialog</STRONG> (Thumb, 500 bytes, Stack size 24 bytes, hzfontdemo.o(i._cbDialog))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1224 + Unknown Stack Size
-<LI>Call Chain = _cbDialog &rArr; update_fan &rArr; save_record &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; FTL_WriteSectors &rArr; FTL_CopyAndWriteToBlock &rArr; FTL_FindSamePlaneUnusedBlock &rArr; FTL_FindUnusedBlock &rArr; NAND_ReadSpare &rArr; NAND_ReadPage &rArr; NAND_ECC_Correction &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
+<LI>Call Chain = _cbDialog &rArr; update_fan &rArr; save_fan_record &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; FTL_WriteSectors &rArr; FTL_CopyAndWriteToBlock &rArr; FTL_FindSamePlaneUnusedBlock &rArr; FTL_FindUnusedBlock &rArr; NAND_ReadSpare &rArr; NAND_ReadPage &rArr; NAND_ECC_Correction &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
 <LI><a href="#[24b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_DefaultProc
@@ -17523,14 +17523,14 @@ Local Symbols
 
 <P><STRONG><a name="[72c]"></a>update_fan</STRONG> (Thumb, 246 bytes, Stack size 152 bytes, hzfontdemo.o(i.update_fan))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1200 + Unknown Stack Size
-<LI>Call Chain = update_fan &rArr; save_record &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; FTL_WriteSectors &rArr; FTL_CopyAndWriteToBlock &rArr; FTL_FindSamePlaneUnusedBlock &rArr; FTL_FindUnusedBlock &rArr; NAND_ReadSpare &rArr; NAND_ReadPage &rArr; NAND_ECC_Correction &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
+<LI>Call Chain = update_fan &rArr; save_fan_record &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; FTL_WriteSectors &rArr; FTL_CopyAndWriteToBlock &rArr; FTL_FindSamePlaneUnusedBlock &rArr; FTL_FindUnusedBlock &rArr; NAND_ReadSpare &rArr; NAND_ReadPage &rArr; NAND_ECC_Correction &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_GetTime
 <LI><a href="#[45e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_GetDate
 <LI><a href="#[2e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
 <LI><a href="#[2ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetText
 <LI><a href="#[2e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetFont
-<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_record
+<LI><a href="#[796]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_fan_record
 <LI><a href="#[78f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;minuteCompare
 <LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
@@ -17900,27 +17900,27 @@ Local Symbols
 <LI><a href="#[691]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetMinIndex
 </UL>
 <BR>[Called By]<UL><LI><a href="#[348]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_GetFixedBlock
-<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveHoles
-<LI><a href="#[352]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InitOnce
 <LI><a href="#[34e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Alloc
 <LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_Free
+<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveHoles
+<LI><a href="#[352]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InitOnce
 </UL>
 
 <P><STRONG><a name="[34e]"></a>_Alloc</STRONG> (Thumb, 178 bytes, Stack size 24 bytes, gui_alloc.o(i._Alloc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 232 + Unknown Stack Size
 <LI>Call Chain = _Alloc &rArr; _InitOnce &rArr; _EnlargeBlocks &rArr;  _Alloc (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[692]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_WriteTagData
+<BR>[Calls]<UL><LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
+<LI><a href="#[692]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_WriteTagData
 <LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveHoles
 <LI><a href="#[354]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveFreeBlock
 <LI><a href="#[351]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_PushFreeBlock
 <LI><a href="#[6a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_PopFreeBlock
 <LI><a href="#[352]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InitOnce
 <LI><a href="#[691]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetMinIndex
-<LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_EnlargeBlocks
-<LI><a href="#[34d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_AllocNoInit
+<BR>[Called By]<UL><LI><a href="#[34d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_AllocNoInit
+<LI><a href="#[6f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_EnlargeBlocks
 </UL>
 
 <P><STRONG><a name="[6f4]"></a>_EnlargeBlocks</STRONG> (Thumb, 146 bytes, Stack size 32 bytes, gui_alloc.o(i._EnlargeBlocks))
@@ -17937,19 +17937,19 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[691]"></a>_GetMinIndex</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, gui_alloc.o(i._GetMinIndex))
-<BR><BR>[Called By]<UL><LI><a href="#[354]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveFreeBlock
-<LI><a href="#[34e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Alloc
+<BR><BR>[Called By]<UL><LI><a href="#[34e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Alloc
 <LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
+<LI><a href="#[354]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveFreeBlock
 </UL>
 
 <P><STRONG><a name="[352]"></a>_InitOnce</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, gui_alloc.o(i._InitOnce))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208 + Unknown Stack Size
 <LI>Call Chain = _InitOnce &rArr; _EnlargeBlocks &rArr;  _Alloc (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[712]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_TestRAM
-<LI><a href="#[6f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_EnlargeBlocks
-<LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
+<BR>[Calls]<UL><LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
 <LI><a href="#[347]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__RegisterExit
+<LI><a href="#[712]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_TestRAM
+<LI><a href="#[6f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_EnlargeBlocks
 </UL>
 <BR>[Called By]<UL><LI><a href="#[348]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_GetFixedBlock
 <LI><a href="#[34e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Alloc
@@ -17985,16 +17985,16 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[691]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetMinIndex
 </UL>
 <BR>[Called By]<UL><LI><a href="#[348]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_GetFixedBlock
-<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveHoles
 <LI><a href="#[34e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Alloc
 <LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
+<LI><a href="#[353]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveHoles
 </UL>
 
 <P><STRONG><a name="[353]"></a>_RemoveHoles</STRONG> (Thumb, 156 bytes, Stack size 40 bytes, gui_alloc.o(i._RemoveHoles))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = _RemoveHoles &rArr; _AddFreeMemory &rArr; _RemoveFreeBlock
 </UL>
-<BR>[Calls]<UL><LI><a href="#[354]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveFreeBlock
-<LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
+<BR>[Calls]<UL><LI><a href="#[350]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AddFreeMemory
+<LI><a href="#[354]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_RemoveFreeBlock
 <LI><a href="#[60e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memmove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[348]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_GetFixedBlock
@@ -18400,8 +18400,8 @@ Local Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_JPEG__ReadUntilSOF
 </UL>
-<BR>[Address Reference Count : 2]<UL><LI> gui_jpeg.o(i._GetStuff)
-<LI> gui_jpeg.o(i.GUI_JPEG__ReadUntilSOF)
+<BR>[Address Reference Count : 2]<UL><LI> gui_jpeg.o(i.GUI_JPEG__ReadUntilSOF)
+<LI> gui_jpeg.o(i._GetStuff)
 </UL>
 <P><STRONG><a name="[6fc]"></a>_GetU8_NoMarker</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, gui_jpeg.o(i._GetU8_NoMarker))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = _GetU8_NoMarker &rArr; _StoreU8
@@ -19193,8 +19193,8 @@ Local Symbols
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
-<LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnTouchDefault
+<BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnTouchDefault
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 </UL>
 
 <P><STRONG><a name="[249]"></a>_OnButtonReleased</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, button.o(i._OnButtonReleased))
@@ -19207,8 +19207,8 @@ Local Symbols
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
-<LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnTouchDefault
+<BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnTouchDefault
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 </UL>
 
 <P><STRONG><a name="[28]"></a>_OnTouchDefault</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, button.o(i._OnTouchDefault))
@@ -21035,9 +21035,9 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[39f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetBitmapPixelIndex
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetPixelIndex
-<LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_XorPixel
+<BR>[Called By]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_XorPixel
 <LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetPixelIndex
+<LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetPixelIndex
 </UL>
 
 <P><STRONG><a name="[719]"></a>_ReleaseBuffer</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, gui_sprite.o(i._ReleaseBuffer))
@@ -21072,8 +21072,8 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__MixColors
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[708]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_PixelExists
 <LI><a href="#[39f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetBitmapPixelIndex
+<LI><a href="#[708]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_PixelExists
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> gui_sprite.o(.constdata)
 </UL>
@@ -21084,14 +21084,14 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__MixColors
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[71d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetBkIndexBuffered
-<LI><a href="#[719]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
-<LI><a href="#[6b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetDeviceRect
 <LI><a href="#[6fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetBkIndexAlpha
 <LI><a href="#[6fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetBkIndex
 <LI><a href="#[6bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CreateBuffer
 <LI><a href="#[3dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MEMDEV_Select
 <LI><a href="#[39f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetBitmapPixelIndex
+<LI><a href="#[71d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetBkIndexBuffered
+<LI><a href="#[719]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
+<LI><a href="#[6b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetDeviceRect
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SPRITE_SetPosition
 </UL>
@@ -21103,13 +21103,13 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__MixColors
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[71d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetBkIndexBuffered
-<LI><a href="#[719]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
 <LI><a href="#[6fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetBkIndexAlpha
 <LI><a href="#[6fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetBkIndex
 <LI><a href="#[6bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CreateBuffer
 <LI><a href="#[6b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ClipRectEx
 <LI><a href="#[39f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetBitmapPixelIndex
+<LI><a href="#[71d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetBkIndexBuffered
+<LI><a href="#[719]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[367]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SPRITE__CreateEx
 <LI><a href="#[40e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SPRITE_Show
@@ -21121,11 +21121,11 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[71d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetBkIndexBuffered
-<LI><a href="#[719]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
 <LI><a href="#[6bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CreateBuffer
 <LI><a href="#[6b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ClipRectEx
 <LI><a href="#[39f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetBitmapPixelIndex
+<LI><a href="#[71d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetBkIndexBuffered
+<LI><a href="#[719]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[366]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SPRITE_Delete
 </UL>
@@ -21146,8 +21146,8 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__MixColors
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[708]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_PixelExists
 <LI><a href="#[39f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetBitmapPixelIndex
+<LI><a href="#[708]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_PixelExists
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> gui_sprite.o(.constdata)
 </UL>
@@ -22195,8 +22195,8 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[348]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_GetFixedBlock
 <LI><a href="#[364]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DrawBitmap
 <LI><a href="#[349]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__memset
-<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 <LI><a href="#[6dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GenCheck
+<LI><a href="#[26a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_DrawSkinFlex
 </UL>
