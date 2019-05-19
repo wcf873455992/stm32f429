@@ -77,12 +77,13 @@ typedef enum _ELineType_ {
 
 static FIL *f_rec;
 static const	char *pname_fan ="0:fan/fan_record.xls";
-static char *fan_record_buf;
+static char *fan_record_buf;///////
 static int fan_record_len;
 static int fan_record_line;
 
 #define MAX_FAN_RECORD 100
 #define COLUMN_MAX	4
+#define LINE_LEN	40
 static  char *fan_record_list[MAX_FAN_RECORD][4];
 static int cur_number;
 static  char *fan_ListView[7][4];
@@ -131,7 +132,6 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 
 void save_fan_record(FAN * fan)
 {	
-	FIL *f_rec;
 	u8 res;	
 	char buf[100];
 	
@@ -227,14 +227,20 @@ static void read_fan_record(){
 	char buf[100];
 	
   f_rec=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域 
+	if(f_rec==NULL ){
+		myfree(SRAMIN,f_rec);		//释放内存
+		return;
+	}
 	res=f_open(f_rec,(const TCHAR*)pname_fan, FA_READ | FA_WRITE); 
-	if(res)			//文件打开失败
-	{ 
+	if(res){		//文件打开失败
 		return;
 	}
   fan_record_buf=(char *)mymalloc(SRAMIN,f_size(f_rec));		//开辟fan_record_buf内存区域
-	if(res)
-		return;	
+	if( fan_record_buf==NULL){
+		myfree(SRAMIN,fan_record_buf);		//释放内存
+		return;
+	}
+	//memset(fan_record_buf,0,f_size(f_rec));        //先清零
 	fan_record_len = f_read(f_rec, fan_record_buf,f_size(f_rec),&bw );	
 	f_close(f_rec);
 	myfree(SRAMIN,f_rec);		//释放内存
@@ -245,18 +251,21 @@ static void read_fan_record(){
 		if(p_cur == NULL)break;
 		fan_record_line++;
 		len += p_cur+1-p_pre;
-		p_pre = p_cur+1;
-		
+		p_pre = p_cur+1;		
 	}
-	//fan_record_line = 30;
+	
 	for(i = 0; i<fan_record_line;i++)
 		for(j = 0;j<4;j++){
-				fan_record_list[i][j]=(char *)mymalloc(SRAMIN,40);		//开辟fan_record_list,40字节的内存区域
+				fan_record_list[i][j]=(char *)mymalloc(SRAMIN,LINE_LEN);		//开辟fan_record_list,40字节的内存区域			
+				// (fan_record_list[i][j],0,LINE_LEN);        //先清零
 		}
-	
+	for(i = 0; i<fan_record_line;i++)
+		for(j = 0;j<4;j++){
+			if(fan_record_list[i][j]==NULL);
+			myfree(SRAMIN,fan_record_list[i][j]);		//释放内存
+	}
 	p_cur = p_pre = fan_record_buf;	
 	for(number = 0,len=0; number < fan_record_line; number++){	
-	//for(number = 0,len=0; number < 1; number++){			
 		p_cur = Str_Char(fan_record_buf+len, '\t');//'\t'
 		*p_cur = 0x00;
 		sprintf(fan_record_list[number][0], "%d",number);
@@ -308,6 +317,9 @@ static void init_fan_List(WM_MESSAGE * pMsg){
 	for(i = 0; i<7;i++)
 		for(j = 0;j<5;j++){
 				fan_ListView[i][j]=(char *)mymalloc(SRAMIN,40);		//开辟fan_ListView,40字节的内存区域
+				//if(fan_ListView[i][j]==NULL)		//开辟fan_ListView,40字节的内存区域
+					//myfree(SRAMIN,fan_ListView[i][j]);
+				//memset(fan_record_list[i][j],0,LINE_LEN);        //先清零
 	}
 	for(i=0;i<GUI_COUNTOF(fan_ListView);i++)
 	{
