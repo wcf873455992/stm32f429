@@ -84,6 +84,7 @@ static int fan_record_line;
 #define MAX_FAN_RECORD 100
 #define COLUMN_MAX	4
 #define LINE_LEN	40
+static char **tempfan;
 static  char *fan_record_list[MAX_FAN_RECORD][4];
 static int cur_number;
 static  char *fan_ListView[7][4];
@@ -158,6 +159,7 @@ void save_fan_record(FAN * fan)
 	
 	myfree(SRAMIN,f_rec);		//释放内存
 }
+/*
 static int GetLine(char *buf, int buflen)//, char *content, char **rem1, char **rem2, char **nextline)
  { 
 	char *cont1, *cont2;
@@ -193,7 +195,7 @@ static int GetLine(char *buf, int buflen)//, char *content, char **rem1, char **
  	}
 			
 	return Row; 
-}
+}*/
 
 static void update_fan_List(WM_MESSAGE * pMsg, int number){
 	int i,j;
@@ -263,12 +265,17 @@ static void read_fan_record(){
 		for(j = 0;j<4;j++){
 			if(fan_record_list[i][j]==NULL);
 			myfree(SRAMIN,fan_record_list[i][j]);		//释放内存
-	}
+	} 
+	/**/
 	p_cur = p_pre = fan_record_buf;	
 	for(number = 0,len=0; number < fan_record_line; number++){	
 		p_cur = Str_Char(fan_record_buf+len, '\t');//'\t'
 		*p_cur = 0x00;
 		sprintf(fan_record_list[number][0], "%d",number);
+		
+		//sprintf(buf, "%d",number);		
+		//fan_record_list[number][0] = buf;
+		
 		//fan_record_list[number][0] = p_pre;
 		len += p_cur+1-p_pre;
 		p_pre = p_cur+1;
@@ -287,10 +294,15 @@ static void read_fan_record(){
 		
 		p_cur = Str_Char(fan_record_buf+len, '\r');//'\r'
 		*p_cur = 0x00;
-		//fan_record_list[number][3] = p_pre;
-		sprintf(fan_record_list[number][3], "%d",fan_record_line);
+		sprintf(fan_record_list[number][3],"%d",fan_record_line);
+		/*
+		char line[5];
+		sprintf(line, "%d",fan_record_line);		
+		fan_record_list[number][3]=line;
+		*/
 		len += p_cur+1-p_pre;
 		p_pre = p_cur+1;
+		/**/
 	}
 }
 
