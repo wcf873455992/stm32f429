@@ -86,6 +86,14 @@
 ..\obj\fan_recorddlg.o: ..\FATFS\exfuns\exfuns.h
 ..\obj\fan_recorddlg.o: ..\MALLOC\malloc.h
 ..\obj\fan_recorddlg.o: ..\HARDWARE\RTC\rtc.h
+..\obj\fan_recorddlg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\fan_recorddlg.o: ..\UCOSIII\uC-LIB\lib_str.h
+..\obj\fan_recorddlg.o: ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView\cpu.h
+..\obj\fan_recorddlg.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\obj\fan_recorddlg.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
+..\obj\fan_recorddlg.o: ..\UCOSIII\uC-LIB\lib_def.h
+..\obj\fan_recorddlg.o: ..\UCOSIII\uC-LIB\lib_ascii.h
+..\obj\fan_recorddlg.o: ..\UCOSIII\UCOS-CONFIG\lib_cfg.h
 ..\obj\fan_recorddlg.o: ..\EMWIN\STemWin\inc\DIALOG.h
 ..\obj\fan_recorddlg.o: ..\EMWIN\STemWin\inc\WM.h
 ..\obj\fan_recorddlg.o: ..\EMWIN\STemWin\inc\WM_GUI.h

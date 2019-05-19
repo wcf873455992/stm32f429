@@ -28,29 +28,35 @@ Project File Date:  05/16/2019
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'STemWin RGBLCD'
 compiling Fan_recordDLG.c...
-..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(112): warning:  #223-D: function "strlen" declared implicitly
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(156): warning:  #223-D: function "strlen" declared implicitly
   		res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(124): warning:  #223-D: function "strlen" declared implicitly
-  		res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
-..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c: 2 warnings, 0 errors
-compiling Historical_DataDLG.c...
-..\EMWIN_DEMO\HZDEMO\Historical_DataDLG.c(576): warning:  #223-D: function "strlen" declared implicitly
-  	res=f_write(f_rec,(const void*)real_data.Date,strlen(real_data.Date),&bw);
-..\EMWIN_DEMO\HZDEMO\Historical_DataDLG.c(575): warning:  #550-D: variable "res"  was set but never used
-  	u8 res;
-..\EMWIN_DEMO\HZDEMO\Historical_DataDLG.c(612): warning:  #181-D: argument is incompatible with corresponding format string conversion
-  		sprintf((char*)pos,"OK,f_lseek=%05d",f_rec->obj.objsize);
-..\EMWIN_DEMO\HZDEMO\Historical_DataDLG.c(71): warning:  #177-D: variable "_ListViewTable1"  was declared but never referenced
-  static const char *_ListViewTable1[][5]={
-..\EMWIN_DEMO\HZDEMO\Historical_DataDLG.c(80): warning:  #177-D: variable "tempdata"  was declared but never referenced
-  static const char *tempdata[2] = {"1#变送器","2#变送器"};
-..\EMWIN_DEMO\HZDEMO\Historical_DataDLG.c(81): warning:  #177-D: variable "tempdata2"  was declared but never referenced
-  static const char tempdata2[] = "1#变送器";
-..\EMWIN_DEMO\HZDEMO\Historical_DataDLG.c: 6 warnings, 0 errors
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(163): warning:  #177-D: variable "cont1"  was declared but never referenced
+  	char *cont1, *cont2;
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(163): warning:  #177-D: variable "cont2"  was declared but never referenced
+  	char *cont1, *cont2;
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(164): warning:  #177-D: variable "cntblank"  was declared but never referenced
+  	int cntblank, cntCR, cntLF;		//连续空格、换行符数量
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(164): warning:  #177-D: variable "cntCR"  was declared but never referenced
+  	int cntblank, cntCR, cntLF;		//连续空格、换行符数量
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(165): warning:  #177-D: variable "isQuot1"  was declared but never referenced
+  	char isQuot1, isQuot2;			//引号
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(165): warning:  #177-D: variable "isQuot2"  was declared but never referenced
+  	char isQuot1, isQuot2;			//引号
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(225): warning:  #177-D: variable "p"  was declared but never referenced
+  	char *p;
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(227): warning:  #177-D: variable "buf"  was declared but never referenced
+  	char buf[100];
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(81): warning:  #550-D: variable "fan_record_len"  was set but never used
+  static int fan_record_len;
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(89): warning:  #177-D: variable "fan_ListView1"  was declared but never referenced
+  static  char *fan_ListView1[][4]={
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(161): warning:  #177-D: function "GetLine"  was declared but never referenced
+  static int GetLine(char *buf, int buflen)//, char *content, char **rem1, char **rem2, char **nextline)
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c: 12 warnings, 0 errors
 linking...
-Program Size: Code=215392 RO-data=78488 RW-data=2668 ZI-data=24487724  
+Program Size: Code=216144 RO-data=78488 RW-data=2688 ZI-data=24489416  
 FromELF: creating hex file...
-"..\OBJ\Tempate.axf" - 0 Error(s), 8 Warning(s).
+"..\OBJ\Tempate.axf" - 0 Error(s), 12 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -64,7 +70,7 @@ Package Vendor: Keil
   C:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:12
+Build Time Elapsed:  00:00:09
 </pre>
 </body>
 </html>

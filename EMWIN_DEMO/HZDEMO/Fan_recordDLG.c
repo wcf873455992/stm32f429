@@ -25,6 +25,10 @@
 #include "exfuns.h"
 #include "malloc.h"
 #include "rtc.h"
+//#include "stdlib.h"
+
+#include "stdlib.h"
+#include "lib_str.h"
 // USER END
 
 #include "DIALOG.h"
@@ -52,6 +56,14 @@
 
 // USER START (Optionally insert additional defines)
 extern WM_HWIN hDialog;
+
+typedef enum _ELineType_ {
+  LINE_IDLE,		//未处理行
+	LINE_ERROR,		//错误行
+	LINE_EMPTY,		//空白行或注释行
+	LINE_SECTION,	//节定义行
+	LINE_VALUE		//值定义行
+} ELineType ;
 // USER END
 
 /*********************************************************************
@@ -63,7 +75,27 @@ extern WM_HWIN hDialog;
 
 // USER START (Optionally insert additional static data)
 
+static FIL *f_rec;
 static const	char *pname_fan ="0:fan/fan_record.xls";
+static char *fan_record_buf;
+static int fan_record_len;
+static int fan_record_line;
+
+#define MAX_FAN_RECORD 100
+#define COLUMN_MAX	4
+static  char *fan_record_list[MAX_FAN_RECORD][4];
+static int cur_number;
+static  char *fan_ListView[7][4];
+static  char *fan_ListView1[][4]={
+	{"1",	"2019-5-11 18:34:20", "2019-5-11 18:34:20", "10"},
+	{"2",	"2019-5-11 18:34:20", "2019-5-11 18:34:20", "10"},
+	{"3",	"2019-5-11 18:34:20", "2019-5-11 18:34:20", "10"},
+	{"4",	"2019-5-11 18:34:20", "2019-5-11 18:34:20", "10"},
+	{"5",	"2019-5-11 18:34:20", "2019-5-11 18:34:20", "10"},
+	{"6",	"2019-5-11 18:34:20", "2019-5-11 18:34:20", "10"},
+	{"7",	"2019-5-11 18:34:20", "2019-5-11 18:34:20", "10"},
+};
+
 // USER END
 
 /*********************************************************************
@@ -108,14 +140,14 @@ void save_fan_record(FAN * fan)
 	if(res)			//文件创建失败
 	{ 
 		res=f_open(f_rec,(const TCHAR*)pname_fan, FA_CREATE_ALWAYS | FA_WRITE); 
-		sprintf(buf,"序号\t开始时间\t结束时间\t运行时间\r\n");
-		res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
+		//sprintf(buf,"序号\t开始时间\t结束时间\t运行时间\r\n");
+		//res=f_write(f_rec,(const void*)buf,strlen(buf),&bw);
 		f_close(f_rec);
 		res=f_open(f_rec,(const TCHAR*)pname_fan, FA_READ | FA_WRITE); 
 	}
 	
 		res=f_lseek(f_rec,f_size(f_rec));
-		sprintf(buf,"1\t20%02d-%02d-%02d %02d:%02d:%02d\t20%02d-%02d-%02d %02d:%02d:%02d \t%d\r\n",	
+		sprintf(buf,"1\t20%02d-%02d-%02d %02d:%02d:%02d\t20%02d-%02d-%02d %02d:%02d:%02d \t%d\r",	
 					fan->start_date.Year, fan->start_date.Month, fan->start_date.Date,
 					fan->start_time.Hours, fan->start_time.Minutes, fan->start_time.Seconds,
 					fan->end_date.Year, fan->end_date.Month, fan->end_date.Date,
@@ -126,7 +158,166 @@ void save_fan_record(FAN * fan)
 	
 	myfree(SRAMIN,f_rec);		//释放内存
 }
+static int GetLine(char *buf, int buflen)//, char *content, char **rem1, char **rem2, char **nextline)
+ { 
+	char *cont1, *cont2;
+	int cntblank, cntCR, cntLF;		//连续空格、换行符数量
+	char isQuot1, isQuot2;			//引号
+	int i,Row,Column,k;
+	char *p;
+ 
+	for (i = 0, p = buf; i < buflen; i ++, p ++) 
+	{ 
+ 		switch (*p) {
+			case '\r':
+				//cntCR ++;
+			fan_record_list[Row][COLUMN_MAX-1] = p-k;
+			k=0;
+			Row++;
+				break;
+			case '\n':
+				cntLF ++;
+				break;
+			//case ''':
+			case '\t':
+				fan_record_list[Row][Column] = p-k;
+				k=0;
+				Column++;
+				if(Column >= COLUMN_MAX-1)
+					Column = 0;
+				break;
+		default: 
+			k++;
+			break;
+ 		}
+ 	}
+			
+	return Row; 
+}
 
+static void update_fan_List(WM_MESSAGE * pMsg, int number){
+	int i,j;
+	WM_HWIN hItem;
+	
+	for(i=0; i<7;i++){
+		if((i+number) > (fan_record_line-1)){
+			for(j = 0; j<5; j++)
+				sprintf((char*)fan_ListView[i][j],"");
+		}else{
+		/**/
+			fan_ListView[i][0] = fan_record_list[i+number][0];
+			fan_ListView[i][1] = fan_record_list[i+number][1];
+			fan_ListView[i][2] = fan_record_list[i+number][2];
+			fan_ListView[i][3] = fan_record_list[i+number][3];
+
+		}
+	}
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+	for (i = 0; i < 7; i++)
+		for (j = 0; j < GUI_COUNTOF(fan_ListView[i]); j++) {
+				LISTVIEW_SetItemText(hItem, j, i, fan_ListView[i][j]);
+		}
+}
+static void read_fan_record(){
+
+	u8 res;	
+	char *p_pre,*p_cur;
+	char *p;
+	int number,len,i,j;
+	char buf[100];
+	
+  f_rec=(FIL *)mymalloc(SRAMIN,sizeof(FIL));		//开辟FIL字节的内存区域 
+	res=f_open(f_rec,(const TCHAR*)pname_fan, FA_READ | FA_WRITE); 
+	if(res)			//文件打开失败
+	{ 
+		return;
+	}
+  fan_record_buf=(char *)mymalloc(SRAMIN,f_size(f_rec));		//开辟fan_record_buf内存区域
+	if(res)
+		return;	
+	fan_record_len = f_read(f_rec, fan_record_buf,f_size(f_rec),&bw );	
+	f_close(f_rec);
+	myfree(SRAMIN,f_rec);		//释放内存
+	
+	p_cur = p_pre = fan_record_buf; 
+	for(i = 0,len=0,fan_record_line=0; i<MAX_FAN_RECORD;i++){
+		p_cur = Str_Char(fan_record_buf+len, '\r');
+		if(p_cur == NULL)break;
+		fan_record_line++;
+		len += p_cur+1-p_pre;
+		p_pre = p_cur+1;
+		
+	}
+	//fan_record_line = 30;
+	for(i = 0; i<fan_record_line;i++)
+		for(j = 0;j<4;j++){
+				fan_record_list[i][j]=(char *)mymalloc(SRAMIN,40);		//开辟fan_record_list,40字节的内存区域
+		}
+	
+	p_cur = p_pre = fan_record_buf;	
+	for(number = 0,len=0; number < fan_record_line; number++){	
+	//for(number = 0,len=0; number < 1; number++){			
+		p_cur = Str_Char(fan_record_buf+len, '\t');//'\t'
+		*p_cur = 0x00;
+		sprintf(fan_record_list[number][0], "%d",number);
+		//fan_record_list[number][0] = p_pre;
+		len += p_cur+1-p_pre;
+		p_pre = p_cur+1;
+		
+		p_cur = Str_Char(fan_record_buf+len, '\t');
+		*p_cur = 0x00;
+		fan_record_list[number][1] = p_pre;
+		len += p_cur+1-p_pre;
+		p_pre = p_cur+1;
+		
+		p_cur = Str_Char(fan_record_buf+len, '\t');
+		*p_cur = 0x00;
+		fan_record_list[number][2] = p_pre;
+		len += p_cur+1-p_pre;
+		p_pre = p_cur+1;
+		
+		p_cur = Str_Char(fan_record_buf+len, '\r');//'\r'
+		*p_cur = 0x00;
+		//fan_record_list[number][3] = p_pre;
+		sprintf(fan_record_list[number][3], "%d",fan_record_line);
+		len += p_cur+1-p_pre;
+		p_pre = p_cur+1;
+	}
+}
+
+static void init_fan_List(WM_MESSAGE * pMsg){
+	WM_HWIN hItem;
+	WM_HWIN hHeader;
+	int i,j;
+	
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+	hHeader = LISTVIEW_GetHeader(hItem);
+	LISTVIEW_SetHeaderHeight(hItem, 100);
+	HEADER_SetFont(hHeader,&GUI_FontHZ24);
+	LISTVIEW_AddColumn(hItem, 100, "序号", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 200, "开始时间", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 200, "停止时间", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 100, "运行分钟", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_SetGridVis(hItem, 1);
+	LISTVIEW_SetAutoScrollH(hItem, 1);
+	LISTVIEW_SetAutoScrollV(hItem, 1);
+	LISTVIEW_SetRowHeight(hItem, 30);
+	LISTVIEW_SetFont(hItem,&GUI_FontHZ16);
+	LISTVIEW_SetBkColor(hItem,LISTVIEW_CI_UNSEL,GUI_ORANGE);
+	
+	for(i = 0; i<7;i++)
+		for(j = 0;j<5;j++){
+				fan_ListView[i][j]=(char *)mymalloc(SRAMIN,40);		//开辟fan_ListView,40字节的内存区域
+	}
+	for(i=0;i<GUI_COUNTOF(fan_ListView);i++)
+	{
+		LISTVIEW_AddRow(hItem,fan_ListView[i]);
+	}
+	
+	read_fan_record();
+	//cur_number= 0;
+	update_fan_List(pMsg,cur_number);
+}
 
 // USER END
 
@@ -174,6 +365,8 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
     // Initialization of 'Listview'
     //
+		init_fan_List(pMsg);
+		/*
     hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
     LISTVIEW_AddColumn(hItem, 60, "Col 0", GUI_TA_HCENTER | GUI_TA_VCENTER);
     LISTVIEW_AddColumn(hItem, 350, "Col 1", GUI_TA_HCENTER | GUI_TA_VCENTER);
@@ -181,6 +374,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     LISTVIEW_AddRow(hItem, NULL);
     LISTVIEW_SetGridVis(hItem, 1);
     LISTVIEW_SetFont(hItem, GUI_FONT_20_ASCII);
+		*/
     //
     // Initialization of 'page'
     //
@@ -350,6 +544,10 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+				if(cur_number >=7 ){
+					cur_number = cur_number - 7;
+					update_fan_List(pMsg,cur_number);
+				}
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -364,6 +562,10 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         break;
       case WM_NOTIFICATION_RELEASED:
         // USER START (Optionally insert code for reacting on notification message)
+			if(cur_number < (fan_record_line-7) ){
+					cur_number =cur_number +7;
+					update_fan_List(pMsg,cur_number);
+			}
         // USER END
         break;
       // USER START (Optionally insert additional code for further notification handling)
@@ -377,7 +579,16 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
         // USER END
         break;
       case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
+        // USER START (Optionally insert code for reacting on notification message)	
+				for(int i = 0; i<MAX_FAN_RECORD;i++)
+					for(int j = 0;j<4;j++){
+					myfree(SRAMIN,fan_record_list[i][j]);		//释放fan_record_list,40字节的内存区域
+				}							
+				myfree(SRAMIN,fan_record_buf);		//释放fan_record_buf内存		
+				for(int i = 0; i<7;i++)
+					for(int j = 0;j<5;j++){
+					myfree(SRAMIN,fan_ListView[i][j]);		//fan_record_buf40字节的内存区域
+				}
 				GUI_EndDialog(hItem, 0 );
         // USER END
         break;
