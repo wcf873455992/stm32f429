@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\Tempate.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Tempate.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon May 20 12:13:54 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon May 20 13:18:37 2019
 <BR><P>
 <H3>Maximum Stack Usage =       2432 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1417,9 +1417,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
 <LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_dec
-<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_hex
+<BR>[Called By]<UL><LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_hex
 <LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_oct
+<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_int_dec
 </UL>
 
 <P><STRONG><a name="[7fb]"></a>__lib_sel_fp_printf</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, _printf_fp_dec.o(.text), UNUSED)
@@ -3674,8 +3674,8 @@ Global Symbols
 <LI><a href="#[6bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_InitOnce
 <LI><a href="#[373]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DEVICE_Create
 <LI><a href="#[345]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUITASK_Init
-<LI><a href="#[6dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GenCheck
 <LI><a href="#[266]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBitmap
+<LI><a href="#[6dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GenCheck
 </UL>
 
 <P><STRONG><a name="[354]"></a>GUI_ALLOC_GetMaxSize</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, gui_alloc.o(i.GUI_ALLOC_GetMaxSize))
@@ -7696,11 +7696,11 @@ Global Symbols
 <LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__InitIVRSearch
 <LI><a href="#[667]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__ClipAtParentBorders
 <LI><a href="#[67e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetClipRectUserIntersect
-<LI><a href="#[6b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ClipRectEx
 <LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_FillRect
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawVLine
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawHLine
 <LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBitmap
+<LI><a href="#[6b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ClipRectEx
 <LI><a href="#[52e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnPaint
 <LI><a href="#[309]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_ResizeWindow
 </UL>
@@ -7852,8 +7852,8 @@ Global Symbols
 <LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_FillRect_CX
 <LI><a href="#[3f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CreateStaticDevice
 <LI><a href="#[34b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_AllocInit
-<LI><a href="#[6dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GenCheck
 <LI><a href="#[266]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawBitmap
+<LI><a href="#[6dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GenCheck
 </UL>
 
 <P><STRONG><a name="[6f5]"></a>GUI__memset16</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, gui__memset16.o(i.GUI__memset16))
@@ -17592,8 +17592,8 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
 </UL>
 
-<P><STRONG><a name="[b6]"></a>_cbDialog</STRONG> (Thumb, 436 bytes, Stack size 32 bytes, fan_recorddlg.o(i._cbDialog))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1080 + Unknown Stack Size
+<P><STRONG><a name="[b6]"></a>_cbDialog</STRONG> (Thumb, 464 bytes, Stack size 32 bytes, fan_recorddlg.o(i._cbDialog))
+<BR><BR>[Stack]<UL><LI>Max Depth = 984 + Unknown Stack Size
 <LI>Call Chain = _cbDialog &rArr; init_fan_List &rArr; read_fan_record &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; FTL_WriteSectors &rArr; FTL_CopyAndWriteToBlock &rArr; FTL_FindSamePlaneUnusedBlock &rArr; FTL_FindUnusedBlock &rArr; NAND_ReadSpare &rArr; NAND_ReadPage &rArr; NAND_ECC_Correction &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[320]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;myfree
@@ -17612,7 +17612,7 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> fan_recorddlg.o(i.CreateFan_Record)
 </UL>
 <P><STRONG><a name="[72e]"></a>init_fan_List</STRONG> (Thumb, 188 bytes, Stack size 24 bytes, fan_recorddlg.o(i.init_fan_List))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1048 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 952 + Unknown Stack Size
 <LI>Call Chain = init_fan_List &rArr; read_fan_record &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; FTL_WriteSectors &rArr; FTL_CopyAndWriteToBlock &rArr; FTL_FindSamePlaneUnusedBlock &rArr; FTL_FindUnusedBlock &rArr; NAND_ReadSpare &rArr; NAND_ReadPage &rArr; NAND_ECC_Correction &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
@@ -17633,8 +17633,8 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_cbDialog
 </UL>
 
-<P><STRONG><a name="[78d]"></a>read_fan_record</STRONG> (Thumb, 466 bytes, Stack size 136 bytes, fan_recorddlg.o(i.read_fan_record))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1024 + Unknown Stack Size
+<P><STRONG><a name="[78d]"></a>read_fan_record</STRONG> (Thumb, 526 bytes, Stack size 40 bytes, fan_recorddlg.o(i.read_fan_record))
+<BR><BR>[Stack]<UL><LI>Max Depth = 928 + Unknown Stack Size
 <LI>Call Chain = read_fan_record &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_read &rArr; load_xdir &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; FTL_WriteSectors &rArr; FTL_CopyAndWriteToBlock &rArr; FTL_FindSamePlaneUnusedBlock &rArr; FTL_FindUnusedBlock &rArr; NAND_ReadSpare &rArr; NAND_ReadPage &rArr; NAND_ECC_Correction &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Sched0
@@ -21063,8 +21063,8 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[3e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetYSizeEx
 <LI><a href="#[3e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetXSizeEx
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ClipRectEx
-<LI><a href="#[40c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetPosition
+<BR>[Called By]<UL><LI><a href="#[40c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetPosition
+<LI><a href="#[6b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ClipRectEx
 </UL>
 
 <P><STRONG><a name="[1b1]"></a>_GetPixelIndex</STRONG> (Thumb, 94 bytes, Stack size 24 bytes, gui_sprite.o(i._GetPixelIndex))
@@ -21163,13 +21163,13 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__MixColors
 <LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[241]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[6b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ClipRectEx
 <LI><a href="#[39e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetBitmapPixelIndex
 <LI><a href="#[71c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetBkIndexBuffered
 <LI><a href="#[718]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
 <LI><a href="#[6fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetBkIndexAlpha
 <LI><a href="#[6fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetBkIndex
 <LI><a href="#[6be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CreateBuffer
+<LI><a href="#[6b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ClipRectEx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[366]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SPRITE__CreateEx
 <LI><a href="#[40d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SPRITE_Show
@@ -21181,11 +21181,11 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[241]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[6b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ClipRectEx
 <LI><a href="#[39e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetBitmapPixelIndex
 <LI><a href="#[71c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetBkIndexBuffered
 <LI><a href="#[718]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ReleaseBuffer
 <LI><a href="#[6be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_CreateBuffer
+<LI><a href="#[6b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ClipRectEx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[365]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SPRITE_Delete
 </UL>
@@ -22255,8 +22255,8 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[347]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_GetFixedBlock
 <LI><a href="#[363]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DrawBitmap
 <LI><a href="#[348]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__memset
-<LI><a href="#[6dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GenCheck
 <LI><a href="#[267]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_GetSkinFlexButtonSize
+<LI><a href="#[6dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GenCheck
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHECKBOX_DrawSkinFlex
 </UL>

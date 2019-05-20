@@ -100,6 +100,7 @@ static  char *fan_ListView[][4]={
 	{"6    ",	"2019-5-11 18:34:20", "2019-5-11 18:34:20", "10"},
 	{"7    ",	"2019-5-11 18:34:20", "2019-5-11 18:34:20", "10"},
 };
+static char *num[MAX_FAN_RECORD];
 
 // USER END
 
@@ -230,7 +231,7 @@ static int read_fan_record(){
 	char *p_pre,*p_cur;
 	char *p;
 	int number,len,i,j;
-	char buf[100];
+	char *buf[100];
 	
 	res=f_open(&f_rec,(const TCHAR*)pname_fan, FA_READ | FA_WRITE); 
 	if(res != FR_OK)		return	1;
@@ -245,10 +246,10 @@ static int read_fan_record(){
 	if(res != FR_OK)	return	3;
 	#if SYSTEM_SUPPORT_OS
 		OS_CRITICAL_EXIT();	//退出临界区
-	#endif
-	
+	#endif	
 	f_close(&f_rec);
 	
+
 	p_cur = p_pre = fan_record_buf; 
 	for(i = 0,len=0,fan_record_line=0; i<fan_record_len;i++){
 		p_cur = Str_Char(fan_record_buf+len, '\r');
@@ -257,17 +258,26 @@ static int read_fan_record(){
 		len += p_cur+1-p_pre;
 		p_pre = p_cur+1;
 	}
+	for(i = 0; i<fan_record_line;i++){
+		num[i]=(char *)mymalloc(SRAMIN,3);		//开辟num内存区域
+		if( num[i]==NULL)		{
+			for( j=0;j<i;j++)
+				myfree(SRAMIN,num[i]);
+			return	4;
+		}
+		else sprintf(num[i], "%d",i);
+	}
 	
 	for(i = 0; i<fan_record_line;i++)
 		for(j = 0;j<4;j++){
 				fan_record_list[i][j]=(char **)mymalloc(SRAMIN,sizeof(char *));		//开辟fan_record_list,40字节的内存区域
 				if(fan_record_list[i][j]==NULL){
-					for(int m=0;m<=i;m++)
-						for(int n=0;n<=j;n++){
+					for(int m=0;m<i;m++)
+						for(int n=0;n<j;n++){
 							myfree(SRAMIN,fan_record_list[i][j]);		//释放内存	
 						}
 					myfree(SRAMIN,fan_record_buf);		//释放内存
-					return	4;	
+					return	4;
 				}else{
 					mymemset(fan_record_list[i][j],0,sizeof(char *));        //先清零
 				}
@@ -277,11 +287,12 @@ static int read_fan_record(){
 		p_cur = Str_Char(fan_record_buf+len, '\t');//'\t'
 		*p_cur = 0x00;
 		//sprintf(*fan_record_list[number][0], "%d ",number);
+		sprintf(buf[0], "%d ",number);
 		
-		sprintf(buf, "%d",number);		
-		*fan_record_list[number][0] = &buf[0];
+		//sprintf(buf, "%d",number);		
+		*fan_record_list[number][0] = num[number];
 		
-		//fan_record_list[number][0] = p_pre;
+		//*fan_record_list[number][0] = p_pre;
 		len += p_cur+1-p_pre;
 		p_pre = p_cur+1;
 		
@@ -633,6 +644,9 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 					for(int j = 0;j<5;j++){
 					myfree(SRAMIN,fan_ListView[i][j]);		//fan_record_buf40字节的内存区域
 				}
+				for(int i = 0; i<fan_record_line;i++){
+					myfree(SRAMIN,num[i]);
+				}					
 				GUI_EndDialog(hItem, 0 );
         // USER END
         break;
