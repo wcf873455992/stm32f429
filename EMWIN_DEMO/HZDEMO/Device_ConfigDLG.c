@@ -20,6 +20,10 @@
 
 // USER START (Optionally insert additional includes)
 #include "EmWinHZFont.h"
+#include "ini.h"
+#include "ff.h"
+#include "exfuns.h"
+#include "malloc.h"
 // USER END
 
 #include "DIALOG.h"
@@ -50,6 +54,17 @@
 
 // USER START (Optionally insert additional defines)
 extern WM_HWIN hDialog;
+#define MAX_DEVICE_NUMBER	50
+#define MAX_NAME_LONG		30
+#define MAX_TYPE_LONG		30
+typedef struct{
+	int number;
+	char addr;
+	char name[MAX_NAME_LONG];
+	char	type[MAX_TYPE_LONG];
+	char	state[20];
+}DEVICE_INI;
+DEVICE_INI device[MAX_DEVICE_NUMBER];
 // USER END
 
 /*********************************************************************
@@ -60,6 +75,21 @@ extern WM_HWIN hDialog;
 */
 
 // USER START (Optionally insert additional static data)
+
+INI_FILE device_ini;
+static const char *filename_device = "0:device.ini";
+static int device_number;
+static int cur_number;
+static  char *device_listView1[7][5];
+static  char *device_listView[7][5]={
+	{"11   ",	"101", "客厅",	"温湿度变送器", "正常"},
+	{"21   ",	"202", "餐厅",	"双气体变送器", "正常"},
+	{"31   ",	"303", "厨房",	"双气体变送器", "正常"},
+	{"41   ",	"404", "卧室",	"温湿度变送器", "异常"},
+	{"51   ",	"505", "储藏室","双气体变送器", "正常"},
+	{"61   ",	"606", "大门",	"双气体变送器", "正常"},
+	{"71   ",	"707", "院子",	"双气体变送器", "正常"},
+};
 // USER END
 
 /*********************************************************************
@@ -93,13 +123,58 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 *
 **********************************************************************
 */
-
+static void update_device_List(WM_MESSAGE * pMsg, int number){
+	int i,j;
+	WM_HWIN hItem;
+	
+	for(i=0; i<7;i++){
+		if((i+number) > (device_number-1)){
+			for(j = 0; j<5; j++)
+				sprintf((char*)device_listView[i][j],"");
+		}else{
+			sprintf((char*)device_listView[i][0],"%d",device[number].number);
+			//sprintf((char*)device_listView[i][1],"%d",device[number].addr);
+			//device_listView[i][0] = device[number].name;
+			device_listView[i][1] = &device[number].addr;
+			device_listView[i][2] = device[number].type;
+			device_listView[i][3] = device[number].state;
+			//sprintf((char*)device_listView[i][3],"%d",device[number].state);
+		}
+	}
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+	for (i = 0; i < 7; i++)
+		for (j = 0; j < GUI_COUNTOF(device_listView[i]); j++) {
+				LISTVIEW_SetItemText(hItem, j, i, device_listView[i][j]);
+		}
+}
+static int read_device_ini(INI_FILE *file ){	
+	int i,n;
+	char number[10];
+ 	
+	iniFileLoad(file);
+	//for(i=0;i<MAX_DEVICE_NUMBER;i++){
+	for(i=0, device_number =0;i<10;i++){
+		device[i].number = i+1;
+		sprintf(number,"NUMBER=%d",i+1);
+		//device[i].addr 	=iniGetInt(file, number, "ADDR",  0);
+		iniGetString(file, number, "ADDR", device[i].name,MAX_NAME_LONG, "no name");
+		//if(device[i].addr == 0)break;
+		iniGetString(file, number, "NAME", device[i].name,MAX_NAME_LONG, "no name");
+		iniGetString(file, number, "TYPE",device[i].type, MAX_TYPE_LONG,"no type");
+		iniGetString(file, number, "STATE",device[i].state, MAX_TYPE_LONG,"no state");
+		//device[i].state 	=iniGetInt(file, "NUMBER=1", "STATE",  1);
+		device_number++;
+	}
+	
+	iniFileFree(file);
+}
 // USER START (Optionally insert additional static code)
 static void init(WM_MESSAGE * pMsg){
 	WM_HWIN hItem;
 	WM_HWIN hHeader;
   int     NCode;
   int     Id;
+	int i;
 	//初始化FRAMEWIN
 	hItem = pMsg->hWin;
 	//FRAMEWIN_SetTextAlign(hItem, GUI_TA_HCENTER | GUI_TA_VCENTER);
@@ -108,6 +183,7 @@ static void init(WM_MESSAGE * pMsg){
 	//FRAMEWIN_SetTextColor(hItem, GUI_RED);
 	FRAMEWIN_SetText(hItem, "设备配置");
     
+	
     // Initialization of 'Dropdown'
     hItem = WM_GetDialogItem(pMsg->hWin, ID_DROPDOWN_2);
     DROPDOWN_SetFont(hItem, &GUI_FontHZ16);
@@ -152,19 +228,30 @@ static void init(WM_MESSAGE * pMsg){
     BUTTON_SetText(hItem, "下一页");
 		
     // Initialization of 'Listview'
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
-		//hHeader = LISTVIEW_GetHeader(hItem);
-		//LISTVIEW_SetFont(hHeader, &GUI_FontHZ12);
-    LISTVIEW_AddColumn(hItem, 60, "序号", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddColumn(hItem, 60, "地址", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddColumn(hItem, 230, "设备名称", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddRow(hItem, NULL);
-    LISTVIEW_SetGridVis(hItem, 1);
-    LISTVIEW_AddColumn(hItem, 230, "设备类型", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddColumn(hItem, 60, "设备状态", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    //LISTVIEW_SetFont(hItem, &GUI_FontHZ12);
-    LISTVIEW_SetHeaderHeight(hItem, 30);
-    LISTVIEW_SetRowHeight(hItem, 30);
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+	hHeader = LISTVIEW_GetHeader(hItem);
+	LISTVIEW_SetHeaderHeight(hItem, 100);
+	HEADER_SetFont(hHeader,&GUI_FontHZ24);
+	LISTVIEW_AddColumn(hItem, 100, "序号", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 100, "地址", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 200, "设备名称", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 200, "设备类型", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 100, "设备状态", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_SetGridVis(hItem, 1);
+	LISTVIEW_SetAutoScrollH(hItem, 1);
+	LISTVIEW_SetAutoScrollV(hItem, 1);
+	LISTVIEW_SetRowHeight(hItem, 30);
+	LISTVIEW_SetFont(hItem,&GUI_FontHZ16);
+	LISTVIEW_SetBkColor(hItem,LISTVIEW_CI_UNSEL,GUI_ORANGE);
+		
+		device_ini.name =filename_device;
+		if(read_device_ini(&device_ini)!= FR_OK) return;
+		for(i=0;i<GUI_COUNTOF(device_listView);i++)
+		{
+			LISTVIEW_AddRow(hItem,device_listView[i]);
+		}
+		//cur_number= 0;
+		update_device_List(pMsg,cur_number);
 		
 }
 // USER END
@@ -273,17 +360,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
     // Initialization of 'Listview'
     //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
-    LISTVIEW_AddColumn(hItem, 60, "number", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddColumn(hItem, 60, "address", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddColumn(hItem, 230, "name", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddRow(hItem, NULL);
-    LISTVIEW_SetGridVis(hItem, 1);
-    LISTVIEW_AddColumn(hItem, 230, "type", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddColumn(hItem, 60, "status", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_SetFont(hItem, GUI_FONT_20_ASCII);
-    LISTVIEW_SetHeaderHeight(hItem, 30);
-    LISTVIEW_SetRowHeight(hItem, 30);
+    
     // USER START (Optionally insert additional code for further widget initialization)
 		init(pMsg);
     // USER END

@@ -6732,7 +6732,7 @@ I (..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h)(0x5CD8CC18
 I (..\UCOSIII\uC-LIB\lib_math.h)(0x5CD8CC18)
 I (..\UCOSIII\UCOS-CONFIG\app_cfg.h)(0x5CD8CC18)
 I (..\UCOSIII\UCOS-BSP\bsp.h)(0x5CD8CC18)
-F (..\EMWIN_DEMO\HZDEMO\Device_ConfigDLG.c)(0x5CD8CC17)(-c --cpu Cortex-M4.fp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F4xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\KEY -I ..\HARDWARE\TIMER -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\TOUCH -I ..\HARDWARE\EXTI -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\ADC -I ..\HARDWARE\RTC -I ..\HARDWARE\NAND -I ..\HARDWARE\SPI -I ..\HARDWARE\SDIO -I ..\HARDWARE\W25QXX -I ..\MALLOC -I ..\TEXT -I ..\USMART -I ..\FATFS\src -I ..\FATFS\exfuns -I ..\DSP_LIB\Include -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\UCOS-BSP -I ..\UCOSIII\UCOS-CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\EMWIN\STemWin\inc -I ..\EMWIN\STemWin\Config -I ..\EMWIN_DEMO\HZDEMO -I ..\EMWIN\STemWinHZ -I ..\HARDWARE\BEEP -I ..\EMWIN_DEMO\EMWIN_PICTURE\BMP -I ..\EMWIN_DEMO\EMWIN_PICTURE\GIF -I ..\EMWIN_DEMO\EMWIN_PICTURE\JPEG-I.\RTE\_STemWin_RGBLCD-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__FPU_PRESENT="1" --C99-o ..\obj\device_configdlg.o --omf_browse ..\obj\device_configdlg.crf --depend ..\obj\device_configdlg.d)
+F (..\EMWIN_DEMO\HZDEMO\Device_ConfigDLG.c)(0x5CE2637F)(-c --cpu Cortex-M4.fp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F4xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\KEY -I ..\HARDWARE\TIMER -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\TOUCH -I ..\HARDWARE\EXTI -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\ADC -I ..\HARDWARE\RTC -I ..\HARDWARE\NAND -I ..\HARDWARE\SPI -I ..\HARDWARE\SDIO -I ..\HARDWARE\W25QXX -I ..\MALLOC -I ..\TEXT -I ..\USMART -I ..\FATFS\src -I ..\FATFS\exfuns -I ..\DSP_LIB\Include -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\UCOS-BSP -I ..\UCOSIII\UCOS-CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\EMWIN\STemWin\inc -I ..\EMWIN\STemWin\Config -I ..\EMWIN_DEMO\HZDEMO -I ..\EMWIN\STemWinHZ -I ..\HARDWARE\BEEP -I ..\EMWIN_DEMO\EMWIN_PICTURE\BMP -I ..\EMWIN_DEMO\EMWIN_PICTURE\GIF -I ..\EMWIN_DEMO\EMWIN_PICTURE\JPEG-I.\RTE\_STemWin_RGBLCD-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__FPU_PRESENT="1" --C99-o ..\obj\device_configdlg.o --omf_browse ..\obj\device_configdlg.crf --depend ..\obj\device_configdlg.d)
 I (..\EMWIN\STemWinHZ\EmWinHZFont.h)(0x5CD8CC17)
 I (..\EMWIN\STemWin\inc\GUI.h)(0x5CD8CC17)
 I (..\EMWIN\STemWin\inc\GUI_ConfDefaults.h)(0x5CD8CC17)
@@ -6741,6 +6741,83 @@ I (..\EMWIN\STemWin\inc\GUI_Type.h)(0x5CD8CC17)
 I (..\EMWIN\STemWin\inc\LCD.h)(0x5CD8CC17)
 I (..\EMWIN\STemWin\inc\Global.h)(0x5CD8CC17)
 I (..\EMWIN\STemWin\inc\GUI_Version.h)(0x5CD8CC17)
+I (..\EMWIN_DEMO\HZDEMO\ini.h)(0x5CE2046F)
+I (..\FATFS\src\ff.h)(0x5CD8CC17)
+I (..\FATFS\src\integer.h)(0x5CD8CC17)
+I (..\FATFS\src\ffconf.h)(0x5CD8CC17)
+I (..\FATFS\exfuns\exfuns.h)(0x5CD8CC17)
+I (..\SYSTEM\sys\sys.h)(0x5CD8CC18)
+I (..\USER\stm32f4xx.h)(0x5CD8CC18)
+I (..\USER\stm32f429xx.h)(0x5CD8CC18)
+I (..\CORE\core_cm4.h)(0x5CD8CC17)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599ECD2E)
+I (..\CORE\core_cmInstr.h)(0x5CD8CC17)
+I (..\CORE\cmsis_armcc.h)(0x5CD8CC17)
+I (..\CORE\core_cmFunc.h)(0x5CD8CC17)
+I (..\CORE\core_cmSimd.h)(0x5CD8CC17)
+I (..\USER\system_stm32f4xx.h)(0x5CD8CC18)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x5CD8CC17)
+I (..\USER\stm32f4xx_hal_conf.h)(0x5CD8CC18)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x5CD8CC17)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_can.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_crc.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cryp.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma2d.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dac_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dcmi.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dcmi_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_eth.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sram.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_nor.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_nand.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pccard.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hash.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2s.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2s_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_iwdg.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_ltdc.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_ltdc_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rng.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rtc.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rtc_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sai.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sai_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sd.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_sdmmc.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_usart.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_irda.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_smartcard.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_wwdg.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h)(0x5CD8CC17)
+I (..\HALLIB\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x5CD8CC17)
+I (..\MALLOC\malloc.h)(0x5CD8CC18)
 I (..\EMWIN\STemWin\inc\DIALOG.h)(0x5CD8CC17)
 I (..\EMWIN\STemWin\inc\WM.h)(0x5CD8CC17)
 I (..\EMWIN\STemWin\inc\WM_GUI.h)(0x5CD8CC17)
@@ -6777,7 +6854,7 @@ I (..\EMWIN\STemWin\inc\SPINBOX.h)(0x5CD8CC17)
 I (..\EMWIN\STemWin\inc\TEXT.h)(0x5CD8CC17)
 I (..\EMWIN\STemWin\inc\TREEVIEW.h)(0x5CD8CC17)
 I (..\EMWIN\STemWin\inc\KNOB.h)(0x5CD8CC17)
-F (..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c)(0x5CE243AF)(-c --cpu Cortex-M4.fp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F4xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\KEY -I ..\HARDWARE\TIMER -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\TOUCH -I ..\HARDWARE\EXTI -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\ADC -I ..\HARDWARE\RTC -I ..\HARDWARE\NAND -I ..\HARDWARE\SPI -I ..\HARDWARE\SDIO -I ..\HARDWARE\W25QXX -I ..\MALLOC -I ..\TEXT -I ..\USMART -I ..\FATFS\src -I ..\FATFS\exfuns -I ..\DSP_LIB\Include -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\UCOS-BSP -I ..\UCOSIII\UCOS-CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\EMWIN\STemWin\inc -I ..\EMWIN\STemWin\Config -I ..\EMWIN_DEMO\HZDEMO -I ..\EMWIN\STemWinHZ -I ..\HARDWARE\BEEP -I ..\EMWIN_DEMO\EMWIN_PICTURE\BMP -I ..\EMWIN_DEMO\EMWIN_PICTURE\GIF -I ..\EMWIN_DEMO\EMWIN_PICTURE\JPEG-I.\RTE\_STemWin_RGBLCD-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__FPU_PRESENT="1" --C99-o ..\obj\fan_recorddlg.o --omf_browse ..\obj\fan_recorddlg.crf --depend ..\obj\fan_recorddlg.d)
+F (..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c)(0x5CE24BDE)(-c --cpu Cortex-M4.fp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\OBJ -I ..\USER -I ..\HALLIB\STM32F4xx_HAL_Driver\Inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\HARDWARE\LED -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\SDRAM -I ..\HARDWARE\KEY -I ..\HARDWARE\TIMER -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\TOUCH -I ..\HARDWARE\EXTI -I ..\HARDWARE\PCF8574 -I ..\HARDWARE\ADC -I ..\HARDWARE\RTC -I ..\HARDWARE\NAND -I ..\HARDWARE\SPI -I ..\HARDWARE\SDIO -I ..\HARDWARE\W25QXX -I ..\MALLOC -I ..\TEXT -I ..\USMART -I ..\FATFS\src -I ..\FATFS\exfuns -I ..\DSP_LIB\Include -I ..\UCOSIII\uC-CPU -I ..\UCOSIII\uC-LIB -I ..\UCOSIII\UCOS-BSP -I ..\UCOSIII\UCOS-CONFIG -I ..\UCOSIII\uCOS-III\Source -I ..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView -I ..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView -I ..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView -I ..\EMWIN\STemWin\inc -I ..\EMWIN\STemWin\Config -I ..\EMWIN_DEMO\HZDEMO -I ..\EMWIN\STemWinHZ -I ..\HARDWARE\BEEP -I ..\EMWIN_DEMO\EMWIN_PICTURE\BMP -I ..\EMWIN_DEMO\EMWIN_PICTURE\GIF -I ..\EMWIN_DEMO\EMWIN_PICTURE\JPEG-I.\RTE\_STemWin_RGBLCD-IC:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="527" -DSTM32F429xx -DUSE_HAL_DRIVER -DSTM32F429xx -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__FPU_PRESENT="1" --C99-o ..\obj\fan_recorddlg.o --omf_browse ..\obj\fan_recorddlg.crf --depend ..\obj\fan_recorddlg.d)
 I (..\EMWIN_DEMO\HZDEMO\hzfontdemo.h)(0x5CE2046F)
 I (..\SYSTEM\sys\sys.h)(0x5CD8CC18)
 I (..\USER\stm32f4xx.h)(0x5CD8CC18)
