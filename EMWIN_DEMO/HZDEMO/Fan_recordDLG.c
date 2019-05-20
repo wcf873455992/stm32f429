@@ -241,15 +241,14 @@ static int read_fan_record(){
 	
 	#if SYSTEM_SUPPORT_OS
 		OS_CRITICAL_ENTER();		//临界区
-	#endif	
+	#endif
 	res = f_read(&f_rec, fan_record_buf,f_rec.obj.objsize,&fan_record_len );	
 	if(res != FR_OK)	return	3;
 	#if SYSTEM_SUPPORT_OS
 		OS_CRITICAL_EXIT();	//退出临界区
 	#endif	
-	f_close(&f_rec);
-	
-
+	f_close(&f_rec);	
+//return 0;
 	p_cur = p_pre = fan_record_buf; 
 	for(i = 0,len=0,fan_record_line=0; i<fan_record_len;i++){
 		p_cur = Str_Char(fan_record_buf+len, '\r');
@@ -344,27 +343,7 @@ static void init_fan_List(WM_MESSAGE * pMsg){
 	LISTVIEW_SetRowHeight(hItem, 30);
 	LISTVIEW_SetFont(hItem,&GUI_FontHZ16);
 	LISTVIEW_SetBkColor(hItem,LISTVIEW_CI_UNSEL,GUI_ORANGE);
-	/*
-	for(i = 0; i<7;i++)
-		for(j = 0;j<5;j++){
-				fan_ListView[i][j]=(char *)mymalloc(SRAMIN,LINE_LEN);		//开辟fan_ListView,40字节的内存区域
-				if(fan_ListView[i][j]==NULL){
-					for(int m=0;m<=i;m++)
-						for(int n=0;n<=j;n++){
-							myfree(SRAMIN,fan_ListView[i][j]);
-						}
-					return;
-				}else{
-					mymemset(fan_record_list[i][j],0,LINE_LEN);        //先清零
-				}
-	}
-	if(read_fan_record()!= FR_OK){	
-		for(i = 0; i<7;i++)
-			for(j = 0;j<5;j++){		
-				myfree(SRAMIN,fan_ListView[i][j]);		//释放内存;				
-			}
-		return;
-	}*/
+	
 	if(read_fan_record()!= FR_OK) return;
 	for(i=0;i<GUI_COUNTOF(fan_ListView);i++)
 	{
@@ -640,10 +619,6 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 					myfree(SRAMIN,fan_record_list[i][j]);		//释放fan_record_list,40字节的内存区域
 				}							
 				myfree(SRAMIN,fan_record_buf);		//释放fan_record_buf内存		
-				for(int i = 0; i<7;i++)
-					for(int j = 0;j<5;j++){
-					myfree(SRAMIN,fan_ListView[i][j]);		//fan_record_buf40字节的内存区域
-				}
 				for(int i = 0; i<fan_record_line;i++){
 					myfree(SRAMIN,num[i]);
 				}					
