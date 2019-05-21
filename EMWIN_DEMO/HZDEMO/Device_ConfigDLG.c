@@ -58,8 +58,8 @@ extern WM_HWIN hDialog;
 #define MAX_NAME_LONG		30
 #define MAX_TYPE_LONG		30
 typedef struct{
-	int number;
-	char addr;
+	char number[20];
+	char addr[20];
 	char name[MAX_NAME_LONG];
 	char	type[MAX_TYPE_LONG];
 	char	state[20];
@@ -132,12 +132,13 @@ static void update_device_List(WM_MESSAGE * pMsg, int number){
 			for(j = 0; j<5; j++)
 				sprintf((char*)device_listView[i][j],"");
 		}else{
-			sprintf((char*)device_listView[i][0],"%d",device[number].number);
+			//sprintf((char*)device_listView[i][0],"%d",device[number].number);
 			//sprintf((char*)device_listView[i][1],"%d",device[number].addr);
-			//device_listView[i][0] = device[number].name;
-			device_listView[i][1] = &device[number].addr;
-			device_listView[i][2] = device[number].type;
-			device_listView[i][3] = device[number].state;
+			device_listView[i][0] = device[number].number;
+			device_listView[i][1] = device[number].name;
+			device_listView[i][2] = device[number].addr;
+			device_listView[i][3] = device[number].type;
+			device_listView[i][4] = device[number].state;
 			//sprintf((char*)device_listView[i][3],"%d",device[number].state);
 		}
 	}
@@ -154,10 +155,11 @@ static int read_device_ini(INI_FILE *file ){
 	iniFileLoad(file);
 	//for(i=0;i<MAX_DEVICE_NUMBER;i++){
 	for(i=0, device_number =0;i<10;i++){
-		device[i].number = i+1;
+//		device[i].number = i+1;
 		sprintf(number,"NUMBER=%d",i+1);
 		//device[i].addr 	=iniGetInt(file, number, "ADDR",  0);
-		iniGetString(file, number, "ADDR", device[i].name,MAX_NAME_LONG, "no name");
+		*device[i].number = number[0];
+		iniGetString(file, number, "ADDR", device[i].addr,MAX_NAME_LONG, "no addr");
 		//if(device[i].addr == 0)break;
 		iniGetString(file, number, "NAME", device[i].name,MAX_NAME_LONG, "no name");
 		iniGetString(file, number, "TYPE",device[i].type, MAX_TYPE_LONG,"no type");
@@ -166,7 +168,7 @@ static int read_device_ini(INI_FILE *file ){
 		device_number++;
 	}
 	
-	iniFileFree(file);
+//	iniFileFree(file);
 }
 // USER START (Optionally insert additional static code)
 static void init(WM_MESSAGE * pMsg){

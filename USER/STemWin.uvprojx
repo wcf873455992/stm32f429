@@ -1213,6 +1213,11 @@
               <FileType>1</FileType>
               <FilePath>..\EMWIN_DEMO\HZDEMO\inirw.c</FilePath>
             </File>
+            <File>
+              <FileName>files.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\EMWIN_DEMO\HZDEMO\files.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2484,6 +2489,11 @@
                   </Cads>
                 </FileArmAds>
               </FileOption>
+            </File>
+            <File>
+              <FileName>files.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\EMWIN_DEMO\HZDEMO\files.c</FilePath>
             </File>
           </Files>
         </Group>

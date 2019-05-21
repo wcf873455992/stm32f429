@@ -86,6 +86,7 @@
 ..\obj\fan_recorddlg.o: ..\FATFS\exfuns\exfuns.h
 ..\obj\fan_recorddlg.o: ..\MALLOC\malloc.h
 ..\obj\fan_recorddlg.o: ..\HARDWARE\RTC\rtc.h
+..\obj\fan_recorddlg.o: ..\EMWIN_DEMO\HZDEMO\files.h
 ..\obj\fan_recorddlg.o: ..\UCOSIII\UCOS-CONFIG\includes.h
 ..\obj\fan_recorddlg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\fan_recorddlg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h

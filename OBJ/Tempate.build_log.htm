@@ -22,29 +22,35 @@ Dialog DLL:      TCM.DLL V1.36.1.0
  
 <h2>Project:</h2>
 H:\气体检测\code\3，EMWIN扩展例程\stm32f429\USER\STemWin.uvprojx
-Project File Date:  05/17/2019
+Project File Date:  05/21/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'STemWin RGBLCD'
-compiling Device_ConfigDLG.c...
-..\EMWIN_DEMO\HZDEMO\ini.h(32): warning:  #1-D: last line of file ends without a newline
+compiling Fan_recordDLG.c...
+..\EMWIN_DEMO\HZDEMO\files.h(33): warning:  #1-D: last line of file ends without a newline
   #endif
-..\EMWIN_DEMO\HZDEMO\Device_ConfigDLG.c(170): warning:  #940-D: missing return statement at end of non-void function "read_device_ini" 
-  }
-..\EMWIN_DEMO\HZDEMO\Device_ConfigDLG.c(151): warning:  #177-D: variable "n"  was declared but never referenced
-  	int i,n;
-..\EMWIN_DEMO\HZDEMO\Device_ConfigDLG.c(175): warning:  #177-D: variable "NCode"  was declared but never referenced
-    int     NCode;
-..\EMWIN_DEMO\HZDEMO\Device_ConfigDLG.c(176): warning:  #177-D: variable "Id"  was declared but never referenced
-    int     Id;
-..\EMWIN_DEMO\HZDEMO\Device_ConfigDLG.c(83): warning:  #177-D: variable "device_listView1"  was declared but never referenced
-  static  char *device_listView1[7][5];
-..\EMWIN_DEMO\HZDEMO\Device_ConfigDLG.c: 6 warnings, 0 errors
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(237): warning:  #177-D: variable "res"  was declared but never referenced
+  	u8 res;	
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(239): warning:  #177-D: variable "p"  was declared but never referenced
+  	char *p;
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(241): warning:  #177-D: variable "buf"  was declared but never referenced
+  	char *buf[100];
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(323): warning:  #177-D: variable "j"  was declared but never referenced
+  	int i,j;
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(97): warning:  #177-D: variable "tempfan"  was declared but never referenced
+  static char **tempfan;
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(100): warning:  #177-D: variable "fan_ListView1"  was declared but never referenced
+  static  char *fan_ListView1[7][4];
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(112): warning:  #177-D: variable "num2"  was declared but never referenced
+  static char *num2="1";
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c(113): warning:  #177-D: variable "num3"  was declared but never referenced
+  static char *num3[10]={"1","2","3","4","5","6","7","8","9","10",};
+..\EMWIN_DEMO\HZDEMO\Fan_recordDLG.c: 9 warnings, 0 errors
 linking...
-Program Size: Code=216680 RO-data=78772 RW-data=2948 ZI-data=24494708  
+Program Size: Code=216772 RO-data=78772 RW-data=2936 ZI-data=24496936  
 FromELF: creating hex file...
-"..\OBJ\Tempate.axf" - 0 Error(s), 6 Warning(s).
+"..\OBJ\Tempate.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
