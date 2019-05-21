@@ -17,6 +17,8 @@ typedef struct{
 int FileLoad(LOAD_FILE *file);
 //释放ini文件所占资源
 void FileFree(LOAD_FILE *file);
+
+int GetSectionValue(LOAD_FILE *file, const char *section, char *value, int maxlen, const char *defvalue);
 //获取字符串，不带引号
 int GetString(LOAD_FILE *file,const char *section, const char *key, char *value, int size, const char *defvalue);
 //获取整数值

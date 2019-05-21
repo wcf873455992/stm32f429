@@ -262,6 +262,60 @@ void FileFree(LOAD_FILE *file)
 	*/
 	return 0;
 }
+
+int GetSectionValue(LOAD_FILE *file, const char *section, char *value, int maxlen, const char *defvalue)
+ {
+	int type;
+ 	char content[SIZE_LINE];
+ 	char *rem1, *rem2, *nextline;
+ 	char *section0, *value0;
+ 	char *p;
+ 
+	int uselen = 0;
+ 	char found = 0;
+ 	int len;
+ 	if (file->buf == NULL ) {
+ 		return 0;
+ 	}
+ 	while (file->buflen - uselen > 0) {
+ 		p = file->buf + uselen;
+ 		type = GetLine(p, file->buflen - uselen, content, &rem1, &rem2, &nextline);
+ 		uselen += (int)(nextline - p);
+ 		if (LINE_SECTION == type) {
+			
+ 			if (found || section == NULL) break;		//发现另一section
+ 			content[Str_Len(content) - 1] = 0;			//去尾部]
+ 			StrStrip(content + 1);						//去首尾空格
+			
+ 			GetKeyValue(content+1, &section0, &value0);			
+ 			if (StriCmp(section0, section) == 0) {	
+				len = Str_Len(value0);
+ 				if (len == 0) break;		//空值视为无效
+ 				if (value != NULL) {
+ 					len = min(len, maxlen - 1);
+ 					Str_Copy_N(value, value0, len);
+ 					value[len] = 0x00;
+					found = 1;
+ 				}
+ 				return 1;
+ 			}
+ 		}
+
+ 	}
+  
+	//未发现键值取缺省
+ 	if (value != NULL) {
+ 		if (defvalue != NULL) {
+ 			len = min(Str_Len(defvalue), maxlen - 1);
+ 			Str_Copy_N(value, defvalue, len);
+ 			value[len] = 0;
+ 		} else {
+ 			value[0] = 0;
+ 		}
+ 	}
+ 	return 0;
+ }
+
 //读取值原始串
  static int GetValue(LOAD_FILE *file, const char *section, const char *key, char *value, int maxlen, const char *defvalue)
  {

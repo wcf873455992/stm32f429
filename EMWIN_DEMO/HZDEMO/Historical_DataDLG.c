@@ -68,7 +68,7 @@ void read_data(void);
 */
 
 // USER START (Optionally insert additional static data)
-static const char *_ListViewTable1[][5]={
+static const char *_ListViewTable[][5]={
 	{"1#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "CO2超标"},
 	{"2#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", " "},
 	{"3#变送器",	"20.5%","300PPM","2019-5-11 18:34:20", "O2超标"},
@@ -121,6 +121,33 @@ static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
 */
 
 // USER START (Optionally insert additional static code)
+void init_history(WM_MESSAGE * pMsg)
+{
+	WM_HWIN hItem;
+	WM_HWIN hHeader;
+	int i;
+	    // Initialization of 'Listview'
+	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
+	hHeader = LISTVIEW_GetHeader(hItem);
+	LISTVIEW_SetHeaderHeight(hItem, 100);
+	HEADER_SetFont(hHeader,&GUI_FontHZ24);
+	LISTVIEW_AddColumn(hItem, 150, "名称", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 150, "监测数据1", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 150, "监测数据2", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 200, "时间", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_AddColumn(hItem, 100, "报警信息", GUI_TA_HCENTER | GUI_TA_VCENTER);
+	LISTVIEW_SetGridVis(hItem, 1);
+	LISTVIEW_SetAutoScrollH(hItem, 1);
+	LISTVIEW_SetAutoScrollV(hItem, 1);
+	LISTVIEW_SetRowHeight(hItem, 30);
+	LISTVIEW_SetFont(hItem,&GUI_FontHZ16);	
+		
+		
+		for(i=0;i<GUI_COUNTOF(_ListViewTable);i++)
+		{
+			LISTVIEW_AddRow(hItem,_ListViewTable[i]);
+		}
+}
 // USER END
 
 /*********************************************************************
@@ -202,13 +229,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     //
     // Initialization of 'Listview'
     //
-    hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
-    LISTVIEW_AddColumn(hItem, 65, "Col 0", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddColumn(hItem, 350, "Col 1", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddColumn(hItem, 350, "Col 2", GUI_TA_HCENTER | GUI_TA_VCENTER);
-    LISTVIEW_AddRow(hItem, NULL);
-    LISTVIEW_SetGridVis(hItem, 1);
-    LISTVIEW_SetFont(hItem, &GUI_FontHZ16);
+		init_history(pMsg);
 		/*for(i=0;i<(_ListViewTable1);i++)
 		{
 				LISTVIEW_AddRow(hItem,_ListViewTable1[i]);

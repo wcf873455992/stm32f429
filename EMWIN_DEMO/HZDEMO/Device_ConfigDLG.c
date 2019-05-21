@@ -53,6 +53,9 @@
 
 
 // USER START (Optionally insert additional defines)
+
+
+
 extern WM_HWIN hDialog;
 #define MAX_DEVICE_NUMBER	50
 #define MAX_NAME_LONG		30
@@ -76,9 +79,9 @@ DEVICE_INI device[MAX_DEVICE_NUMBER];
 
 // USER START (Optionally insert additional static data)
 
-LOAD_FILE device_ini;
+LOAD_FILE file_device;
 static const char *filename_device = "0:device.ini";
-static int device_number;
+static char device_number[10];
 static int cur_number;
 static  char *device_listView1[7][5];
 static  char *device_listView[7][5]={
@@ -128,10 +131,10 @@ static void update_device_List(WM_MESSAGE * pMsg, int number){
 	WM_HWIN hItem;
 	
 	for(i=0; i<7;i++){
-		if((i+number) > (device_number-1)){
+		/*if((i+number) > (device_number-1)){
 			for(j = 0; j<5; j++)
 				sprintf((char*)device_listView[i][j],"");
-		}else{
+		}else{*/
 			//sprintf((char*)device_listView[i][0],"%d",device[number].number);
 			//sprintf((char*)device_listView[i][1],"%d",device[number].addr);
 			device_listView[i][0] = device[number].number;
@@ -140,7 +143,7 @@ static void update_device_List(WM_MESSAGE * pMsg, int number){
 			device_listView[i][3] = device[number].type;
 			device_listView[i][4] = device[number].state;
 			//sprintf((char*)device_listView[i][3],"%d",device[number].state);
-		}
+		//}
 	}
 	hItem = WM_GetDialogItem(pMsg->hWin, ID_LISTVIEW_0);
 	for (i = 0; i < 7; i++)
@@ -149,30 +152,38 @@ static void update_device_List(WM_MESSAGE * pMsg, int number){
 		}
 }
 
-static int read_device_ini(LOAD_FILE file ){}
-	/*
-static int read_device_ini(INI_FILE *file ){	
+static int read_device_ini(LOAD_FILE *file ){
+	
 	int i,n;
 	char number[10];
+	int number_temp;
  	
-	FileLoad(&file);
+	FileLoad(file);
+	GetString(file, "NUMBER=2", "ADDR", device[2].addr,MAX_NAME_LONG, "no addr");
+	/*
+	for(i=0,number_temp=0; i<MAX_DEVICE_NUMBER;i++){
+		sprintf(number,"%d",i);
+		//device_number = GetInt(file,"NUMBER",""0);
+		GetSectionValue(file,"NUMBER", device_number, 10, "num=0");
+	}
 	//for(i=0;i<MAX_DEVICE_NUMBER;i++){
-	for(i=0, device_number =0;i<10;i++){
+	for(i=0; i<10;i++){
 //		device[i].number = i+1;
 		sprintf(number,"NUMBER=%d",i+1);
 		//device[i].addr 	=iniGetInt(file, number, "ADDR",  0);
 		*device[i].number = number[0];
-		iniGetString(file, number, "ADDR", device[i].addr,MAX_NAME_LONG, "no addr");
-		//if(device[i].addr == 0)break;
-		iniGetString(file, number, "NAME", device[i].name,MAX_NAME_LONG, "no name");
-		iniGetString(file, number, "TYPE",device[i].type, MAX_TYPE_LONG,"no type");
-		iniGetString(file, number, "STATE",device[i].state, MAX_TYPE_LONG,"no state");
+		GetString(file, number, "ADDR", device[i].addr,MAX_NAME_LONG, "no addr");
+		GetString(file, number, "NAME", device[i].name,MAX_NAME_LONG, "no name");
+		GetString(file, number, "TYPE",device[i].type, MAX_TYPE_LONG,"no type");
+		GetString(file, number, "STATE",device[i].state, MAX_TYPE_LONG,"no state");
 		//device[i].state 	=iniGetInt(file, "NUMBER=1", "STATE",  1);
-		device_number++;
+		//device_number++;
 	}
+	*/
+	sprintf(device[3].addr,"addr=3");
 	
 //	iniFileFree(file);
-}*/
+}
 // USER START (Optionally insert additional static code)
 static void init(WM_MESSAGE * pMsg){
 	WM_HWIN hItem;
@@ -249,8 +260,9 @@ static void init(WM_MESSAGE * pMsg){
 	LISTVIEW_SetFont(hItem,&GUI_FontHZ16);
 	LISTVIEW_SetBkColor(hItem,LISTVIEW_CI_UNSEL,GUI_ORANGE);
 		
-		device_ini.name =filename_device;
-		if(read_device_ini(device_ini)!= FR_OK) return;
+		file_device.name =filename_device;
+		//FileLoad(&file_device);
+		if(read_device_ini(&file_device)!= FR_OK) return;
 		for(i=0;i<GUI_COUNTOF(device_listView);i++)
 		{
 			LISTVIEW_AddRow(hItem,device_listView[i]);
