@@ -153,7 +153,7 @@ static int GetLine(char *buf, int buflen, char *content, char **rem1, char **rem
 //取一节section 
 //输入：节名称 
 //输出：成功与否、节名称首、节名称尾、节内容首、节内容尾(含换行)、下一节首(节尾与下一节首间为空行或注释行)
- static int FindSection(LOAD_FILE file,const char *section, char **sect1, char **sect2, char **cont1, char **cont2, char **nextsect)
+ static int FindSection(LOAD_FILE *file,const char *section, char **sect1, char **sect2, char **cont1, char **cont2, char **nextsect)
  {
  	int type;
  	char content[SIZE_LINE];
@@ -163,12 +163,12 @@ static int GetLine(char *buf, int buflen, char *content, char **rem1, char **rem
  	int uselen = 0;
  	char found = 0;
   
-	if (file.buf == NULL) {
+	if (file->buf == NULL) {
  		return 0;
  	}
- 	while (file.buflen - uselen > 0) {
- 		p = file.buf + uselen;
-		type = GetLine(p, file.buflen - uselen, content, &rem1, &rem2, &nextline);
+ 	while (file->buflen - uselen > 0) {
+ 		p = file->buf + uselen;
+		type = GetLine(p, file->buflen - uselen, content, &rem1, &rem2, &nextline);
 		uselen += (int)(nextline - p);
 		if (LINE_SECTION == type) {
 			if (found || section == NULL) break;		//发现另一section
@@ -263,7 +263,7 @@ void FileFree(LOAD_FILE *file)
 	return 0;
 }
 //读取值原始串
- static int GetValue(LOAD_FILE file, const char *section, const char *key, char *value, int maxlen, const char *defvalue)
+ static int GetValue(LOAD_FILE *file, const char *section, const char *key, char *value, int maxlen, const char *defvalue)
  {
 	int type;
  	char content[SIZE_LINE];
@@ -274,14 +274,14 @@ void FileFree(LOAD_FILE *file)
 	int uselen = 0;
  	char found = 0;
  	int len;
- 	if (file.buf == NULL || key == NULL) {
+ 	if (file->buf == NULL || key == NULL) {
  		if (value != NULL)
  			value[0] = 0;
  		return 0;
  	}
- 	while (file.buflen - uselen > 0) {
- 		p = file.buf + uselen;
- 		type = GetLine(p, file.buflen - uselen, content, &rem1, &rem2, &nextline);
+ 	while (file->buflen - uselen > 0) {
+ 		p = file->buf + uselen;
+ 		type = GetLine(p, file->buflen - uselen, content, &rem1, &rem2, &nextline);
  		uselen += (int)(nextline - p);
  		if (LINE_SECTION == type) {
  			if (found || section == NULL) break;		//发现另一section
@@ -324,7 +324,7 @@ void FileFree(LOAD_FILE *file)
  	return 0;
  }
 //获取字符串，不带引号
- int GetString(LOAD_FILE file,const char *section, const char *key, char *value, int maxlen, const char *defvalue)
+ int GetString(LOAD_FILE *file,const char *section, const char *key, char *value, int maxlen, const char *defvalue)
  {
  	int ret;
  	int len;
@@ -346,7 +346,7 @@ void FileFree(LOAD_FILE *file)
  	return ret;
  }
 //获取整数值
- int GetInt(LOAD_FILE file,const char *section, const char *key, int defvalue)
+ int GetInt(LOAD_FILE *file,const char *section, const char *key, int defvalue)
  {
  	char valstr[64];
  
@@ -356,7 +356,7 @@ void FileFree(LOAD_FILE *file)
  }
   
 //获取浮点数
- double GetDouble(LOAD_FILE file, const char *section, const char *key, double defvalue)
+ double GetDouble(LOAD_FILE *file, const char *section, const char *key, double defvalue)
  {
  	char valstr[64];
  	if (GetValue(file, section, key, valstr, sizeof(valstr), NULL))
@@ -364,7 +364,7 @@ void FileFree(LOAD_FILE *file)
  	return defvalue;
  }
 //设置字符串：若value为NULL，则删除该key所在行，包括注释
- int SetString(LOAD_FILE file, const char *section, const char *key, const char *value)
+ int SetString(LOAD_FILE *file, const char *section, const char *key, const char *value)
  {
  	//FIL *file;
  	char *sect1, *sect2, *cont1, *cont2, *nextsect;
@@ -375,7 +375,7 @@ void FileFree(LOAD_FILE *file)
  	char *rem1, *rem2, *nextline;
 	int ret;
   
-	if (file.buf == NULL) {
+	if (file->buf == NULL) {
  		return 0;
  	}
  	if (FindSection(file ,section, &sect1, &sect2, &cont1, &cont2, &nextsect) == 0)
@@ -386,12 +386,12 @@ void FileFree(LOAD_FILE *file)
  			return 0;
  		//在文件尾部添加
 		 
- 		ret = f_open(&file.fil,file.name, FA_READ|FA_WRITE);
+ 		ret = f_open(&file->fil,(const TCHAR*)file->name, FA_READ|FA_WRITE);
  		if (ret) 
  			return 0;
- 		///_fprintf(file, "n[%s]n%s = %sn", section, key, value);
- 		f_close(&file.fil);
- 		FileLoad(&file);
+ 		f_printf(&file->fil, "n[%s]n%s = %sn", section, key, value);
+ 		f_close(&file->fil);
+ 		FileLoad(file);
  		return 1;
  	}
  
@@ -405,22 +405,22 @@ void FileFree(LOAD_FILE *file)
  			GetKeyValue(content, &key0, &value0);
  			if (StriCmp(key0, key) == 0) {
  				//找到keyf_open(file->fil,(const TCHAR*)file->name, FA_READ|FA_WRITE);
- 				ret = f_open(&file.fil,(const TCHAR*) file.name, FA_WRITE|FA_WRITE);
+ 				ret = f_open(&file->fil,(const TCHAR*) file->name, FA_WRITE|FA_WRITE);
  				if (ret)
  					return 0;
- 				len = (int)(p - file.buf);
- 				f_write(&file.fil,file.buf, len,&bw );					//写入key之前部分
+ 				len = (int)(p - file->buf);
+ 				f_write(&file->fil,file->buf, len,&bw );					//写入key之前部分
  				if (value == NULL) {
  					//value无效，删除
- 					len = (int)(nextline - file.buf);			//整行连同注释一并删除
+ 					len = (int)(nextline - file->buf);			//整行连同注释一并删除
  				} else {
  					//value有效，改写
- 					f_printf(&file.fil, "%s = %s", key, value);
- 					len = (int)(rem1 - file.buf);				//保留尾部原注释!
+ 					f_printf(&file->fil, "%s = %s", key, value);
+ 					len = (int)(rem1 - file->buf);				//保留尾部原注释!
  				}//	res=f_write(f_rec,(const void*)real_data.Date,strlen(real_data.Date),&bw);
- 				f_write(&file.fil, (const void*)(file.buf + len),  file.buflen - len,&bw );	//写入key所在行含注释之后部分
- 				f_close(&file.fil);
- 				FileLoad(&file);
+ 				f_write(&file->fil, (const void*)(file->buf + len),  file->buflen - len,&bw );	//写入key所在行含注释之后部分
+ 				f_close(&file->fil);
+ 				FileLoad(file);
  				return 1;
  			}
  		}
@@ -434,19 +434,19 @@ void FileFree(LOAD_FILE *file)
  	if (value == NULL) 
  		return 0;
  	//在文件尾部添加
- 	ret = f_open(&file.fil,file.name, FA_WRITE);
+ 	ret = f_open(&file->fil,file->name, FA_WRITE);
  	if (ret) 
  		return 0;
- 	len = (int)(cont2 - file.buf);
- 	f_write(&file.fil,file.buf, len,&bw );					//写入key之前部分
- 	//fprintf(file, "%s = %sn", key, value);
- 	f_write(&file.fil,file.buf + len,  file.buflen - len,&bw );	//写入key之后部分
- 	f_close(&file.fil);
- 	FileLoad(&file);
+ 	len = (int)(cont2 - file->buf);
+ 	f_write(&file->fil,file->buf, len,&bw );					//写入key之前部分
+ 	f_printf(&file->fil, "%s = %sn", key, value);
+ 	f_write(&file->fil,(const void*)(file->buf + len),  file->buflen - len,&bw );	//写入key之后部分
+ 	f_close(&file->fil);
+ 	FileLoad(file);
  	return 1;
  }
 //设置整数值：base取值10、16、8，分别表示10、16、8进制，缺省为10进制
- int SetInt(LOAD_FILE file, const char *section, const char *key, int value, int base)
+ int SetInt(LOAD_FILE *file, const char *section, const char *key, int value, int base)
  {
  	char valstr[64];
   

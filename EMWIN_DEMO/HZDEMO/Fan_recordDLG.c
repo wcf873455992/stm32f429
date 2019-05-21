@@ -621,7 +621,7 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 				myfree(SRAMIN,fan_file.buf);		//ÊÍ·Åfan_record_bufÄÚ´æ		
 				for(int i = 0; i<fan_file.bufline;i++){
 					myfree(SRAMIN,num[i]);
-				}					
+				}
 				GUI_EndDialog(hItem, 0 );
         // USER END
         break;

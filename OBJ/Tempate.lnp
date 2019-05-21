@@ -120,7 +120,6 @@
 "..\obj\helpdlg.o"
 "..\obj\historical_datadlg.o"
 "..\obj\sys_setdlg.o"
-"..\obj\ini.o"
 "..\obj\files.o"
 --strict --scatter "..\OBJ\Tempate.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

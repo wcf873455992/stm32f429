@@ -8,7 +8,7 @@
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\Global.h
 ..\obj\sys_setdlg.o: ..\EMWIN\STemWin\inc\GUI_Version.h
 ..\obj\sys_setdlg.o: ..\EMWIN_DEMO\HZDEMO\sys_set.h
-..\obj\sys_setdlg.o: ..\EMWIN_DEMO\HZDEMO\ini.h
+..\obj\sys_setdlg.o: ..\EMWIN_DEMO\HZDEMO\files.h
 ..\obj\sys_setdlg.o: ..\FATFS\src\ff.h
 ..\obj\sys_setdlg.o: ..\FATFS\src\integer.h
 ..\obj\sys_setdlg.o: ..\FATFS\src\ffconf.h

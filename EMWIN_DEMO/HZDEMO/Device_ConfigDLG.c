@@ -20,7 +20,7 @@
 
 // USER START (Optionally insert additional includes)
 #include "EmWinHZFont.h"
-#include "ini.h"
+#include "files.h"
 #include "ff.h"
 #include "exfuns.h"
 #include "malloc.h"
@@ -76,7 +76,7 @@ DEVICE_INI device[MAX_DEVICE_NUMBER];
 
 // USER START (Optionally insert additional static data)
 
-INI_FILE device_ini;
+LOAD_FILE device_ini;
 static const char *filename_device = "0:device.ini";
 static int device_number;
 static int cur_number;
@@ -148,11 +148,14 @@ static void update_device_List(WM_MESSAGE * pMsg, int number){
 				LISTVIEW_SetItemText(hItem, j, i, device_listView[i][j]);
 		}
 }
+
+static int read_device_ini(LOAD_FILE file ){}
+	/*
 static int read_device_ini(INI_FILE *file ){	
 	int i,n;
 	char number[10];
  	
-	iniFileLoad(file);
+	FileLoad(&file);
 	//for(i=0;i<MAX_DEVICE_NUMBER;i++){
 	for(i=0, device_number =0;i<10;i++){
 //		device[i].number = i+1;
@@ -169,7 +172,7 @@ static int read_device_ini(INI_FILE *file ){
 	}
 	
 //	iniFileFree(file);
-}
+}*/
 // USER START (Optionally insert additional static code)
 static void init(WM_MESSAGE * pMsg){
 	WM_HWIN hItem;
@@ -247,7 +250,7 @@ static void init(WM_MESSAGE * pMsg){
 	LISTVIEW_SetBkColor(hItem,LISTVIEW_CI_UNSEL,GUI_ORANGE);
 		
 		device_ini.name =filename_device;
-		if(read_device_ini(&device_ini)!= FR_OK) return;
+		if(read_device_ini(device_ini)!= FR_OK) return;
 		for(i=0;i<GUI_COUNTOF(device_listView);i++)
 		{
 			LISTVIEW_AddRow(hItem,device_listView[i]);

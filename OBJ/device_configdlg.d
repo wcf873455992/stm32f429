@@ -7,7 +7,7 @@
 ..\obj\device_configdlg.o: ..\EMWIN\STemWin\inc\LCD.h
 ..\obj\device_configdlg.o: ..\EMWIN\STemWin\inc\Global.h
 ..\obj\device_configdlg.o: ..\EMWIN\STemWin\inc\GUI_Version.h
-..\obj\device_configdlg.o: ..\EMWIN_DEMO\HZDEMO\ini.h
+..\obj\device_configdlg.o: ..\EMWIN_DEMO\HZDEMO\files.h
 ..\obj\device_configdlg.o: ..\FATFS\src\ff.h
 ..\obj\device_configdlg.o: ..\FATFS\src\integer.h
 ..\obj\device_configdlg.o: ..\FATFS\src\ffconf.h
